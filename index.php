@@ -42,8 +42,8 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <a href="CadastroMotofretista.php" class="btn btn-outline-warning">Sou motofretista</a>
-                        <a href="CadastroMotofretista.php" class="btn btn-outline-info float-right">Sou cliente</a>
+                        <a href="cadastroMotofretista.php" class="btn btn-outline-warning">Sou motofretista</a>
+                        <a href="cadastroMotofretista.php" class="btn btn-outline-info float-right">Sou cliente</a>
                     </div>
 
                 </div>
