@@ -1,7 +1,30 @@
 <?php
 $title = "CADASTRO CLIENTE";
 
-include '../header.php' ?>
+include '../header.php';
+require '../conexao.php';
+
+if (isset($_POST['confirmarCadastro'])) {
+    $nome = $_POST ['nome'];
+    $nascimento = $_POST ['nascimento'];
+    $cpf = $_POST ['cpf'];
+    $celular = $_POST ['celular'];
+    $email = $_POST ['email'];
+    $senha = $_POST ['senha'];
+    $confirmarSenha = $_POST ['confirmarSenha'];
+    $termos = $_POST ['termos'];
+
+    if ($senha == $confirmarSenha && $termos == TRUE) {
+        $procedure = "call cadastrarCliente('$nome', '$nascimento', '$cpf', '$email', '$celular', '$senha')";
+
+        if ($conexao->query($procedure) == TRUE)
+            echo 'Cliente cadastrado com sucesso!';
+        else {
+            echo "Erro: $conexao->error" . PHP_EOL;
+        }
+    }
+}
+?>
 
 
 
@@ -11,14 +34,14 @@ include '../header.php' ?>
     <div class="card m-auto text-left" style="width: 54rem;"> <!--Div usada para formartar o card de login -->
         <div class="card-body">
             <h3 class="card-title mb-4">DADOS PESSOAIS</h3>
-            <form>
+            <form method="post">
                 <div class="row">
 
                     <!--Nome completo do cliente-->
                     <div class="col">
-                        <div class="form-group">
-                            <label for="nome"> Nome: </label>
-                            <input type="text" class="form-control" id="nome" placeholder="Informe seu nome completo">
+                                <div class="form-group">
+                                    <label for="nome"> Nome: </label>
+                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe seu nome completo" required>
                         </div>
                     </div>
 
@@ -26,18 +49,18 @@ include '../header.php' ?>
                     <div class="col">
                         <div class="form-group">
                             <label for="data"> Data de nascimento: </label>
-                            <input type="date" class="form-control" id="data" placeholder="Informe sua data de nascimento">
+                            <input type="date" class="form-control" id="data" name="nascimento" placeholder="Informe sua data de nascimento" required>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
 
-                    <!--Celular para contato principal-->
+                    <!--CPF-->
                     <div class="col">
                         <div class="form-group">
                             <label for="celular"> CPF: </label>
-                            <input type="tel" class="form-control" id="celular" placeholder="Celular para contato">
+                            <input type="tel" class="form-control" id="celular" name="cpf" placeholder="Celular para contato" required>
                         </div>
                     </div>
 
@@ -45,7 +68,7 @@ include '../header.php' ?>
                     <div class="col">
                         <div class="form-group">
                             <label for="celular"> Celular: </label>
-                            <input type="tel" class="form-control" id="celular" placeholder="Celular para contato">
+                            <input type="tel" class="form-control" id="celular" name="celular" placeholder="Celular para contato" required>
                         </div>
                     </div>
                 </div>
@@ -56,7 +79,7 @@ include '../header.php' ?>
                     <div class="col">
                         <div class="form-group">
                             <label for="email"> Email: </label>
-                            <input type="email" class="form-control" id="email" placeholder="Informe seu email para login">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Informe seu email para login" required>
                         </div>
                     </div>
 
@@ -64,15 +87,15 @@ include '../header.php' ?>
                     <div class="col">
                         <div class="form-group">
                             <label for="senha"> Senha: </label>
-                            <input type="password" class="form-control" id="senha" placeholder="Informe uma senha para login">
+                            <input type="password" class="form-control" id="senha" name="senha" placeholder="Informe uma senha para login" required>
                         </div>
                     </div>
 
                     <!--Confirmar senha que será usada para login-->
                     <div class="col">
                         <div class="form-group">
-                            <label for="senha"> Confirmar senha: </label>
-                            <input type="password" class="form-control" id="senha" placeholder="Informe uma senha para login">
+                            <label for="confirmarSenha"> Confirmar senha: </label>
+                            <input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme a senha para login" required>
                         </div>
                     </div>
                 </div>
@@ -82,14 +105,14 @@ include '../header.php' ?>
                     <!-- Termos de uso -->
                     <div class="col">
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="checkTermo">
+                            <input type="checkbox" class="form-check-input" id="checkTermo" name="termos" required>
                             <label class="form-check-label" for="checkTermo"><a href="../termos.php">Ler termos de uso</a></label>
                         </div>                                                 <!-- Link para página de termos de uso-->
                     </div>
 
                         <!-- Botão de confirmar cadastro-->
                     <div class="col">
-                        <button type="submit" class="btn btn-outline-success float-right mx-5">Confirmar </button> <!--Botão entrar-->
+                        <button type="submit" name="confirmarCadastro" class="btn btn-outline-success float-right mx-5">Confirmar </button> <!--Botão entrar-->
                     </div>
                 </div>
             </form>
