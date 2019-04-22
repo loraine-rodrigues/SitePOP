@@ -2,17 +2,11 @@ Create database if not exists motofrete;
 
 use motofrete;
 
-CREATE TABLE IF NOT EXISTS `motofrete`.`tb_tipo_login` (
-    `id_tipo_login` INT NOT NULL AUTO_INCREMENT,
-    `id_tipo_servico` SET('1', '2') NOT NULL,
-    PRIMARY KEY (`id_tipo_login`)
-)  ENGINE=INNODB DEFAULT CHARACTER SET=UTF8;
-
 CREATE TABLE IF NOT EXISTS `motofrete`.`tb_login` (
     `id_login` INT NOT NULL AUTO_INCREMENT,
-    `nm_usuario` VARCHAR(45) NOT NULL,
-    `id_senha` VARCHAR(45) NOT NULL,
-    `id_tipo_login` INT NULL,
+    `nm_usuario` VARCHAR(45) NOT NULL UNIQUE,
+    `id_senha` VARCHAR(32) NOT NULL,
+	`id_tipo_login` SET('1', '2') NOT NULL,
     PRIMARY KEY (`id_login`)
 )  ENGINE=INNODB DEFAULT CHARACTER SET=UTF8;
 
@@ -21,8 +15,9 @@ CREATE TABLE IF NOT EXISTS `tb_cliente` (
     `nm_cliente` VARCHAR(255) NOT NULL,
     `dt_nasc` DATE NOT NULL,
     `id_cpf` CHAR(11) NOT NULL,
-    `nm_email` VARCHAR(100) NOT NULL,
-    PRIMARY KEY (`id_cliente`)
+    `nm_email` VARCHAR(100) NOT NULL UNIQUE, 
+    `cd_celular` VARCHAR (13) NOT NULL,
+    PRIMARY KEY (`id_cliente`) 
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE IF NOT EXISTS `tb_fretista` (
@@ -72,4 +67,5 @@ add CONSTRAINT `fk_veiculo_fretista`
  REFERENCES `tb_fretista` (`id_fretista`)
  ON DELETE NO ACTION
  ON UPDATE NO ACTION;
+ 
  
