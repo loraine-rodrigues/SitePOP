@@ -46,16 +46,6 @@ CREATE TABLE IF NOT EXISTS `tb_veiculo` (
     `nm_marca` VARCHAR(45) DEFAULT NULL,
     PRIMARY KEY (`id_veiculo`)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8;
-
-ALTER TABLE `motofrete`.`tb_login` 
-ADD INDEX `fk_tipo_login` (`id_tipo_login` ASC);
-
-ALTER TABLE `motofrete`.`tb_login` 
-ADD CONSTRAINT `fk_tipo_login`
-  FOREIGN KEY (`id_tipo_login`)
-  REFERENCES `motofrete`.`tb_tipo_login` (`id_tipo_login`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
   
 ALTER TABLE `motofrete`.`tb_veiculo` 
 ADD COLUMN `id_fretista` INT NULL AFTER `nm_marca`,
