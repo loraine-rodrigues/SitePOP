@@ -2,8 +2,8 @@
 
 $servidor = "localhost";
 $banco = "motofrete";
-$usuario = "etec";
-$senha = "etec@2019";
+$usuario = "azure";
+$senha = "6#vWHD_$";
 
 $conexao = new mysqli($servidor, $usuario, $senha, $banco);
 
