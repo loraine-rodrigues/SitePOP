@@ -4,8 +4,9 @@ $servidor = "localhost";
 $banco = "motofrete";
 $usuario = "azure";
 $senha = "6#vWHD_$";
+$porta = "50526";
 
-$conexao = new mysqli($servidor, $usuario, $senha, $banco);
+$conexao = new mysqli($servidor, $usuario, $senha, $banco, $porta);
 
 if ($conexao->connect_errno) {
     echo "Erro ao conectar ao banco!" . PHP_EOL;
