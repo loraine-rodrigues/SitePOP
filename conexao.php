@@ -2,8 +2,9 @@
 
 $servidor = "localhost";
 $banco = "motofrete";
-$usuario = "root";
-$senha = "";
+$usuario = "azure";
+$senha = "6#vWHD_$";
+$porta = "50526";
 
 try {
     $conexao = new PDO("mysql:host=$servidor;dbname=$banco;charset=utf8", $banco, $senha);
@@ -13,3 +14,4 @@ catch (PDOException $excecao) {
     echo "Erro: $excecao->errorInfo";
 }
 
+$conexao->set_charset('utf8');
