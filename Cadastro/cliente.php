@@ -15,12 +15,20 @@ if (isset($_POST['confirmarCadastro'])) {
     $termos = $_POST ['termos'];
 
     if ($senha == $confirmarSenha && $termos == TRUE) {
-        $procedure = "call cadastrarCliente('$nome', '$nascimento', '$cpf', '$email', '$celular', '$senha')";
+        try {
+            $comando = $conexao->prepare("CALL cadastrarCliente(?, ?, ?, ?, ?, ?)");
+            $comando->bind_param(1, $nome);
+            $comando->bind_param(2, $nascimento);
+            $comando->bind_param(3, $cpf);
+            $comando->bind_param(4, $celular);
+            $comando->bind_param(5, $email);
+            $comando->bind_param(6, $senha);
+            $comando->execute();
 
-        if ($conexao->query($procedure) == TRUE)
-            echo 'Cliente cadastrado com sucesso!';
-        else {
-            echo "Erro: $conexao->error" . PHP_EOL;
+            echo "Cliente cadastrado!";
+        }
+        catch (PDOException $excecao) {
+            echo "Erro: $excecao->errorInfo";
         }
     }
 }
