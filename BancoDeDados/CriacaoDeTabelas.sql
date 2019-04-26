@@ -6,56 +6,44 @@ CREATE TABLE IF NOT EXISTS `motofrete`.`tb_login` (
     `id_login` INT NOT NULL AUTO_INCREMENT,
     `nm_usuario` VARCHAR(45) NOT NULL UNIQUE,
     `id_senha` VARCHAR(32) NOT NULL,
-	`id_tipo_login` SET('1', '2') NOT NULL,
+	`id_tipo_login` ENUM ('1', '2', '3') NOT NULL,
     PRIMARY KEY (`id_login`)
 )  ENGINE=INNODB DEFAULT CHARACTER SET=UTF8;
 
 CREATE TABLE IF NOT EXISTS `tb_cliente` (
     `id_cliente` INT(11) NOT NULL AUTO_INCREMENT,
     `nm_cliente` VARCHAR(255) NOT NULL,
-    `dt_nasc` DATE NOT NULL,
-    `id_cpf` CHAR(11) NOT NULL,
+    `dt_nascimento` DATE NOT NULL,
+    `id_cpf` CHAR(11) NOT NULL UNIQUE,
     `nm_email` VARCHAR(100) NOT NULL UNIQUE, 
-    `cd_celular` VARCHAR (13) NOT NULL,
+    `cd_celular` VARCHAR (13) NOT NULL UNIQUE,
     PRIMARY KEY (`id_cliente`) 
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
-CREATE TABLE IF NOT EXISTS `tb_fretista` (
-    `id_fretista` INT(11) NOT NULL AUTO_INCREMENT,
-    `nm_fretista` VARCHAR(100) NOT NULL,
-    `id_cpf` CHAR(11) DEFAULT NULL,
-    `id_cnpj` CHAR(14) DEFAULT NULL,
-    `id_cel` CHAR(11) DEFAULT NULL,
-    `id_tel` CHAR(11) DEFAULT NULL,
-    `id_cnh` CHAR(11) DEFAULT NULL,
-    `nm_email` VARCHAR(100) DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `tb_motofretista` (
+    `id_motofretista` INT(11) NOT NULL AUTO_INCREMENT,
+    `nm_motofretista` VARCHAR(100) NOT NULL,
+    `id_cpf` CHAR(11) NOT NULL UNIQUE,
+    `id_cnpj` CHAR(14) NOT NULL UNIQUE,
+    `id_celular` CHAR(11) NOT NULL UNIQUE, 
+    `id_telefone` CHAR(11) NOT NULL UNIQUE,
+	`ic_genero` ENUM ('Masculino','Feminino','Outros'),
+    `id_cnh` CHAR(11) NOT NULL UNIQUE,
+    `nm_email` VARCHAR(100) NOT NULL UNIQUE,
     `nm_regiao` SET('Bertioga', 'Cubatão', 'Guarujá', 'Itanhaém', 'Mongaguá', 'Peruíbe', 'Praia Grande', 'Santos', 'São Vicente') DEFAULT 'Praia Grande',
-    `dt_nasc` DATE DEFAULT NULL,
-    `ic_habilitado` TINYINT(4) DEFAULT NULL,
-    `ic_mei` TINYINT(4) DEFAULT NULL,
-    `id_condumoto` CHAR(8) DEFAULT NULL,
-    PRIMARY KEY (`id_fretista`)
+    `dt_nascimento` DATE NOT NULL,
+    `ic_mei` ENUM ('Sim', 'Não') DEFAULT NULL,
+	`id_placa` CHAR(7) NOT NULL UNIQUE,
+    `id_renavam` CHAR(11) NOT NULL UNIQUE,
+    `nm_modelo` VARCHAR(45) NOT NULL,
+    `nm_cor` VARCHAR(45) NOT NULL,
+    `nm_marca` VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`id_motofretista`)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
-CREATE TABLE IF NOT EXISTS `tb_veiculo` (
-    `id_veiculo` INT(11) NOT NULL AUTO_INCREMENT,
-    `id_placa` CHAR(7) NOT NULL,
-    `id_renavam` CHAR(11) DEFAULT NULL,
-    `nm_modelo` VARCHAR(45) DEFAULT NULL,
-    `nm_cor` VARCHAR(45) DEFAULT NULL,
-    `nm_marca` VARCHAR(45) DEFAULT NULL,
-    PRIMARY KEY (`id_veiculo`)
-)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
   
-ALTER TABLE `motofrete`.`tb_veiculo` 
-ADD COLUMN `id_fretista` INT NULL AFTER `nm_marca`,
-ADD UNIQUE INDEX `id_fretista_UNIQUE` (`id_fretista` ASC);
 
-alter table motofrete.tb_veiculo
-add CONSTRAINT `fk_veiculo_fretista`
- FOREIGN KEY (`id_fretista`)
- REFERENCES `tb_fretista` (`id_fretista`)
- ON DELETE NO ACTION
- ON UPDATE NO ACTION;
- 
+
+
  
