@@ -28,7 +28,7 @@ if (isset($_POST['confirmarCadastro'])) {
             echo "Cliente cadastrado!";
         }
         catch (PDOException $excecao) {
-            echo "Erro ao cadastrar cliente: $excecao->errorInfo";
+            echo "Erro ao cadastrar cliente: " . $excecao->getMessage();
         }
     }
 }
