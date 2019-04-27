@@ -11,5 +11,5 @@ try {
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch (PDOException $excecao) {
-    echo "Erro: $excecao->errorInfo";
+    echo "Erro ao conectar ao banco: $excecao";
 }

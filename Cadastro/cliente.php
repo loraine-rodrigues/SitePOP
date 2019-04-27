@@ -28,13 +28,11 @@ if (isset($_POST['confirmarCadastro'])) {
             echo "Cliente cadastrado!";
         }
         catch (PDOException $excecao) {
-            echo "Erro: $excecao->errorInfo";
+            echo "Erro ao cadastrar cliente: $excecao->errorInfo";
         }
     }
 }
 ?>
-
-
 
 <div class="container text-center">
     <h1 class="font-weight-light text-white">CADASTRO CLIENTE</h1>
@@ -132,4 +130,3 @@ if (isset($_POST['confirmarCadastro'])) {
 </div>
 
 <?php include '../footer.php' ?>
-
