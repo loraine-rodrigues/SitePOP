@@ -20,8 +20,8 @@ if (isset($_POST['confirmarCadastro'])) {
             $comando->bindParam(1, $nome);
             $comando->bindParam(2, $nascimento);
             $comando->bindParam(3, $cpf);
-            $comando->bindParam(4, $celular);
-            $comando->bindParam(5, $email);
+            $comando->bindParam(4, $email);
+            $comando->bindParam(5, $celular);
             $comando->bindParam(6, $senha);
             $comando->execute();
 
