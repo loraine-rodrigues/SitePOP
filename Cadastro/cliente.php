@@ -17,12 +17,12 @@ if (isset($_POST['confirmarCadastro'])) {
     if ($senha == $confirmarSenha && $termos == TRUE) {
         try {
             $comando = $conexao->prepare("CALL cadastrarCliente(?, ?, ?, ?, ?, ?)");
-            $comando->bind_param(1, $nome);
-            $comando->bind_param(2, $nascimento);
-            $comando->bind_param(3, $cpf);
-            $comando->bind_param(4, $celular);
-            $comando->bind_param(5, $email);
-            $comando->bind_param(6, $senha);
+            $comando->bindParam(1, $nome);
+            $comando->bindParam(2, $nascimento);
+            $comando->bindParam(3, $cpf);
+            $comando->bindParam(4, $celular);
+            $comando->bindParam(5, $email);
+            $comando->bindParam(6, $senha);
             $comando->execute();
 
             echo "Cliente cadastrado!";
