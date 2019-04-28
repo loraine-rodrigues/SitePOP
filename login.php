@@ -1,24 +1,26 @@
 <?php
-session_start();
-include 'conexao.php';
+$title = "LOGIN";
 
-$nome = mysqli_real_escape_string($conexao, $_POST["nome"]);
-$senha = mysqli_real_escape_string($conexao, $_POST['senha']);
+require '../conexao.php';
 
+if (isset($_POST['entrarlogin'])) {
+    $email = $_POST ['email'];
+    $senha = $_POST ['senha'];
+    
 
-$query = "select nm_usuario from tb_login where nm_usuario = '{$nome}' and id_senha = '{$senha}'";
+    if ($email && $senha == TRUE) {
+        try {
+            $comando = $conexao->prepare("CALL cadastrarCliente(?, ?)");
+            $comando->bind_param(1, $email);
+            $comando->bind_param(2, $senha);
+            $comando->execute();
 
-$result = mysqli_query($conexao, $query);
-$row = mysqli_num_rows($result);
- 
-if($row == 1) {
-	$_SESSION['nome'] = $nome;
-	header('Location: painel.php');
-	exit();
-} else {
-	$_SESSION['nao_autenticado'] = true;
-	header('Location: index.php');
-	exit();
+            echo "Entrou, $email !";
+        }
+        catch (PDOException $excecao) {
+            echo "Erro: $excecao->errorInfo";
+        }
+    }
 }
 
 ?>
