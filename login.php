@@ -10,7 +10,7 @@ if (isset($_POST['entrarlogin'])) {
 
     if ($email && $senha == TRUE) {
         try {
-            $comando = $conexao->prepare("CALL cadastrarCliente(?, ?)");
+            $comando = $conexao->prepare("CALL login(?, ?)");
             $comando->bind_param(1, $email);
             $comando->bind_param(2, $senha);
             $comando->execute();
