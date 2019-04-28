@@ -1,8 +1,8 @@
 <?php
 $title = "CADASTRO MOTOFRETISTA";
 
-include "../header.php";
-require "../conexao.php";
+include '../header.php';
+require '../conexao.php';
 
 if (isset($_POST['confirmarCadastro'])) {
     $nome = $_POST ['nome'];
@@ -12,27 +12,52 @@ if (isset($_POST['confirmarCadastro'])) {
     $cpf = $_POST ['cpf'];
     $cnpj = $_POST ['cnpj'];
     $cnh = $_POST ['cnh'];
+    $genero = $_POST ['genero'];
     $regiao = $_POST ['regiao'];
     $nasc = $_POST ['nasc'];
-    $habilitado = $_POST ['habilitado'];
+
     $mei = $_POST ['mei'];
-    $condumoto = $_POST ['condumoto'];
+   
     $placa = $_POST ['placa'];
     $renavam = $_POST ['renavam'];
     $modelo = $_POST ['modelo'];
     $cor = $_POST ['cor'];
     $marca = $_POST ['marca'];
     $senha = $_POST ['senha'];
-    $confirmarSenha = $_POST ['confirmarSenha'];
+    $confirmarSenha = $_POST ['confirmarSenha'];   
+
     $termos = $_POST ['termos'];
 
     if ($senha == $confirmarSenha && $termos == TRUE) {
-        $procedure = "call insMoto('$nome', '$cel', '$tel', '$email', '$cpf', '$cnpj', '$cnh', '$regiao', '$nasc', '$habilitado', '$mei', '$condumoto', '$placa', '$renavam', '$modelo', '$cor', '$marca')";
+        try {
+            $comando = $conexao->prepare("CALL cadastrarMotofretista(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $comando->bindParam(1, $nome);
+            $comando->bindParam(2, $cel);
+            $comando->bindParam(3, $tel);
+            $comando->bindParam(4, $email);
+            $comando->bindParam(5, $cpf);
+            $comando->bindParam(6, $cnpj);
 
-        if ($conexao->query($procedure) == TRUE)
-            echo 'Moto Fretista cadastrado com sucesso!';
-        else {
-            echo "Erro: $conexao->error" . PHP_EOL;
+            $comando->bindParam(7, $cnh);
+            $comando->bindParam(8, $genero);
+            $comando->bindParam(9, $regiao);
+            $comando->bindParam(10, $nasc);
+            $comando->bindParam(11, $mei);
+            $comando->bindParam(12, $placa);
+
+            $comando->bindParam(13, $renavam);
+            $comando->bindParam(14, $modelo);
+            $comando->bindParam(15, $cor);
+            $comando->bindParam(16, $marca);
+            $comando->bindParam(17, $senha);
+          
+
+            $comando->execute();
+
+            echo "Motofretista cadastrado!";
+        }
+        catch (PDOException $excecao) {
+            echo "Erro ao cadastrar motofretista: " . $excecao->getMessage();
         }
     }
 }
@@ -88,14 +113,14 @@ if (isset($_POST['confirmarCadastro'])) {
                              <div class="col">
                                 <div class="form-group">
                                     <label for="data"> Data de nascimento: </label> <!--Data de nascimento-->
-                                    <input type="date" class="form-control" name="nasc" id="nasc" placeholder="Informe sua data de nascimento">
+                                    <input type="date" class="form-control" name="nasc" id="data" placeholder="Informe sua data de nascimento">
                                 </div>
                              </div>
 
                             <div class="col">
                                 <div class="form-group">
                                     <label for="sexo">Gênero: </label>
-                                    <select class="form-control" id="sexo"> <!--Opção de sexo, usado um select para aparecer as duas opções-->
+                                    <select class="form-control" name="genero" id="sexo"> <!--Opção de sexo, usado um select para aparecer as duas opções-->
                                         <option> Selecione </option>
                                         <option> Masculino </option>
                                         <option> Feminino </option>
@@ -109,14 +134,14 @@ if (isset($_POST['confirmarCadastro'])) {
                             <div class="col">
                                 <div class="form-group">
                                     <label for="celular"> Celular/WhatsApp: </label> <!--WhatsApp para contato-->
-                                    <input type="tel" class="form-control" name="cel" id="cel" placeholder="Celular para contato">
+                                    <input type="tel" class="form-control" name="cel" id="celular" placeholder="Celular para contato">
                                 </div>
                             </div>
 
                             <div class="col">
                                 <div class="form-group">
                                     <label for="celularAlternativo"> Celular: </label> <!--Celular para emergência-->
-                                    <input type="tel" class="form-control" name="tel" id="tel" placeholder="Telefone alternativo">
+                                    <input type="tel" class="form-control" name="tel" id="celularAlternativo" placeholder="Celular alternativo">
                                 </div>
                             </div>
                         </div>
@@ -162,7 +187,7 @@ if (isset($_POST['confirmarCadastro'])) {
                     <div class="col">
                         <div class="form-group">
                             <label for="sexo">Possui MEI? </label>
-                            <select class="form-control" id="sexo">
+                            <select class="form-control" name="mei" id="mei">
                                 <option> Selecione </option>
                                 <option> SIM </option>
                                 <option> NÃO </option>
@@ -259,7 +284,13 @@ if (isset($_POST['confirmarCadastro'])) {
                         </div>
                     </div>
 
-                   
+                    <!-- UF do veículo -->
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="renavam"> UF: </label>
+                            <input type="text" class="form-control" id="renavam" placeholder="Digite a UF do veículo">
+                        </div>
+                    </div>
 
                 </div>
 
@@ -268,14 +299,14 @@ if (isset($_POST['confirmarCadastro'])) {
                     <!-- Termos de uso -->
                     <div class="col">
                         <div class="form-group form-check">
-                            <input type="checkbox" name="termos" class="form-check-input" id="checkTermo">
+                            <input type="checkbox" class="form-check-input" id="checkTermo">
                             <label class="form-check-label" for="checkTermo"><a href="../termos.php">Ler termos de uso</a></label>
                         </div>
                     </div>
 
                     <!-- Botão confirmar -->
                     <div class="col">
-                        <button type="submit" name="confirmarCadastro" class="btn btn-outline-success float-right mx-5">Confirmar </button> <!--Botão entrar-->
+                        <button type="submit" class="btn btn-outline-success float-right mx-5">Confirmar </button> <!--Botão entrar-->
                     </div>
 
                 </div>
