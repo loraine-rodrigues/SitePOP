@@ -34,7 +34,7 @@ include '../header.php' ?>
 <div class="container text-center">
     <h1 class="font-weight-light text-white">CADASTRO MOTOFRETISTA</h1>
     <br>
-    <form>
+    <form method="post">
 
         <!--Div usada para formartar o card de login -->
         <div class="card m-auto text-left" style="width: 54rem;">
@@ -46,22 +46,22 @@ include '../header.php' ?>
                     <div class="col">
                         <div class="form-group">
                             <label for="nome"> Nome: </label>
-                            <input type="text" class="form-control" id="nome" placeholder="Informe seu nome completo">
+                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe seu nome completo" required>
                         </div>
 
                         <div class="row">
                              <div class="col">
                                 <div class="form-group">
                                     <label for="data"> Data de nascimento: </label> <!--Data de nascimento-->
-                                    <input type="date" class="form-control" id="data" placeholder="Informe sua data de nascimento">
+                                    <input type="text" class="form-control" name="data" id="data" placeholder="Informe sua data de nascimento" required>
                                 </div>
                              </div>
 
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="sexo">Gênero: </label>
-                                    <select class="form-control" id="sexo"> <!--Opção de sexo, usado um select para aparecer as duas opções-->
-                                        <option> Selecione </option>
+                                    <label for="genero">Gênero: </label>
+                                    <select class="form-control" name="genero" id="genero" required> <!--Opção de sexo, usado um select para aparecer as duas opções-->
+                                        <option value=""> Selecione </option>
                                         <option> Masculino </option>
                                         <option> Feminino </option>
                                         <option> Outro </option>
@@ -74,17 +74,19 @@ include '../header.php' ?>
                             <div class="col">
                                 <div class="form-group">
                                     <label for="celular"> Celular/WhatsApp: </label> <!--WhatsApp para contato-->
-                                    <input type="tel" class="form-control" id="celular" placeholder="Celular para contato">
+                                    <input type="tel" class="form-control" name="celular" id="celular" placeholder="Celular para contato" required>
                                 </div>
                             </div>
 
                             <div class="col">
                                 <div class="form-group">
                                     <label for="celularAlternativo"> Celular: </label> <!--Celular para emergência-->
-                                    <input type="tel" class="form-control" id="celularAlternativo" placeholder="Celular alternativo">
+                                    <input type="tel" class="form-control" name="celularAlternativo" id="celularAlternativo" placeholder="Celular alternativo" required>
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
 
                     <!--Adicionar foto-->
@@ -102,6 +104,83 @@ include '../header.php' ?>
 
                         </div>
                     </div>
+                </div>
+
+        <!--Checkboxes para seleção de região-->
+                <div class="row">
+                    <div class="col">
+                        <label>Selecione sua região de atuação:</label>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
+                            <label class="form-check-label" for="defaultCheck1">
+                                Bertioga
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
+                            <label class="form-check-label" for="defaultCheck2">
+                                Cubatão
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
+                            <label class="form-check-label" for="defaultCheck1">
+                                Guarujá
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
+                            <label class="form-check-label" for="defaultCheck2">
+                                Itanhaém
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
+                            <label class="form-check-label" for="defaultCheck1">
+                                Mongaguá
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
+                            <label class="form-check-label" for="defaultCheck2">
+                                Peruíbe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
+                            <label class="form-check-label" for="defaultCheck1">
+                                Praia Grande
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
+                            <label class="form-check-label" for="defaultCheck2">
+                                Santos
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                São Vicente
+                            </label>
+                        </div>
+                    </div>
 
                 </div>
 
@@ -111,7 +190,7 @@ include '../header.php' ?>
                     <div class="col">
                             <div class="form-group">
                                 <label for="cpf">CPF: </label>
-                                <input type="text" class="form-control" id="cpf" placeholder="Informe seu cpf">
+                                <input type="text" class="form-control" name="cpf" id="cpf" placeholder="Informe seu cpf" required>
                             </div>
                     </div>
 
@@ -119,16 +198,16 @@ include '../header.php' ?>
                     <div class="col">
                         <div class="form-group">
                             <label for="cnpj">CNPJ: </label>
-                            <input type="text" class="form-control" id="cnpj" placeholder="Informe seu cpf">
+                            <input type="text" class="form-control" name="cnpj" id="cnpj" placeholder="Informe seu cpf" required>
                         </div>
                     </div>
 
                     <!--Opção de sexo, usado um select para aparecer as duas opções-->
                     <div class="col">
                         <div class="form-group">
-                            <label for="sexo">Possui MEI? </label>
-                            <select class="form-control" id="sexo">
-                                <option> Selecione </option>
+                            <label for="mei">Possui MEI? </label>
+                            <select class="form-control" name="mei" id="mei" required>
+                                <option value=""> Selecione </option>
                                 <option> SIM </option>
                                 <option> NÃO </option>
                             </select>
@@ -139,7 +218,7 @@ include '../header.php' ?>
                     <div class="col">
                         <div class="form-group">
                             <label for="cnh">CNH: </label>
-                            <input type=text class="form-control" id="cnh" placeholder="Informe o número da cnh">
+                            <input type=text class="form-control" name="cnh" id="cnh" placeholder="Informe o número da cnh" required>
                         </div>
                     </div>
 
@@ -151,7 +230,7 @@ include '../header.php' ?>
                     <div class="col">
                         <div class="form-group">
                             <label for="email"> Email: </label>
-                            <input type="email" class="form-control" id="email" placeholder="Informe seu email para login">
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Informe seu email para login" required>
                         </div>
                     </div>
 
@@ -159,52 +238,52 @@ include '../header.php' ?>
                     <div class="col">
                         <div class="form-group">
                             <label for="senha"> Senha: </label>
-                            <input type="password" class="form-control" id="senha" placeholder="Informe uma senha para login">
+                            <input type="password" class="form-control" name="senha" id="senha" placeholder="Informe uma senha para login" required>
                         </div>
                     </div>
 
                     <!--Confirme a senha que será usado para login-->
                     <div class="col">
                         <div class="form-group">
-                            <label for="senha"> Confirmar senha: </label>
-                            <input type="password" class="form-control" id="senha" placeholder="Informe uma senha para login">
+                            <label for="confirmarSenha"> Confirmar senha: </label>
+                            <input type="password" class="form-control" name="confirmarSenha" id="confirmarSenha" placeholder="Informe uma senha para login" required>
                         </div>
                     </div>
 
                 </div>
             </div>
 
-                    <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+            <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
 
-            <div class="card-body">
-                <h3 class="card-title mb-4">DADOS DO VEÍCULO</h3>
-                <div class="row">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">DADOS DO VEÍCULO</h3>
+                    <div class="row">
 
-                    <!-- Marca do veículo -->
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="marca"> Marca: </label>
-                            <input type="text" class="form-control" id="marca" placeholder="Informe a marca do veiculo">
+                        <!-- Marca do veículo -->
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="marca"> Marca: </label>
+                                <input type="text" class="form-control" name="marca" id="marca" placeholder="Informe a marca do veiculo" required>
+                            </div>
                         </div>
-                    </div>
 
-                     <!-- Modelo do veículo -->
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="modelo"> Modelo: </label>     <!--Email que será usado para login-->
-                            <input type="text" class="form-control" id="modelo" placeholder="Informe o modelo do veículo">
+                        <!-- Modelo do veículo -->
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="modelo"> Modelo: </label>     <!--Email que será usado para login-->
+                                <input type="text" class="form-control" name="modelo" id="modelo" placeholder="Informe o modelo do veículo" required>
+                            </div>
                         </div>
-                    </div>
 
-                     <!-- Cor do veículo -->
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="cor"> Cor: </label>
-                            <input type="text" class="form-control" id="cor" placeholder="Informe a cor do veiculo">
+                        <!-- Cor do veículo -->
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="cor"> Cor: </label>
+                                <input type="text" class="form-control" name="cor" id="cor" placeholder="Informe a cor do veiculo" required>
+                            </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
 
                 <div class="row">
 
@@ -212,7 +291,7 @@ include '../header.php' ?>
                     <div class="col">
                         <div class="form-group">
                             <label for="placa"> Placa: </label>
-                            <input type="text" class="form-control" id="placa" placeholder="Informe a placa do veiculo">
+                            <input type="text" class="form-control" name="placa" id="placa" placeholder="Informe a placa do veiculo" required>
                         </div>
                     </div>
 
@@ -220,17 +299,11 @@ include '../header.php' ?>
                     <div class="col">
                         <div class="form-group">
                             <label for="renavam"> Renavam: </label>
-                            <input type="text" class="form-control" id="renavam" placeholder="Informe o número do renavam">
+                            <input type="text" class="form-control" name="renavam" id="renavam" placeholder="Informe o número do renavam" required>
                         </div>
                     </div>
 
-                    <!-- UF do veículo -->
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="renavam"> UF: </label>
-                            <input type="text" class="form-control" id="renavam" placeholder="Digite a UF do veículo">
-                        </div>
-                    </div>
+
 
                 </div>
 
@@ -239,14 +312,14 @@ include '../header.php' ?>
                     <!-- Termos de uso -->
                     <div class="col">
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="checkTermo">
+                            <input type="checkbox" name="termos" class="form-check-input" id="checkTermo">
                             <label class="form-check-label" for="checkTermo"><a href="../termos.php">Ler termos de uso</a></label>
                         </div>
                     </div>
 
                     <!-- Botão confirmar -->
                     <div class="col">
-                        <button type="submit" class="btn btn-outline-success float-right mx-5">Confirmar </button> <!--Botão entrar-->
+                        <button type="submit" name="confirmarCadastro" class="btn btn-outline-success float-right mx-5">Confirmar </button> <!--Botão entrar-->
                     </div>
 
                 </div>
@@ -256,7 +329,6 @@ include '../header.php' ?>
     </form>
     <br>
 </div>
-
 <script>
     $(document).ready( function() {
         $(document).on('change', '.btn-file :file', function() {
@@ -292,6 +364,25 @@ include '../header.php' ?>
         $("#imgInp").change(function(){
             readURL(this);
         });
+
+        <!-- Mascara da label -->
+
+        $("#celular").inputmask("(99)9999-9999[9]");
+        $("#celularAlternativo").inputmask("(99)9999-9999[9]");
+        $("#cpf").inputmask("999.999.999-99");
+        $("#cnpj").inputmask("99.999.999/9999-99");
+        $("#cnh").inputmask("99999999999");
+        $("#renavam").inputmask("99999999999");
+        $("#placa").inputmask("AAA-9999");
+        $("#email").inputmask("email");
+        $("#nome").inputmask({regex: "[a-zà-úA-ZÀ-Ú ]*", placeholder: ""});
+        $("#data").inputmask("datetime", {inputFormat: "dd/mm/yyyy", max: "01/01/1998"});
+        $("#marca").inputmask({regex: "[a-zà-úA-ZÀ-Ú- ]*", placeholder: ""});
+        $("#modelo").inputmask({regex: "[a-zà-úA-ZÀ-Ú0-9- ]*", placeholder: ""});
+        $("#cor").inputmask({regex: "[a-zà-úA-ZÀ-Ú ]*", placeholder: ""});
+
+
+
     });
 </script>
 
