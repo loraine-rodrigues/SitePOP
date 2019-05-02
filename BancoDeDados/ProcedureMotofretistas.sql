@@ -94,7 +94,7 @@ drop procedure if exists deletarMotofretista;
 DELIMITER $$
 create procedure `deletarMotofretista` (in id int(11))
 begin
-
+	delete from tb_login where nm_usuario = (SELECT nm_email from tb_motofretista WHERE id_motofretista = id);
 	delete from tb_motofretista where id_motofretista = id;
 
 end $$

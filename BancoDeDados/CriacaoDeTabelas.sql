@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `tb_cliente` (
     `dt_nascimento` DATE NOT NULL,
     `id_cpf` CHAR(11) NOT NULL UNIQUE,
     `nm_email` VARCHAR(100) NOT NULL UNIQUE, 
-    `cd_celular` VARCHAR (13) NOT NULL UNIQUE,
+    `cd_celular` VARCHAR (11) NOT NULL UNIQUE,
     PRIMARY KEY (`id_cliente`) 
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
