@@ -10,7 +10,7 @@ if (isset($_POST['confirmarCadastro'])) {
     $data = $_POST ['data'];
     $genero = $_POST ['genero'];
     $celular = $_POST ['celular'];
-    $celularAternativo = $_POST ['celularAlternativo'];
+    $celularAlternativo = $_POST ['celularAlternativo'];
     if (isset($_POST['regiao'])) {
         $regiao = implode(",", $_POST ['regiao']);
     }
