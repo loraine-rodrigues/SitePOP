@@ -1,5 +1,6 @@
 -- PROCEDURES DE MOTOFRETISTA
 
+USE `motofrete`;
 
 -- INSERIR MOTOFRETISTA 
 drop procedure if exists cadastrarMotofretista;
