@@ -1,5 +1,9 @@
 <?php
 
+session_start();
+
+include 'adm/verificaAdm.php';
+
 echo '<!doctype html>
 <html lang="pt-br" class="h-100">
 <head>
@@ -14,11 +18,12 @@ echo "<title>POP! - $title</title>"; //Para receber o titulo
 echo '
     <script src="/terceiros/jquery/jquery.js"></script>
     <script src="/terceiros/popper/popper.js"></script>
-    
+    <script src="/terceiros/inputmask/inputmask.js"></script>
     <link rel="stylesheet" href="/terceiros/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/terceiros/bootstrap/css/sticky-footer.css">
     <script src="/terceiros/bootstrap/js/bootstrap.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> <!-- link importado para font Montserrat -->
+    <link href="/terceiros/fontawesome/css/all.css" rel="stylesheet">
     
     <!--Style para padronização de todas as páginas -->
     <style>
@@ -64,18 +69,34 @@ echo '
               </li> 
               <li class="nav-item mx-2">
                 <a class="nav-link" href="/contato.php">Contato</a>
+              </li>';
+
+if ($_SESSION['adm'] == TRUE) {     //Se for adm mostrar mais dois botões
+    echo '                  <li class="nav-item mx-2">
+                <a class="nav-link" href="/adm/motofretistas">Motofretistas</a>
               </li>
-            </ul>
+              <li class="nav-item mx-2">
+                <a class="nav-link" href="/adm/clientes">Clientes</a>
+              </li>
+    ';
+}
+
+echo'            </ul>';
+
+
+if (isset ($_SESSION['logado'])) {  //Se o usuario estiver logado mostarr botão SAIR
+
+    echo '        <!--BOTÃO SAIR-->                                    
+                <ul class="nav navbar-nav navbar-right" >
+                    <li >
+                        <div class="btn-nav" >
+                            <a class="btn btn-warning btn-small navbar-btn" href="/logout.php"> Sair <i class="fas fa-sign-out-alt"></i></a >                   
+                        </div >
+                    </li >                                
+                </ul >';
+}
             
-            <!--BOTÃO SAIR-->                                    
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <div class="btn-nav">
-                        <a class="btn btn-warning btn-smoll navbar-btn"> Sair </a>                   
-                    </div>
-                </li>                                
-            </ul>
-            
+echo '          
           </div>
         </nav> 
         <!--FIM da navbar-->    

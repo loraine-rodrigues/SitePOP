@@ -1,7 +1,69 @@
 <?php
 $title = "CADASTRO MOTOFRETISTA";
 
-include '../header.php' ?>
+require '../conexao.php';
+
+include '../header.php';
+
+if (isset($_POST['confirmarCadastro'])) {
+    $nome = $_POST ['nome'];
+    $data = $_POST ['data'];
+    $genero = $_POST ['genero'];
+    $celular = $_POST ['celular'];
+    $celularAternativo = $_POST ['celularAlternativo'];
+    if (isset($_POST['regiao'])) {
+        $regiao = implode(",", $_POST ['regiao']);
+    }
+    else {
+        $erro = "Informe ao menos uma cidade para atuar!";
+    }
+    $cpf = $_POST ['cpf'];
+    $cnpj = $_POST ['cnpj'];
+    $mei = $_POST ['mei'];
+    $cnh = $_POST ['cnh'];
+    $termos = $_POST ['termos'];
+    $email = $_POST ['email'];
+    $senha = $_POST ['senha'];
+    $confirmarSenha = $_POST ['confirmarSenha'];
+    if ($senha != $confirmarSenha) {
+        $erro = 'As senhas estão diferentes';
+    }
+    $marca = $_POST ['marca'];
+    $modelo = $_POST ['modelo'];
+    $cor = $_POST ['cor'];
+    $placa = $_POST ['placa'];
+    $renavam = $_POST ['renavam'];
+
+    if ($senha == $confirmarSenha && $termos == TRUE && !isset($erro)) {
+        try {
+            $comando = $conexao->prepare("CALL cadastrarMotofretista(:nome, :celular, :celularAlternativo, :email, :cpf, :cnpj, :cnh, :genero, :regiao, :data, :mei, :placa, :renavam, :modelo, :cor, :marca, :senha)");
+            $comando->bindParam(':nome', $nome);
+            $comando->bindParam(':data', $data);
+            $comando->bindParam(':genero', $genero);
+            $comando->bindParam(':celular', $celular);
+            $comando->bindParam(':celularAlternativo', $celularAlternativo);
+            $comando->bindValue(':regiao', $regiao);
+            $comando->bindParam(':cpf', $cpf);
+            $comando->bindParam(':cnpj', $cnpj);
+            $comando->bindParam(':mei', $mei);
+            $comando->bindParam(':cnh', $cnh);
+            $comando->bindParam(':email', $email);
+            $comando->bindParam(':senha', $senha);
+            $comando->bindParam(':marca', $marca);
+            $comando->bindParam(':modelo', $modelo);
+            $comando->bindParam(':cor', $cor);
+            $comando->bindParam(':placa', $placa);
+            $comando->bindParam(':renavam', $renavam);
+            $comando->execute();
+
+            $mensagem = "Motofretista cadastrado com sucesso<br/>Clique <a href='../index.php'>aqui</a> para efetuar login";
+        }
+        catch (PDOException $excecao) {
+            $erro = "Erro ao cadastrar";
+        }
+    }
+}
+?>
 
 <!-- Imagem -->
 <style>
@@ -32,13 +94,32 @@ include '../header.php' ?>
 </style>
 
 <div class="container text-center">
-    <h1 class="font-weight-light text-white">CADASTRO MOTOFRETISTA</h1>
-    <br>
+    <h1 class="font-weight-light text-white mb-5">CADASTRO MOTOFRETISTA</h1>
     <form method="post">
 
         <!--Div usada para formartar o card de login -->
-        <div class="card m-auto text-left" style="width: 54rem;">
+        <div class="card mx-auto my-5 text-left" style="width: 54rem;">
             <div class="card-body">
+                <?php
+                if (isset($erro)):     //Mensagem de erro no cadastro
+                    ?>
+                    <div class="alert alert-danger">
+                        <?php echo $erro; ?>
+                    </div>
+                <?php
+                endif;
+                ?>
+
+                <?php
+                if (isset($mensagem)):   //Mensagem de sucessp no cadastro
+                    ?>
+                    <div class="alert alert-success">
+                        <?php echo $mensagem; ?>
+                    </div>
+                <?php
+                endif;
+                ?>
+
                 <h3 class="card-title mb-4">DADOS PESSOAIS</h3>
                 <div class="row">
 
@@ -115,13 +196,13 @@ include '../header.php' ?>
                 <div class="row mb-3">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Bertioga" id="defaultCheck1" >
                             <label class="form-check-label" for="defaultCheck1">
                                 Bertioga
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Cubatão" id="defaultCheck2" >
                             <label class="form-check-label" for="defaultCheck2">
                                 Cubatão
                             </label>
@@ -130,13 +211,13 @@ include '../header.php' ?>
 
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Guarujá" id="defaultCheck1" >
                             <label class="form-check-label" for="defaultCheck1">
                                 Guarujá
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Itanhaém" id="defaultCheck2" >
                             <label class="form-check-label" for="defaultCheck2">
                                 Itanhaém
                             </label>
@@ -145,13 +226,13 @@ include '../header.php' ?>
 
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Mongaguá" id="defaultCheck1" >
                             <label class="form-check-label" for="defaultCheck1">
                                 Mongaguá
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Peruíbe" id="defaultCheck2" >
                             <label class="form-check-label" for="defaultCheck2">
                                 Peruíbe
                             </label>
@@ -160,13 +241,13 @@ include '../header.php' ?>
 
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Praia Grande" id="defaultCheck1" >
                             <label class="form-check-label" for="defaultCheck1">
                                 Praia Grande
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Santos" id="defaultCheck2" >
                             <label class="form-check-label" for="defaultCheck2">
                                 Santos
                             </label>
@@ -175,7 +256,7 @@ include '../header.php' ?>
 
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="São Vicente" id="defaultCheck1">
                             <label class="form-check-label" for="defaultCheck1">
                                 São Vicente
                             </label>
@@ -208,8 +289,8 @@ include '../header.php' ?>
                             <label for="mei">Possui MEI? </label>
                             <select class="form-control" name="mei" id="mei" required>
                                 <option value=""> Selecione </option>
-                                <option> SIM </option>
-                                <option> NÃO </option>
+                                <option value="Sim"> SIM </option>
+                                <option value="Não"> NÃO </option>
                             </select>
                         </div>
                     </div>
@@ -312,7 +393,7 @@ include '../header.php' ?>
                     <!-- Termos de uso -->
                     <div class="col">
                         <div class="form-group form-check">
-                            <input type="checkbox" name="termos" class="form-check-input" id="checkTermo">
+                            <input type="checkbox" name="termos" value="true" class="form-check-input" id="checkTermo" required>
                             <label class="form-check-label" for="checkTermo"><a href="../termos.php">Ler termos de uso</a></label>
                         </div>
                     </div>
@@ -327,10 +408,11 @@ include '../header.php' ?>
             </div>
         </div>
     </form>
-    <br>
 </div>
 <script>
     $(document).ready( function() {
+        //teste de script para pegar imagem
+
         $(document).on('change', '.btn-file :file', function() {
             var input = $(this),
                 label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
@@ -363,20 +445,21 @@ include '../header.php' ?>
 
         $("#imgInp").change(function(){
             readURL(this);
-        });
+        });   //fim do script de pegar imagem
 
-        <!-- Mascara da label -->
 
-        $("#celular").inputmask("(99)9999-9999[9]");
-        $("#celularAlternativo").inputmask("(99)9999-9999[9]");
-        $("#cpf").inputmask("999.999.999-99");
-        $("#cnpj").inputmask("99.999.999/9999-99");
-        $("#cnh").inputmask("99999999999");
-        $("#renavam").inputmask("99999999999");
-        $("#placa").inputmask("AAA-9999");
-        $("#email").inputmask("email");
+        <!-- Máscaras dos inputs -->
+
+        $("#celular").inputmask("(99)9999-9999[9]", {removeMaskOnSubmit: true, clearIncomplete: true});
+        $("#celularAlternativo").inputmask("(99)9999-9999[9]", {removeMaskOnSubmit: true, clearIncomplete: true});
+        $("#cpf").inputmask("999.999.999-99", {removeMaskOnSubmit: true, clearIncomplete: true});
+        $("#cnpj").inputmask("99.999.999/9999-99", {removeMaskOnSubmit: true, clearIncomplete: true});
+        $("#cnh").inputmask("99999999999", { clearIncomplete: true});
+        $("#renavam").inputmask("99999999999", { clearIncomplete: true});
+        $("#placa").inputmask("AAA-9999", {removeMaskOnSubmit: true, clearIncomplete: true});
+        $("#email").inputmask("email", { clearIncomplete: true});
         $("#nome").inputmask({regex: "[a-zà-úA-ZÀ-Ú ]*", placeholder: ""});
-        $("#data").inputmask("datetime", {inputFormat: "dd/mm/yyyy", max: "01/01/1998"});
+        $("#data").inputmask("datetime", {inputFormat: "dd/mm/yyyy", max: "01/01/1998", outputFormat: "yyyy-mm-dd", removeMaskOnSubmit: true});
         $("#marca").inputmask({regex: "[a-zà-úA-ZÀ-Ú- ]*", placeholder: ""});
         $("#modelo").inputmask({regex: "[a-zà-úA-ZÀ-Ú0-9- ]*", placeholder: ""});
         $("#cor").inputmask({regex: "[a-zà-úA-ZÀ-Ú ]*", placeholder: ""});

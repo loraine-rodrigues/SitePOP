@@ -16,7 +16,7 @@ CREATE PROCEDURE `cadastrarMotofretista` (
  IN genero enum ('Masculino','Feminino','Outros'),
  in regiao set ('Bertioga', 'Cubatão', 'Guarujá', 'Itanhaém', 'Mongaguá', 'Peruíbe', 'Praia Grande', 'Santos', 'São Vicente'),
  IN nascimento DATE,
- IN mei enum ('Sim, Não'),
+ IN mei enum ('Sim', 'Não'),
  IN placa char(7),
  IN renavam char(11),
  IN modelo varchar(45),
@@ -25,10 +25,10 @@ CREATE PROCEDURE `cadastrarMotofretista` (
  IN senha varchar(45))
  
 BEGIN
+	 INSERT INTO tb_login (nm_usuario, id_senha, id_tipo_login)
+		VALUES (email, md5(senha), '2');
 	INSERT INTO tb_motofretista (nm_motofretista, id_celular, id_telefone, nm_email, id_cpf, id_cnpj, id_cnh, ic_genero, nm_regiao, dt_nascimento, ic_mei, id_placa, id_renavam, nm_modelo, nm_cor, nm_marca)
 		VALUES (nome, celular, telefone, email, cpf, cnpj, cnh, genero, regiao, nascimento, mei, placa, renavam, modelo, cor, marca);
-   INSERT INTO tb_login (nm_usuario, id_senha, id_tipo_login)
-		VALUES (email, md5(senha), '2');
 END$$
 DELIMITER ;
 
@@ -49,7 +49,7 @@ create procedure `editarMotofretista` (
  IN genero varchar(9),
  in regiao varchar(11),
  IN nascimento DATE,
- IN mei boolean,
+ IN mei enum ('Sim', 'Não'),
  IN placa char(7),
  IN renavam char(11),
  IN modelo varchar(45),
@@ -71,6 +71,18 @@ create procedure `buscarMotofretista` (in id int (11))
 begin
 
 	select * from tb_motofretista where id_motofretista = id;
+
+end $$
+DELIMITER ;
+
+-- BUSCAR TODOS MOTOFRETISTAS
+drop procedure if exists buscarMotofretistas;
+
+DELIMITER $$
+create procedure `buscarMotofretistas` ()
+begin
+
+	select * from tb_motofretista;
 
 end $$
 DELIMITER ;

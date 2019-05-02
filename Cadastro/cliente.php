@@ -28,7 +28,7 @@ if (isset($_POST['confirmarCadastro'])) {
             echo "Cliente cadastrado!";
         }
         catch (PDOException $excecao) {
-            echo "Erro ao cadastrar cliente: " . $excecao->getMessage();
+            echo "Erro ao cadastrar clientes: " . $excecao->getMessage();
         }
     }
 }
@@ -36,8 +36,7 @@ if (isset($_POST['confirmarCadastro'])) {
 
 <div class="container text-center">
     <h1 class="font-weight-light text-white">CADASTRO CLIENTE</h1>
-    <br>
-    <div class="card m-auto text-left" style="width: 54rem;"> <!--Div usada para formartar o card de login -->
+    <div class="card mx-auto my-5 text-left" style="width: 54rem;"> <!--Div usada para formartar o card de login -->
         <div class="card-body">
             <h3 class="card-title mb-4">DADOS PESSOAIS</h3>
             <form method="post">
@@ -126,7 +125,6 @@ if (isset($_POST['confirmarCadastro'])) {
 
         </div>
     </div>
-    <br>
 </div>
 
 <?php include '../footer.php' ?>
