@@ -39,7 +39,7 @@ catch (PDOException $excecao) {
                             <div class="card">
                                 <img src="avatar.svg" class="card-img-top">
                                 <div class="card-body">                                                           <!--aponta para o modal que tem o id do motofretista-->
-                                    <h5 class="card-title"><?php echo $resultado['nm_motofretista']; ?></h5>
+                                    <h5 class="card-title text-truncate"><?php echo $resultado['nm_motofretista']; ?></h5>
                                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal<?php echo $resultado['id_motofretista']; ?>">DETALHES</a>
                                 </div>
                             </div>
@@ -52,26 +52,41 @@ catch (PDOException $excecao) {
                                 <!-- Modal content-->
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title"><?php echo $resultado['nm_motofretista']; ?></h5>
+                                        <?php if (isset($_SESSION['logado'])) { ?>
+                                            <h5 class="modal-title"><?php echo $resultado['nm_motofretista']; ?></h5>
+                                        <?php }
+                                        else { ?>
+                                            <h5 class="modal-title">Usuário não identificado</h5>
+                                        <?php } ?>
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="form-group row">
-                                            <label for="telefone" class="col-sm-2 col-form-label"><strong>Telefone: </strong></label>
-                                            <div class="col-sm-10">
-                                                <input id="telefone" class="form-control-plaintext" type="text" value="<?php echo $resultado['id_celular']; ?>" readonly/>
+                                        <?php if (isset($_SESSION['logado'])) { ?>
+                                            <div class="form-group row">
+                                                <label for="telefone" class="col-sm-2 col-form-label"><strong>Telefone: </strong></label>
+                                                <div class="col-sm-10">
+                                                    <input id="telefone" class="form-control-plaintext" type="text" value="<?php echo $resultado['id_celular']; ?>" readonly/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <label class="mx-3"><strong>Região de atuação: </strong></label>
-                                        </div>
-                                        <div class="row justify-content-center">
-                                            <?php
-                                            $regioes = explode(",", $resultado['nm_regiao']);  //Separa as regiões por virgula
-                                            foreach ($regioes as $regiao) { // Loop para pegar cada região dentro de regiões ?>
-                                                <div style="border-radius: 20px" class="col-3 p-2 m-1 bg-light border"><?php echo $regiao; ?></div>
-                                            <?php } ?>
-                                        </div>
+                                            <div class="row">
+                                                <label class="mx-3"><strong>Região de atuação: </strong></label>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <?php
+                                                $regioes = explode(",", $resultado['nm_regiao']);  //Separa as regiões por virgula
+                                                foreach ($regioes as $regiao) { // Loop para pegar cada região dentro de regiões ?>
+                                                    <div style="border-radius: 20px" class="col-3 p-2 m-1 bg-light border"><?php echo $regiao; ?></div>
+                                                <?php } ?>
+                                            </div>
+                                        <?php }
+                                        else { ?>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p>Para ver os dados do motofretista</p>
+                                                    <p>Clique <a href="/index.php">aqui</a> para efetuar login ou se cadastrar.</p>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
 

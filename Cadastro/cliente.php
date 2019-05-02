@@ -39,13 +39,13 @@ if (isset($_POST['confirmarCadastro'])) {
     <div class="card mx-auto my-5 text-left" style="width: 54rem;"> <!--Div usada para formartar o card de login -->
         <div class="card-body">
             <h3 class="card-title mb-4">DADOS PESSOAIS</h3>
-            <form method="post">
+            <form method="post" id="form">
                 <div class="row">
 
                     <!--Nome completo do cliente-->
                     <div class="col">
-                                <div class="form-group">
-                                    <label for="nome"> Nome: </label>
+                        <div class="form-group">
+                            <label for="nome"> Nome: </label>
                             <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe seu nome completo" required>
                         </div>
                     </div>
@@ -54,7 +54,7 @@ if (isset($_POST['confirmarCadastro'])) {
                     <div class="col">
                         <div class="form-group">
                             <label for="data"> Data de nascimento: </label>
-                            <input type="date" class="form-control" id="data" name="nascimento" placeholder="Informe sua data de nascimento" required>
+                            <input type="text" class="form-control" id="data" name="nascimento" placeholder="Informe sua data de nascimento" required>
                         </div>
                     </div>
                 </div>
@@ -64,8 +64,8 @@ if (isset($_POST['confirmarCadastro'])) {
                     <!--CPF-->
                     <div class="col">
                         <div class="form-group">
-                            <label for="celular"> CPF: </label>
-                            <input type="tel" class="form-control" id="celular" name="cpf" placeholder="Celular para contato" required>
+                            <label for="cpf"> CPF: </label>
+                            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Informe seu CPF" required>
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@ if (isset($_POST['confirmarCadastro'])) {
                     <div class="col">
                         <div class="form-group">
                             <label for="celular"> Celular: </label>
-                            <input type="tel" class="form-control" id="celular" name="celular" placeholder="Celular para contato" required>
+                            <input type="text" class="form-control" id="celular" name="celular" placeholder="Celular para contato" required>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@ if (isset($_POST['confirmarCadastro'])) {
                     <div class="col">
                         <div class="form-group">
                             <label for="email"> Email: </label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Informe seu email para login" required>
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Informe seu email para login" required>
                         </div>
                     </div>
 
@@ -105,7 +105,7 @@ if (isset($_POST['confirmarCadastro'])) {
                     </div>
                 </div>
 
-                <div class="row mt-5">
+                <div class="form-row mt-5">
 
                     <!-- Termos de uso -->
                     <div class="col">
@@ -126,5 +126,17 @@ if (isset($_POST['confirmarCadastro'])) {
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready( function() {
+
+        $("#celular").inputmask("(99)9999-9999[9]", {removeMaskOnSubmit: true, clearIncomplete: true});
+        $("#cpf").inputmask("999.999.999-99", {removeMaskOnSubmit: true, clearIncomplete: true});
+        $("#email").inputmask("email", { clearIncomplete: true});
+        $("#nome").inputmask({regex: "[a-zà-úA-ZÀ-Ú ]*", placeholder: ""});
+        $("#data").inputmask("datetime", {placeholder: "DD/MM/AAAA", inputFormat: "dd/mm/yyyy", max: "01/01/1998", outputFormat: "yyyy-mm-dd", removeMaskOnSubmit: true});
+
+    });
+</script>
 
 <?php include '../footer.php' ?>
