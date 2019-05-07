@@ -60,6 +60,7 @@ if (isset($_POST['confirmarCadastro'])) {
         }
         catch (PDOException $excecao) {
             $erro = "Erro ao cadastrar";
+            echo $excecao->getMessage();
         }
     }
 }
@@ -196,14 +197,14 @@ if (isset($_POST['confirmarCadastro'])) {
                 <div class="row mb-3">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Bertioga" id="defaultCheck1" >
-                            <label class="form-check-label" for="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Bertioga" id="bertioga" >
+                            <label class="form-check-label" for="bertioga">
                                 Bertioga
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Cubatão" id="defaultCheck2" >
-                            <label class="form-check-label" for="defaultCheck2">
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Cubatão" id="cubatao" >
+                            <label class="form-check-label" for="cubatao">
                                 Cubatão
                             </label>
                         </div>
@@ -211,14 +212,14 @@ if (isset($_POST['confirmarCadastro'])) {
 
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Guarujá" id="defaultCheck1" >
-                            <label class="form-check-label" for="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Guarujá" id="guaruja" >
+                            <label class="form-check-label" for="guaruja">
                                 Guarujá
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Itanhaém" id="defaultCheck2" >
-                            <label class="form-check-label" for="defaultCheck2">
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Itanhaém" id="itanhaem" >
+                            <label class="form-check-label" for="itanhaem">
                                 Itanhaém
                             </label>
                         </div>
@@ -226,14 +227,14 @@ if (isset($_POST['confirmarCadastro'])) {
 
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Mongaguá" id="defaultCheck1" >
-                            <label class="form-check-label" for="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Mongaguá" id="mongagua" >
+                            <label class="form-check-label" for="mongagua">
                                 Mongaguá
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Peruíbe" id="defaultCheck2" >
-                            <label class="form-check-label" for="defaultCheck2">
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Peruíbe" id="peruibe" >
+                            <label class="form-check-label" for="peruibe">
                                 Peruíbe
                             </label>
                         </div>
@@ -241,14 +242,14 @@ if (isset($_POST['confirmarCadastro'])) {
 
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Praia Grande" id="defaultCheck1" >
-                            <label class="form-check-label" for="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Praia Grande" id="praiaGrande" >
+                            <label class="form-check-label" for="praiaGrande">
                                 Praia Grande
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Santos" id="defaultCheck2" >
-                            <label class="form-check-label" for="defaultCheck2">
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="Santos" id="santos" >
+                            <label class="form-check-label" for="santos">
                                 Santos
                             </label>
                         </div>
@@ -256,8 +257,8 @@ if (isset($_POST['confirmarCadastro'])) {
 
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="regiao[]" value="São Vicente" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" name="regiao[]" value="São Vicente" id="saoVicente">
+                            <label class="form-check-label" for="saoVicente">
                                 São Vicente
                             </label>
                         </div>
