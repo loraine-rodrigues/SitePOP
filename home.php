@@ -22,7 +22,7 @@ include 'header.php' ?>
 	<div class="ac_box_top"></div>
 	<div class="ac_box_cont">
 		<div class="botao">
-			<a type="submit" name="cadastrar" href="index.php" class="">CADASTRA-SE</a>
+			<a type="submit" name="cadastrar" href="index.php" class="">CADASTRE-SE</a>
 		</div>
 	
 	</div>
