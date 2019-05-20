@@ -315,7 +315,7 @@ if (isset($_POST['confirmarCadastro'])) {
                                 <option value="Não"> NÃO </option>
                             </select>
                             <div class="invalid-feedback">
-                                Escolha uma da opções
+                                <span id="feedbackMei"> </span>
                             </div>
                         </div>
                     </div>
@@ -445,9 +445,9 @@ if (isset($_POST['confirmarCadastro'])) {
                     <!-- Termos de uso -->
                     <div class="col">
                         <div class="form-group form-check">
-                            <input type="checkbox" name="termos" value="true" class="form-check-input" id="checkTermo" required>
+                            <input type="checkbox" name="termos" value="true" class="form-check-input" id="checkTermos" required>
                             <label for="termos">Eu li e aceito os </label>
-                            <label class="form-check-label" for="checkTermos"><a href="../termos.php">termos de uso</a></label>
+                            <label class="form-check-label" for="checkTermos"><a href="#" data-toggle="modal" data-target="#modal">termos de uso</a></label>
                             <div class="invalid-feedback">
                                 É necessário aceitar os termos de uso
                             </div>
@@ -465,6 +465,7 @@ if (isset($_POST['confirmarCadastro'])) {
         </div>
     </form>
 </div>
+
 <script>
     $(document).ready( () => {
         //teste de script para pegar imagem
@@ -487,6 +488,7 @@ if (isset($_POST['confirmarCadastro'])) {
             }
 
         });
+
         var readURL = (input) => {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -497,7 +499,7 @@ if (isset($_POST['confirmarCadastro'])) {
 
                 reader.readAsDataURL(input.files[0]);
             }
-        }
+        };
 
         $("#imgInp").change(() => {
             readURL(this);
@@ -506,13 +508,18 @@ if (isset($_POST['confirmarCadastro'])) {
         var form = $("#form");
         var nome = $("#nome");
         var data = $("#data");
+        var feedbackData = $("#feedbackData");
         var genero = $("#genero");
         var celular = $("#celular");
         var celularAlternativo = $("#celularAlternativo");
         var cpf = $("#cpf");
+        var feedbackCpf = $("#feedbackCpf");
         var cnpj = $("#cnpj");
+        var feedbackCnpj = $("#feedbackCnpj");
         var mei = $("#mei");
+        var feedbackMei = $("#feedbackMei");
         var cnh = $("#cnh");
+        var feedbackCnh = $("#feedbackCnh");
         var email = $("#email");
         var senha = $("#senha");
         var feedbackSenha = $("#feedbackSenha");
@@ -523,6 +530,7 @@ if (isset($_POST['confirmarCadastro'])) {
         var cor = $("#cor");
         var placa = $("#placa");
         var renavam = $("#renavam");
+        var feedbackRenavam = $("#feedbackRenavam");
 
         //Validação ao digitar no campo
 
@@ -553,7 +561,6 @@ if (isset($_POST['confirmarCadastro'])) {
 
         cpf.keyup(() => {
             cpf = $("#cpf");
-            var feedbackCpf = $("#feedbackCpf");
             if (cpf.val().length > 0) {
                 if (validarCPF(cpf.val())) {
                     cpf.get(0).setCustomValidity('');
@@ -570,19 +577,49 @@ if (isset($_POST['confirmarCadastro'])) {
 
         cnpj.keyup(() => {
             cnpj = $("#cnpj");
-            if (validarCPF(cnpj.val())) {
-                cnpj.get(0).setCustomValidity('');
+            if (cnpj.val().length > 0) {
+                if (validarCNPJ(cnpj.val())) {
+                    cnpj.get(0).setCustomValidity('');
+                    feedbackCnpj.text("");
+                } else {
+                    cnpj.get(0).setCustomValidity('Inválido');
+                    feedbackCnpj.text("Digite um CNPJ válido");
+                }
             } else {
                 cnpj.get(0).setCustomValidity('Inválido');
+                feedbackCnpj.text("Campo obrigatório");
             }
         });
 
         cnh.keyup(() => {
             cnh = $("#cnh");
-            if (validarCPF(cnh.val())) {
-                cnh.get(0).setCustomValidity('');
+            if (cnh.val().length > 0) {
+                if (validarCNH(cnh.val())) {
+                    cnh.get(0).setCustomValidity('');
+                    feedbackCnh.text("");
+                } else {
+                    cnh.get(0).setCustomValidity('Inválido');
+                    feedbackCnh.text("Digite uma CNH válida");
+                }
             } else {
                 cnh.get(0).setCustomValidity('Inválido');
+                feedbackCnh.text("Campo obrigatório");
+            }
+
+        });
+
+        mei.on('change', () => {
+            if (mei.val().length > 0) {
+                if (mei.val() == "Sim") {
+                    mei.get(0).setCustomValidity('');
+                    feedbackMei.text("")
+                } else {
+                    mei.get(0).setCustomValidity('Inválido');
+                    feedbackMei.text("É necessário possuir MEI para efetuar cadastro")
+                }
+            } else {
+                mei.get(0).setCustomValidity('Inválido');
+                feedbackMei.text("Campo obrigatório")
             }
         });
 
@@ -716,9 +753,16 @@ if (isset($_POST['confirmarCadastro'])) {
 
         renavam.keyup(() => {
             if (renavam.val().length > 0) {
-                renavam.get(0).setCustomValidity('');
+                if (validarRENAVAM(renavam.val())) {
+                    renavam.get(0).setCustomValidity('');
+                    feedbackRenavam.text("");
+                } else {
+                    renavam.get(0).setCustomValidity('Inválido');
+                    feedbackRenavam.text("Digite um RENAVAM válido");
+                }
             } else {
                 renavam.get(0).setCustomValidity('Inválido');
+                feedbackRenavam.text("Campo obrigatório");
             }
         });
 
@@ -737,11 +781,10 @@ if (isset($_POST['confirmarCadastro'])) {
             cpf = $("#cpf");
             var cpfValido = validarCPF(cpf.val());
             cnpj = $("#cnpj");
-            // var cnpjValido = validarCNPJ(cnpj.val());
+            var cnpjValido = validarCNPJ(cnpj.val());
             mei = $("#mei");
-            // var meiValido = validarMEI(mei.val());
             cnh = $("#cnh");
-            // var cnhValida = validarCNH(cnh.val());
+            var cnhValida = validarCNH(cnh.val());
             email = $("#email");
             var emailValido = Inputmask.isValid(email.val(),{alias: "email"});
             senha = $("#senha");
@@ -752,7 +795,7 @@ if (isset($_POST['confirmarCadastro'])) {
             placa = $("#placa");
             var placaValida = Inputmask.isValid(placa.val(),{mask:"AAA-9999"});
             renavam = $("#renavam");
-            var renavamValido = Inputmask.isValid(renavam.val(),{mask:"99999999999"});
+            var renavamValido = validarRENAVAM(renavam.val());
 
             if (nome.val().length > 0){
                 nome.get(0).setCustomValidity('');
@@ -760,7 +803,6 @@ if (isset($_POST['confirmarCadastro'])) {
                 nome.get(0).setCustomValidity('Inválido');
             }
 
-            var feedbackData = $("#feedbackData");
             if (data.val().length > 0) {
                 if (dataValida) {
                     feedbackData.text("");
@@ -774,7 +816,6 @@ if (isset($_POST['confirmarCadastro'])) {
                 data.get(0).setCustomValidity('Inválido');
             }
 
-            var feedbackCpf = $("#feedbackCpf");
             if (cpf.val().length > 0) {
                 if (cpfValido) {
                     feedbackCpf.text("");
@@ -788,17 +829,44 @@ if (isset($_POST['confirmarCadastro'])) {
                 cpf.get(0).setCustomValidity('Inválido');
             }
 
-            // if (cnpjValido) {
-            //     cnpj.get(0).setCustomValidity('');
-            // } else {
-            //     cnpj.get(0).setCustomValidity('Inválido');
-            // }
+            if (cnpj.val().length > 0) {
+                if (cnpjValido) {
+                    cnpj.get(0).setCustomValidity('');
+                    feedbackCnpj.text("");
+                } else {
+                    cnpj.get(0).setCustomValidity('Inválido');
+                    feedbackCnpj.text("Digite um CNPJ válido");
+                }
+            } else {
+                cnpj.get(0).setCustomValidity('Inválido');
+                feedbackCnpj.text("Campo obrigatório");
+            }
 
-            // if (cnhValida) {
-            //     cnh.get(0).setCustomValidity('');
-            // } else {
-            //     cnh.get(0).setCustomValidity('Inválido');
-            // }
+            if (cnh.val().length > 0) {
+                if (cnhValida) {
+                    cnh.get(0).setCustomValidity('');
+                    feedbackCnh.text("");
+                } else {
+                    cnh.get(0).setCustomValidity('Inválido');
+                    feedbackCnh.text("Digite uma CNH válida");
+                }
+            } else {
+                cnh.get(0).setCustomValidity('Inválido');
+                feedbackCnh.text("Campo obrigatório");
+            }
+
+            if (mei.val().length > 0) {
+                if (mei.val() == "Sim") {
+                    mei.get(0).setCustomValidity('');
+                    feedbackMei.text("")
+                } else {
+                    mei.get(0).setCustomValidity('Inválido');
+                    feedbackMei.text("É necessário possuir MEI para efetuar cadastro")
+                }
+            } else {
+                mei.get(0).setCustomValidity('Inválido');
+                feedbackMei.text("Campo obrigatório")
+            }
 
             var feedbackCelular = $("#feedbackCelular");
             if (celular.val().length > 0) {
@@ -876,10 +944,17 @@ if (isset($_POST['confirmarCadastro'])) {
                 placa.get(0).setCustomValidity('Inválido');
             }
 
-            if (renavamValido) {
-                renavam.get(0).setCustomValidity('');
+            if (renavam.val().length > 0) {
+                if (renavamValido) {
+                    renavam.get(0).setCustomValidity('');
+                    feedbackRenavam.text("");
+                } else {
+                    renavam.get(0).setCustomValidity('Inválido');
+                    feedbackRenavam.text("Digite um RENAVAM válido");
+                }
             } else {
                 renavam.get(0).setCustomValidity('Inválido');
+                feedbackRenavam.text("Campo obrigatório");
             }
 
             form.addClass('was-validated');
@@ -906,47 +981,191 @@ if (isset($_POST['confirmarCadastro'])) {
         modelo.inputmask({regex: "[a-zà-úA-ZÀ-Ú0-9- ]*", placeholder: ""});
         cor.inputmask({regex: "[a-zà-úA-ZÀ-Ú ]*", placeholder: ""});
 
-            //Validação de CPF
+        //Validação de CPF
+        var validarCPF = (cpf) =>  {
+            cpf = cpf.replace(/[^\d]+/g,'');
+            if(cpf == '') return false;
+            // Elimina CPFs invalidos conhecidos
+            if (cpf.charAt(0).repeat(11) == cpf)
+                return false;
+            // if (cpf.length != 11 ||
+            //     cpf == "00000000000" ||
+            //     cpf == "11111111111" ||
+            //     cpf == "22222222222" ||
+            //     cpf == "33333333333" ||
+            //     cpf == "44444444444" ||
+            //     cpf == "55555555555" ||
+            //     cpf == "66666666666" ||
+            //     cpf == "77777777777" ||
+            //     cpf == "88888888888" ||
+            //     cpf == "99999999999")
+            //     return false;
 
-            var validarCPF = (cpf) =>  {
-                cpf = cpf.replace(/[^\d]+/g,'');
-                if(cpf == '') return false;
-                // Elimina CPFs invalidos conhecidos
-                if (cpf.length != 11 ||
-                    cpf == "00000000000" ||
-                    cpf == "11111111111" ||
-                    cpf == "22222222222" ||
-                    cpf == "33333333333" ||
-                    cpf == "44444444444" ||
-                    cpf == "55555555555" ||
-                    cpf == "66666666666" ||
-                    cpf == "77777777777" ||
-                    cpf == "88888888888" ||
-                    cpf == "99999999999")
-                    return false;
-                // Valida 1o digito
-                add = 0;
-                for (i=0; i < 9; i ++)
-                    add += parseInt(cpf.charAt(i)) * (10 - i);
-                rev = 11 - (add % 11);
-                if (rev == 10 || rev == 11)
-                    rev = 0;
-                if (rev != parseInt(cpf.charAt(9)))
-                    return false;
-                // Valida 2o digito
-                add = 0;
-                for (i = 0; i < 10; i ++)
-                    add += parseInt(cpf.charAt(i)) * (11 - i);
-                rev = 11 - (add % 11);
-                if (rev == 10 || rev == 11)
-                    rev = 0;
-                if (rev != parseInt(cpf.charAt(10)))
-                    return false;
-                return true;
+            // Valida 1o digito
+            add = 0;
+            for (i=0; i < 9; i ++)
+                add += parseInt(cpf.charAt(i)) * (10 - i);
+            rev = 11 - (add % 11);
+            if (rev == 10 || rev == 11)
+                rev = 0;
+            if (rev != parseInt(cpf.charAt(9)))
+                return false;
+
+            // Valida 2o digito
+            add = 0;
+            for (i = 0; i < 10; i ++)
+                add += parseInt(cpf.charAt(i)) * (11 - i);
+            rev = 11 - (add % 11);
+            if (rev == 10 || rev == 11)
+                rev = 0;
+
+            if (rev != parseInt(cpf.charAt(10)))
+                return false;
+            return true;
+        };
+
+        var validarCNPJ = (cnpj) => {
+
+            cnpj = cnpj.replace(/[^\d]+/g,'');
+
+            if(cnpj == '') return false;
+
+            if (cnpj.length != 14)
+                return false;
+
+            // Elimina CNPJs invalidos conhecidos
+            if (cnpj.charAt(0).repeat(14) == cnpj)
+                return false;
+            // if (cnpj == "00000000000000" ||
+            //     cnpj == "11111111111111" ||
+            //     cnpj == "22222222222222" ||
+            //     cnpj == "33333333333333" ||
+            //     cnpj == "44444444444444" ||
+            //     cnpj == "55555555555555" ||
+            //     cnpj == "66666666666666" ||
+            //     cnpj == "77777777777777" ||
+            //     cnpj == "88888888888888" ||
+            //     cnpj == "99999999999999")
+            //     return false;
+
+            // Valida DVs
+            tamanho = cnpj.length - 2;
+            numeros = cnpj.substring(0,tamanho);
+            digitos = cnpj.substring(tamanho);
+            soma = 0;
+            pos = tamanho - 7;
+            for (i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2)
+                    pos = 9;
+            }
+            resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+            if (resultado != digitos.charAt(0))
+                return false;
+
+            tamanho = tamanho + 1;
+            numeros = cnpj.substring(0,tamanho);
+            soma = 0;
+            pos = tamanho - 7;
+            for (i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2)
+                    pos = 9;
+            }
+            resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+            if (resultado != digitos.charAt(1))
+                return false;
+
+            return true;
+
+        };
+
+        var validarCNH = (cnh) => {
+            var char1 = cnh.charAt(0);
+
+            if (cnh.replace(/[^\d]/g, '').length !== 11 || char1.repeat(11) === cnh) {
+                return false;
             }
 
+            for (var i = 0, j = 9, v = 0; i < 9; ++i, --j) {
+                v += +(cnh.charAt(i) * j);
+            }
+
+            var dsc = 0,
+                vl1 = v % 11;
+
+            if (vl1 >= 10) {
+                vl1 = 0;
+                dsc = 2;
+            }
+
+            for (i = 0, j = 1, v = 0; i < 9; ++i, ++j) {
+                v += +(cnh.charAt(i) * j);
+            }
+
+            var x = v % 11;
+            var vl2 = (x >= 10) ? 0 : x - dsc;
+
+            return ('' + vl1 + vl2) === cnh.substr(-2);
+        };
+
+        var validarRENAVAM = (renavam) => {
+            if( !renavam.match("[0-9]{11}") ){
+                return false;
+            }
+
+            var renavamSemDigito = renavam.substring(0, 10);
+
+            var renavamReversoSemDigito = renavamSemDigito.split("").reverse().join("");
+
+            var soma = 0;
+            var multiplicador = 2;
+            for (var i=0; i<10; i++){
+                var algarismo = renavamReversoSemDigito.substring(i, i+1);
+                soma += algarismo * multiplicador;
+
+                if( multiplicador >= 9 ){
+                    multiplicador = 2;
+                }else{
+                    multiplicador++;
+                }
+            }
+
+            var mod11 = soma % 11;
+
+            var ultimoDigitoCalculado = 11 - mod11;
+
+            ultimoDigitoCalculado = (ultimoDigitoCalculado >= 10 ? 0 : ultimoDigitoCalculado);
+
+            var digitoRealInformado = parseInt(renavam.substring(renavam.length - 1, renavam.length));
+
+            return ultimoDigitoCalculado === digitoRealInformado;
+        };
     });
 </script>
+
+<div id="modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Conteúdo do modal -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">TERMOS DE USO</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="../termos.svg" width="250" height="200" class="float-right">
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique arcu at urna dignissim, eu rutrum sem fermentum. Sed dapibus sodales nisi a suscipit. Vestibulum et eros non odio congue sodales. Maecenas non turpis in risus porttitor aliquet sit amet non est. Donec at rutrum orci. Etiam malesuada risus vel lectus sagittis ullamcorper. Duis laoreet metus metus, at consectetur enim convallis a. Suspendisse tellus ligula, lacinia id odio id, aliquam rhoncus ex. Sed sodales ultrices auctor. Phasellus quis metus sed sem pretium sollicitudin dapibus ac augue. Etiam ut dolor in augue vulputate vulputate. Nullam placerat lorem fringilla neque tincidunt auctor. Etiam purus velit, semper non nisi quis, tempus convallis mi. Vestibulum porta dolor dapibus, feugiat nunc a, accumsan nibh.
+
+                Suspendisse ligula justo, tempus sed turpis sit amet, dictum tristique libero. Nam dictum sed tellus a cursus. Sed rutrum purus eu sodales pulvinar. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris sagittis lorem id ante lobortis pharetra. Aliquam efficitur fringilla sapien vel commodo. Mauris vel sagittis turpis, id pellentesque sem. In vulputate velit non sem accumsan viverra. Aliquam luctus mauris nec elit sodales maximus. In hac habitasse platea dictumst. Praesent pretium sapien non orci elementum, sit amet sagittis turpis finibus. Nunc et consectetur massa. Donec suscipit congue iaculis.
+
+                Maecenas consectetur congue tortor a facilisis. Phasellus tincidunt hendrerit lorem, non fringilla nunc. Donec massa erat, tincidunt non tortor nec, dictum lacinia sem. Fusce pellentesque ante et erat dictum, sed eleifend magna ornare. Nullam viverra sem nulla, ac posuere nisl aliquet quis. Mauris quis leo mauris. Vestibulum nec sapien faucibus, commodo eros eget, pharetra nibh. Donec lacinia quis mauris non bibendum. In massa ligula, efficitur at tempus eu, dictum sed ipsum. Cras nec mollis magna. Donec quis erat in est laoreet consequat ut at metus.
+            </div>
+
+        </div>
+
+    </div>
 
 <?php include '../footer.php' ?>
 
