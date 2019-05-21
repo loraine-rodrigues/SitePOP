@@ -39,7 +39,7 @@ include 'header.php' ?>
 
     body {
         width:100%;
-        background-image: url(image/home4.jpg) !important  no-repeat bottom center scroll;
+        background-image: url(image/home4.jpg) !important no-repeat;
         background-position: 30% 45%;
         background-size: cover;
         opacity: 1.0;
