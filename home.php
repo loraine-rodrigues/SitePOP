@@ -9,22 +9,23 @@ include 'header.php' ?>
     }
 
     .botaoLog {
-        background: black;        
+        background: black;
         line-height: 40px;
         border: 2px solid;
-        cursor: pointer;        
+        cursor: pointer;
         position: absolute;
         top: 50%;
         right: 70%;
         transform: translate(-50%, -50%);
         float: right;
         padding: 5px 20px;
-         vertical-align: middle;;
+        vertical-align: middle;
+        ;
 
     }
 
     .botao {
-        background: black;        
+        background: black;
         line-height: 40px;
         border: 2px solid;
         cursor: pointer;
@@ -44,13 +45,19 @@ include 'header.php' ?>
         background-repeat: no-repeat;
         background-position: 30% 45%;
         background-size: cover;
-    
-        
+
+
     }
 
     p {
 
         display: inline;
+
+    }
+
+    .btn-entrar {
+        width: 50%;
+        margin-left: 25%;
 
     }
 </style>
@@ -92,6 +99,7 @@ include 'header.php' ?>
 
         </div>
     </div>
+
     <!--Div usada para formartar o card de login -->
     <div id="modal1" class="modal fade">
         <div class="modal-dialog">
@@ -128,20 +136,20 @@ include 'header.php' ?>
             ?>
 
                 <!-- Botão entrar -->
-                <button type="submit" name="entrar" class="btn btn-outline-danger btn-block small">Entrar </button>
+                <input class="btn btn-outline-info btn-entrar" type="submit" name="entrar" value="Entrar">
+
                 </form>
 
                 <!-- Esqueci a senha-->
                 <div class="text-right mt-3">
-                    <span class="small"><a href="#">Esqueci minha senha</a> </span>
-                    <span class="small ml-4 mr-2"><a href="#" data-toggle="modal" data-target="#modal">Cadastre-se</a> </span>
+                    <span class="mr-2 md-4"><a href="#">Esqueci minha senha</a> </span>
                 </div>
             </div>
         </div>
     </div>
 
-
 </div>
+
 
 
 

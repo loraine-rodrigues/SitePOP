@@ -1,5 +1,5 @@
 <?php
-$title = "CATÁLOGO DE MOTOFRETISTA";
+$title = "MOTOFRETISTAS";
 
 include 'header.php';
 require 'conexao.php';
@@ -25,7 +25,7 @@ catch (PDOException $excecao) {
         </style>
 
         <div class="container text-center">
-            <h2 class="font-weight-light text-white">CATÁLOGO DE MOTOFRETISTAS</h2>
+            <h2 class="font-weight-light text-white">MOTOFRETISTAS</h2>
             <div class="container">
 
                 <?php
@@ -83,7 +83,7 @@ catch (PDOException $excecao) {
                                             <div class="row">
                                                 <div class="col">
                                                     <p>Para ver os dados do motofretista</p>
-                                                    <p>Clique <a href="/index.php">aqui</a> para efetuar login ou se cadastrar.</p>
+                                                    <p>Clique <a href="/home.php">aqui</a> para efetuar login ou se cadastrar.</p>
                                                 </div>
                                             </div>
                                         <?php } ?>

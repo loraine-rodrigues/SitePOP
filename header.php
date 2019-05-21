@@ -86,7 +86,7 @@ echo '
                 <a class="nav-link" href="/termos.php">Termos de uso</a>
               </li>
               <li class="nav-item mx-2">
-                <a class="nav-link" href="/catalogo.php">Catálogo</a>
+                <a class="nav-link" href="/catalogo.php">Motofretistas</a>
               </li> 
               <li class="nav-item mx-2">
                 <a class="nav-link" href="/contato.php">Contato</a>
