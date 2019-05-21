@@ -47,13 +47,18 @@ include 'header.php' ?>
         opacity: 1.0;
         filter: alpha(opacity=80);
     }
+    p {
+
+display:inline;
+
+}
 </style>
 <div class="ac_box">
     <div class="container">
         <div class="row">
             <div class=" mt-4 col-md-11 ">
                 <img src="image/LOGO1.png" width="400px" height="300px" class="img-responsive">
-                <div class="mt-3 col-md-12">Liberdade para negociar.</div>
+                <p class="mt-3 col-md-12">Liberdade para negociar.</p>
             </div>
         </div>
     </div>
