@@ -58,7 +58,7 @@ display:inline;
         <div class="row">
             <div class=" mt-4 col-md-11 ">
                 <img src="image/LOGO1.png" width="400px" height="300px" class="img-responsive">
-                <p class="mt-3 col-md-12">Liberdade para negociar.</p>
+                <p >Liberdade para negociar.</p>
             </div>
         </div>
     </div>
