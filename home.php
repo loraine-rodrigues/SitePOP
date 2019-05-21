@@ -52,7 +52,8 @@ include 'header.php' ?>
     <div class="container">
         <div class="row">
             <div class=" mt-4 col-md-11 ">
-                <img src="image/LOGO1.png" width="400px" height="300px" class="img-responsive">Liberdade para negociar.
+                <img src="image/LOGO1.png" width="400px" height="300px" class="img-responsive">
+                <div class="mt-3 col-md-10">Liberdade para negociar.</div>
             </div>
         </div>
     </div>
