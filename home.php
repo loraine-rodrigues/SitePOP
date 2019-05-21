@@ -4,61 +4,61 @@ $title = "HOME";
 include 'header.php' ?>
 <style type="text/css">
     .btn-home {
-        color: teal;
+        color: white;
+        font-weight: bold;
     }
 
     .botaoLog {
-        background: transparent;
-        color: orange;
+        background: black;        
         line-height: 40px;
         border: 2px solid;
-        cursor: pointer;
-        padding: 5px 40px;
+        cursor: pointer;        
         position: absolute;
         top: 50%;
         right: 70%;
         transform: translate(-50%, -50%);
-        opacity: 100;
+        float: right;
+        padding: 5px 20px;
+         vertical-align: middle;;
 
     }
 
     .botao {
-        background: transparent;
-        color: orange;
+        background: black;        
         line-height: 40px;
         border: 2px solid;
         cursor: pointer;
-        padding: 5px 40px;
+        padding: 5px 20px;
         position: absolute;
         top: 50%;
         left: 60%;
         transform: translate(-50%, -50%);
-        opacity: 100;
+        opacity: 0.6;
+        float: center;
         text-decoration: none
     }
 
     body {
-        width:100%;
+        width: 100%;
         background-image: url(image/home1.jpg) !important;
         background-repeat: no-repeat;
         background-position: 30% 45%;
         background-size: cover;
+    
         
-        opacity: 1.0;
-        filter: alpha(opacity=80);
     }
+
     p {
 
-display:inline;
+        display: inline;
 
-}
+    }
 </style>
 <div class="ac_box">
     <div class="container">
         <div class="row">
             <div class=" mt-4 col-md-11 ">
-                <img src="image/LOGO1.png" width="400px" height="300px" class="img-responsive">
-                <p >Liberdade para negociar.</p>
+                <img src="image/LOGO1" width="400px" height="300px" class="img-responsive">
             </div>
         </div>
     </div>
@@ -128,14 +128,14 @@ display:inline;
             ?>
 
                 <!-- Botão entrar -->
-                <button type="submit" name="entrar" class="btn btn-outline-primary btn-block">Entrar </button>
+                <button type="submit" name="entrar" class="btn btn-outline-danger btn-block small">Entrar </button>
                 </form>
 
                 <!-- Esqueci a senha-->
                 <div class="text-right mt-3">
-                <span class="small"><a href="#">Esqueci minha senha</a> </span>
-                <span class="small ml-4 mr-2"><a href="#" data-toggle="modal" data-target="#modal">Cadastre-se</a> </span>
-            </div>
+                    <span class="small"><a href="#">Esqueci minha senha</a> </span>
+                    <span class="small ml-4 mr-2"><a href="#" data-toggle="modal" data-target="#modal">Cadastre-se</a> </span>
+                </div>
             </div>
         </div>
     </div>

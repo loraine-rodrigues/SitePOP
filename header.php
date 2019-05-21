@@ -32,17 +32,19 @@ echo '
           body {   
                        
             background-color: #009999;                      // cor de fundo da pagina 
-            font-family: \'Montserrat\', sans-serif;        // fonte do site
+            font-family: \'Montserrat\', sans-serif;
+               // fonte do site
          }
          .navbar-customizada{
           width: 100%;
-        
+          opacity: 0.6;        
           padding:20px;
+          background-color:black;
        }
     
     .navbar-brand:focus,
     .navbar-brand:hover {
-        text-decoration: none
+    text-decoration: none
     }
 
          .card {
@@ -62,7 +64,7 @@ echo '
     <header>    
         
        <!--INICIO da navbar-->
-        <nav class="navbar navbar-expand-lg navbar-customizada navbar-light"> 
+        <nav class="navbar navbar-expand-lg navbar-customizada navbar-dark"> 
         <a class="navbar-brand" href="/index.php">POP!</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
