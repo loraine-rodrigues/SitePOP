@@ -4,12 +4,28 @@ $title = "CONTATO";
 include 'header.php' ?>
 
 <style type="text/css">
+h2{
+		background-color:white;        
+        line-height: 40px;
+        border-style: 2px;
+		padding: 5px 20px;
+        opacity: 0.6;
+        text-decoration: none
+		
 
+}
 	.field {
 		padding: 10px;
 		margin-top: 10px;
 		margin-bottom: 30px;
 		font-size: 16px;
+	}
+	body{
+		width: 100%;
+        background-image: url(image/home2.jpg) !important;
+        background-repeat: no-repeat;
+        background-position: 30% 45%;
+        background-size: cover;
 	}
 
 </style>
