@@ -39,8 +39,8 @@ include 'header.php' ?>
 
     body {
 
-        background-image: url(image/home4.jpg) !important;
-        background-size: absolute;
+        background-image: url(image/home4.jpg) !important  no-repeat bottom center scroll;
+        background-size: cover;
         opacity: 1.0;
         filter: alpha(opacity=80);
     }
