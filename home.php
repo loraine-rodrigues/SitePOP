@@ -38,7 +38,7 @@ include 'header.php' ?>
     }
 
     body {
-        
+
         background-image: url(image/home4.jpg) !important;
         background-size: 1600px 1000px;
         opacity: 1.0;
@@ -62,7 +62,6 @@ include 'header.php' ?>
                 <a class="nav-link btn-home " name="entrar" href="#" data-toggle="modal" data-target=#modal1>ENTRAR</a>
             </div>
         </div>
-        
     </div>
 
     <!--Modal para cadastro de CLIENTE ou MOTOFRETISTA-->

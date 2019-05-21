@@ -1,10 +1,9 @@
 <?php
 
 if (isset($_POST['email']) && !empty($_POST['email'])){
-
-	$nome = addcslashes($_POST['nome']);
-	$email = addcslashes($_POST['email']);
-	$mensagem = addcslashes($_POST['mensagem']);
+	$nome = $_POST['nome'];
+	$email = $_POST['email'];
+	$mensagem = $_POST['mensagem'];
 
 
 	$to = "EMAIL DO GRUPO";

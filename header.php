@@ -23,33 +23,52 @@ echo '
     <link rel="stylesheet" href="/terceiros/bootstrap/css/sticky-footer.css">
     <script src="/terceiros/bootstrap/js/bootstrap.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> <!-- link importado para font Montserrat -->
+
     <link href="/terceiros/fontawesome/css/all.css" rel="stylesheet">
+    
     
     <!--Style para padronização de todas as páginas -->
     <style>
-          body {              
+          body {   
+                       
             background-color: #009999;                      // cor de fundo da pagina 
             font-family: \'Montserrat\', sans-serif;        // fonte do site
          }
          .navbar-customizada{
-            background-color:#6c6d6d;                       //COR DA NAVBAR
-         }
+          width: 100%;
+        
+          padding:20px;
+       }
+    
+    .navbar-brand:focus,
+    .navbar-brand:hover {
+        text-decoration: none
+    }
+
          .card {
             border-radius: 25px;
          }
+         .icon {
+          display: inline-block;
+          line-height: 30px;
+          padding-left: 30px;
+          background: url("phone.svg") no-repeat scroll 0 0 transparent;
+        }
+
+         
     </style>
 </head>
 <body class="d-flex flex-column h-100">
     <header>    
         
        <!--INICIO da navbar-->
-        <nav class="navbar navbar-expand-lg navbar-customizada navbar-dark"> 
-          <a class="navbar-brand" href="/index.php">POP!</a>
+        <nav class="navbar navbar-expand-lg navbar-customizada navbar-light"> 
+        <a class="navbar-brand" href="/index.php">POP!</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           
-          <!--Iténs da navbar -->
+          <!--Itens da navbar -->
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item mx-2">
@@ -72,7 +91,7 @@ echo '
               </li>';
 
 if ($_SESSION['adm'] == TRUE) {     //Se for adm mostrar mais dois botões
-    echo '                  <li class="nav-item mx-2">
+  echo '                  <li class="nav-item mx-2">
                 <a class="nav-link" href="/adm/motofretistas">Motofretistas</a>
               </li>
               <li class="nav-item mx-2">
@@ -81,12 +100,12 @@ if ($_SESSION['adm'] == TRUE) {     //Se for adm mostrar mais dois botões
     ';
 }
 
-echo'            </ul>';
+echo '            </ul>';
 
 
-if (isset ($_SESSION['logado'])) {  //Se o usuario estiver logado mostarr botão SAIR
+if (isset($_SESSION['logado'])) {  //Se o usuario estiver logado mostrar botão SAIR
 
-    echo '        <!--BOTÃO SAIR-->                                    
+  echo '        <!--BOTÃO SAIR-->                                    
                 <ul class="nav navbar-nav navbar-right" >
                     <li >
                         <div class="btn-nav" >
@@ -95,7 +114,7 @@ if (isset ($_SESSION['logado'])) {  //Se o usuario estiver logado mostarr botão
                     </li >                                
                 </ul >';
 }
-            
+
 echo '          
           </div>
         </nav> 
@@ -104,4 +123,3 @@ echo '
     </header>
     <main role="main" class="flex-shrink-0">
     ';
-
