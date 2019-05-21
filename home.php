@@ -40,7 +40,7 @@ include 'header.php' ?>
     body {
 
         background-image: url(image/home4.jpg) !important;
-        background-size: 1600px 1000px;
+        background-size: absolute;
         opacity: 1.0;
         filter: alpha(opacity=80);
     }
