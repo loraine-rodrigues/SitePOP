@@ -31,7 +31,7 @@ echo '
     <style>
           body {   
                        
-            background-color: white;                      // cor de fundo da pagina 
+            background-color: #f2f2f2;                      // cor de fundo da pagina 
             font-family: \'Montserrat\', sans-serif;
                // fonte do site
          }
