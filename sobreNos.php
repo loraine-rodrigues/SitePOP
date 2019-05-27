@@ -3,7 +3,7 @@ $title = "SOBRE NÓS";
 
 include 'header.php' ?>
 
-
+<div class="container text-center mb-3">
 
 <div class="card m-auto" style="width: 45rem;">
 
@@ -21,6 +21,6 @@ include 'header.php' ?>
     </div>
 </div>
 
-
+</div>
 
 <?php include 'footer.php' ?>
