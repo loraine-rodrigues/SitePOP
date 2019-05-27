@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `tb_motofretista` (
     `nm_modelo` VARCHAR(45) NOT NULL,
     `nm_cor` VARCHAR(45) NOT NULL,
     `nm_marca` VARCHAR(45) NOT NULL,
+    `urlFoto` VARCHAR(100) NOT NULL,
     PRIMARY KEY (`id_motofretista`)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 

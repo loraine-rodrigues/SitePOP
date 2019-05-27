@@ -23,13 +23,14 @@ CREATE PROCEDURE `cadastrarMotofretista` (
  IN modelo varchar(45),
  IN cor varchar(45),
  IN marca varchar(45),
- IN senha varchar(45))
+ IN senha varchar(45),
+ IN foto varchar(100))
  
 BEGIN
 	 INSERT INTO tb_login (nm_usuario, id_senha, id_tipo_login)
 		VALUES (email, md5(senha), '2');
-	INSERT INTO tb_motofretista (nm_motofretista, id_celular, id_telefone, nm_email, id_cpf, id_cnpj, id_cnh, ic_genero, nm_regiao, dt_nascimento, ic_mei, id_placa, id_renavam, nm_modelo, nm_cor, nm_marca)
-		VALUES (nome, celular, telefone, email, cpf, cnpj, cnh, genero, regiao, nascimento, mei, placa, renavam, modelo, cor, marca);
+	INSERT INTO tb_motofretista (nm_motofretista, id_celular, id_telefone, nm_email, id_cpf, id_cnpj, id_cnh, ic_genero, nm_regiao, dt_nascimento, ic_mei, id_placa, id_renavam, nm_modelo, nm_cor, nm_marca, urlFoto)
+		VALUES (nome, celular, telefone, email, cpf, cnpj, cnh, genero, regiao, nascimento, mei, placa, renavam, modelo, cor, marca, foto);
 END$$
 DELIMITER ;
 
@@ -55,11 +56,12 @@ create procedure `editarMotofretista` (
  IN renavam char(11),
  IN modelo varchar(45),
  IN cor varchar(45),
- IN marca varchar(45))
+ IN marca varchar(45),
+ IN foto varchar(100))
 
  BEGIN
 	 UPDATE tb_motofretista SET nm_motofretista = nome, id_celular = celular, id_telelefone = telefone, nm_email = email, id_cpf = cpf, id_cnpj = cnpj, id_cnh = cnh, ic_genero = genero,
-	 nm_regiao = regiao, dt_nascimento = nascimento, ic_mei = mei, id_placa = placa, id_renavam = renavam, nm_modelo = modelo, nm_cor = cor, nm_marca = marca where id_motofretista = id;
+	 nm_regiao = regiao, dt_nascimento = nascimento, ic_mei = mei, id_placa = placa, id_renavam = renavam, nm_modelo = modelo, nm_cor = cor, nm_marca = marca, urlFoto = foto where id_motofretista = id;
  END $$
 DELIMITER ;
 
