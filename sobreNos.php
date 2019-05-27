@@ -5,7 +5,7 @@ include 'header.php' ?>
 
 
 
-<div class="card m-auto text-left" style="width: 80rem;">
+<div class="card m-auto text-left" style="width: 45rem;">
 
     <div class="card-body">
         <div class="text-center">
