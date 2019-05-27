@@ -61,7 +61,7 @@ include 'header.php' ?>
 
     }
 </style>
-<div class="ac_box">
+
     <div class="container">
         <div class="row">
             <div class=" mt-4 col-md-11 ">
@@ -148,7 +148,7 @@ include 'header.php' ?>
         </div>
     </div>
 
-</div>
+
 
 
 
