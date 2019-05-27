@@ -10,7 +10,7 @@ include 'header.php' ?>
             <h2 class="font-weight-light text-center text-warning ">SOBRE NÓS</h2>
             <hr />
         <div class="text-center">
-            <h3>O POP!</h3> é uma plataforma com o objetivo de promover ideias de tecnologia para integração digital de autônomos.
+            <b>O POP!</b> é uma plataforma com o objetivo de promover ideias de tecnologia para integração digital de autônomos.
             Para atender as demandas de mobilidade e rapidez no estilo de vida urbano surgiu o POP! Motofrete.
             Nossa missão é facilitar e divulgar os prestadores de serviço para que sejam protagonistas do seu negócio.
             E permitir que clientes que buscam por essa mão de obra tenham maior comodidade acessando o POP! para encontrá-los.
