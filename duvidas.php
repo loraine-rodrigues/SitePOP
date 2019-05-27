@@ -7,7 +7,7 @@ include 'header.php' ?>
 
 <div class="container text-center">
     
-    <h2 class="font-weight-light text-white ml-5">DÚVIDAS<img src="image/duvidas.png" width="80" height="80" class="align-middle ml-4"> </h2>
+    <h2 class="font-weight-light text-teal ml-5">DÚVIDAS<img src="image/duvidas.png" width="80" height="80" class="align-middle ml-4"> </h2>
     <hr />
 
     <div class="accordion mb-3">
