@@ -4,10 +4,11 @@ $title = "SOBRE NÓS";
 include 'header.php' ?>
 
 <div class="container text-center mb-3">
-
-<div class="card m-auto" style="width: 35rem;">
-
-    <div class="card-body">
+    <div class="card m-auto text-left" style="width: 54rem;">
+      
+        <div class="card-body">
+            <h2 class="font-weight-light text-center text-warning ">SOBRE NÓS</h2>
+            <hr />
         <div class="text-center">
             <h2 class="ml-5">SOBRE NÓS</h2>
             O POP! é uma plataforma com o objetivo de promover ideias de tecnologia para integração digital de autônomos.
