@@ -3,18 +3,6 @@ $title = "SOBRE NÓS";
 
 include 'header.php' ?>
 
-<style type="text/css">
-    .ac_box {
-        max-width: 100% width: 1600px;
-        border: 0px solid #E6E6E6;
-        border: 0px solid #E6E6E6;
-        height: 300px;
-        padding: 1px 0;
-        background-image: url(image/home3.jpg) !important;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-</style>
 
 
 <div class="card m-auto text-left" style="width: 80rem;">
