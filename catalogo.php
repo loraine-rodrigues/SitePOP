@@ -37,7 +37,7 @@ catch (PDOException $excecao) {
                     while ($resultado = $comando->fetch(PDO::FETCH_ASSOC)) { ?>
                         <div class="col-4">
                             <div class="card">
-                                <img src="avatar.svg" class="card-img-top">
+                                <img src="/image/motofretistas/<?php echo $resultado['urlFoto'] ?>" class="card-img-top">
                                 <div class="card-body">                                                           <!--aponta para o modal que tem o id do motofretista-->
                                     <h5 class="card-title text-truncate"><?php echo $resultado['nm_motofretista']; ?></h5>
                                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal<?php echo $resultado['id_motofretista']; ?>">DETALHES</a>
