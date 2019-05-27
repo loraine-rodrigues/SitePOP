@@ -39,7 +39,7 @@ echo '
           width: 100%;
           opacity: 0.6;        
           padding:20px;
-          background-color:black;
+          background-color:teal;
        }
     
     .navbar-brand:focus,
