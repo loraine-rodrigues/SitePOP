@@ -17,11 +17,6 @@ include 'header.php' ?>
 </style>
 
 
-<div class="ac_box">
-
-</div>
-
-
 <div class="card m-auto text-left" style="width: 80rem;">
 
     <div class="card-body">
