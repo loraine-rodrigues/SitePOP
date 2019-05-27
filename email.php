@@ -7,7 +7,7 @@ if (isset($_POST['email']) && !empty($_POST['email'])){
 
 
 	$to = "EMAIL DO GRUPO";
-	$subjet = "Contato - POP!";
+	$subject = "Contato - POP!";
 	$body = "Nome: ".$nome. "\r\n".
 			"Email: ".$email."\r\n".
 			"Mensagem: ".$mensagem;
