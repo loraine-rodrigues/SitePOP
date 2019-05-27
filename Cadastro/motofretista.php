@@ -112,6 +112,7 @@ if (isset($_POST['confirmarCadastro'])) {
                 $mensagem = "Motofretista cadastrado com sucesso<br/>Clique <a href='../index.php'>aqui</a> para efetuar login";
             } else {
                 $erro = 'Erro ao cadastrar';
+                echo $excecao->getMessage();
             }
         }
         catch (PDOException $excecao) {
