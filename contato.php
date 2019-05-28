@@ -44,6 +44,7 @@ include 'header.php' ?>
 		background-size: cover;
 	}
 </style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <div class="container text-center">
 
 	<div class="row">
