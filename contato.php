@@ -82,9 +82,6 @@ include 'header.php' ?>
 </div>
 
 
-
-</div>
-
 <script type="text/javascript">
         function validaForm()
         {
