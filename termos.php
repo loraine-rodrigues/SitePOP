@@ -2,10 +2,19 @@
 $title = "TERMOS DE USO";
 
 include 'header.php' ?>
+<style type="text/css">
+    body {
+        width: 100%;
+        background-image: url(image/3.1.png) !important;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: fixed;
+    }
+</style>
 
 <div class="container text-center mb-3">
     <div class="card m-auto text-left" style="width: 54rem;">
-        <!--Div usada para formartar o card de login -->
+
         <div class="card-body">
             <h2 class="font-weight-light text-center text-warning ">TERMOS DE USO</h2>
             <hr />
