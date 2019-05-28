@@ -5,7 +5,7 @@ include 'header.php' ?>
 <style type="text/css">
     body {
         width: 100%;
-        background-image: url(image/3.1.png) !important;
+        background-image: url(image/3.1.jpg) !important;
         background-repeat: no-repeat;
         background-size: cover;
         background-image: fixed;
