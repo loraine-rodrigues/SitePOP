@@ -60,7 +60,7 @@ include 'header.php' ?>
 <div class="card m-auto text-left" style="width: 24rem;">
 	<div class="card-body">
 
-		<div class="form" method="POST" onsubmit="validaForm(); return false;" class="form">
+		<div class="form" id="formulario-contato" method="POST" onsubmit="validaForm(); return false;">
 			<div class="form-group">
 				<div class="form-group">
 					<label for="email"> Email: </label>
