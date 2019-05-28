@@ -1,6 +1,22 @@
 <?php
 $title = "CONTATO";
 
+include "funcao.php";
+
+if(strlen($_POST['nome']))
+{
+    if(sendMail($_POST['email'],'seuemail@gmail.com', $_POST['mensagem'], 'Formulário de contato'))
+    {
+        echo "Sua mensagem foi enviada com sucesso!";
+    }
+    else
+    {
+        echo "Ocorreu um erro ao enviar";
+    }
+    echo "<br><a href='index.php'>Voltar</a>";
+    exit();
+}
+
 include 'header.php' ?>
 
 <style type="text/css">
@@ -44,7 +60,7 @@ include 'header.php' ?>
 <div class="card m-auto text-left" style="width: 24rem;">
 	<div class="card-body">
 
-		<div class="form" method="POST" action="email.php">
+		<div class="form" method="POST" onsubmit="validaForm(); return false;" class="form">
 			<div class="form-group">
 				<div class="form-group">
 					<label for="email"> Email: </label>
@@ -69,7 +85,30 @@ include 'header.php' ?>
 
 </div>
 
-
+<script type="text/javascript">
+        function validaForm()
+        {
+            erro = false;
+            if($('#nome').val() == '')
+            {
+                alert('Você precisa preencher o campo Nome');erro = true;
+            }
+            if($('#email').val() == '' && !erro)
+            {
+                alert('Você precisa preencher o campo E-mail');erro = true;
+            }
+            if($('#mensagem').val() == '' && !erro)
+            {
+                alert('Você precisa preencher o campo Mensagem');erro = true;
+            }
+            
+            //se nao tiver erros
+            if(!erro)
+            {
+                $('#formulario_contato').submit();
+            }
+        }
+    </script>
 
 
 
