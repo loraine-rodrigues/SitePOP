@@ -1,7 +1,35 @@
 <?php
 $title = "HOME";
+require 'conexao.php';
+include 'header.php';
 
-include 'header.php' ?>
+if (isset($_POST['entrar'])) {
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    try {
+        $comando = $conexao->prepare("CALL verificaLogin(?, ?)");
+        $comando->bindParam(1, $email);
+        $comando->bindParam(2, $senha);
+        $comando->execute();
+        if ($comando->rowCount() > 0) {
+
+            while ($resultado = $comando->fetch(PDO::FETCH_ASSOC)) {
+                $_SESSION['id'] = $resultado['id_login'];
+                $_SESSION['nome'] = $resultado['nm_usuario'];
+                $_SESSION['tipo'] = $resultado['id_tipo_login'];
+            }
+            $_SESSION['logado'] = TRUE;
+            header('Location: home.php');
+            exit();
+        } else {
+            $_SESSION['erro'] = "Email e/ou senha incorretos";
+        }
+    } catch (PDOException $excecao) {
+        echo "Erro ao logar: " . $excecao->getMessage();
+    }
+}
+ ?>
 <style type="text/css">
     .btn-home {
         color: white;

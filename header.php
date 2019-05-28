@@ -31,7 +31,7 @@ echo '
     <style>
           body {   
                        
-            background-color: #f2f2f2;                      // cor de fundo da pagina 
+            background-color: #009999;                      // cor de fundo da pagina 
             font-family: \'Montserrat\', sans-serif;
                // fonte do site
          }
@@ -65,7 +65,7 @@ echo '
         
        <!--INICIO da navbar-->
         <nav class="navbar navbar-expand-lg navbar-customizada navbar-dark"> 
-        <a class="navbar-brand" href="/index.php">POP!</a>
+        <a class="navbar-brand" href="/home.php">POP!</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -73,9 +73,6 @@ echo '
           <!--Itens da navbar -->
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item mx-2">
-                <a class="nav-link" href="/home.php">Home</a>
-              </li>
               <li class="nav-item mx-2">
                 <a class="nav-link" href="/sobreNos.php">Sobre nós</a>
               </li>
