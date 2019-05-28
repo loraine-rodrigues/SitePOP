@@ -61,24 +61,26 @@ include 'header.php' ?>
 <div class="card m-auto text-left" style="width: 24rem;">
 	<div class="card-body">
 
-		<div class="form" id="formulario_contato" method="POST" onsubmit="validaForm(); return false;">
-			<div class="form-group">
-				<div class="form-group">
-					<label for="email"> Email: </label>
-					<input type="text" class="form-control" name="email" id="email" placeholder="Digite seu email" required>
-				</div>
-				<div class="form-group">
-					<label for="nome"> Nome: </label>
-					<input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome" required>
-				</div>
-
-			</div>
-			<div class="form-group">
-				<label for="mensagem"> Mensagem: </label>
-				<textarea class="field form-control" name="mensagem" placeholder="Digite sua mensagem aqui."></textarea>
-				<input class="btn btn-outline-primary btn-block" type="submit" value="Enviar" name="enviar">
-			</div>
-		</div>
+		<form method="post" id="formulario_contato" onsubmit="validaForm(); return false;" class="form">
+		<p class="name">
+            <label for="name">Nome</label>
+            <input type="text" name="nome" id="nome" placeholder="Seu Nome" />
+		</p>
+		
+		<p class="email">
+            <label for="email">E-mail</label>
+            <input type="text" name="email" id="email" placeholder="mail@exemplo.com.br" />
+		</p>		
+	
+		<p class="text">
+            <label for="mensagem">Mensagem</label>
+            <textarea name="mensagem" id="mensagem" placeholder="Escreva sua mensagem" /></textarea>
+		</p>
+		
+		<p class="submit">
+            <input type="submit" value="Enviar" />
+		</p>
+	</form>
 	</div>
 </div>
 
