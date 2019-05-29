@@ -25,7 +25,7 @@ catch (PDOException $excecao) {
         </style>
 
         <div class="container text-center">
-            <h2 class="font-weight-light text-white">MOTOFRETISTAS</h2>
+            <h2 class="font-weight-light text-warning">MOTOFRETISTAS</h2>
             <div class="container">
 
                 <?php
