@@ -3,9 +3,6 @@ $title = "HOME";
 require 'conexao.php';
 include 'header.php';
 
-require 'conexao.php';
-include 'header.php';
-
 if (isset($_POST['entrar'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
