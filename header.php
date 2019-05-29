@@ -37,7 +37,7 @@ echo '
          }
          .navbar-customizada{
           width: 100%;
-          background-color:teal;
+          background-color:#0095B6;
        }
     
     
