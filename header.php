@@ -37,8 +37,6 @@ echo '
          }
          .navbar-customizada{
           width: 100%;
-                
-          padding:20px;
           background-color:teal;
        }
     

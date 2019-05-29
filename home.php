@@ -36,17 +36,10 @@ if (isset($_POST['entrar'])) {
     .btns {
         /*color: #0f6674;*/
         font-weight: bold;
-        border-width:  3px;
     }
 
     body {
         width: 100%;
-        background-image: url(image/home1.jpg) !important;
-        background-repeat: no-repeat;
-        background-position: 30% 45%;
-        background-size: cover;
-
-
     }
 
     p {
@@ -72,10 +65,10 @@ if (isset($_POST['entrar'])) {
 
     <div class="col">
         <!--ENTRAR-->
-        <a class="btn btns btn-outline-info m-4 py-2 px-4  rounded-pill float-right" href="#" data-toggle="modal" data-target=#modal1>ENTRAR</a>
+        <a class="btn btns btn-outline-warning m-4 py-2 px-4  rounded-pill float-right" href="#" data-toggle="modal" data-target=#modal1>ENTRAR</a>
 
         <!--CADASTRE-SE-->
-        <a class="btn btns btn-outline-info m-4 py-2 px-4 rounded-pill float-right" href="#" data-toggle="modal" data-target=#modal>CADASTRE-SE</a>
+        <a class="btn btns btn-outline-warning m-4 py-2 px-4 rounded-pill float-right" href="#" data-toggle="modal" data-target=#modal>CADASTRE-SE</a>
     </div>
 </div>
 
