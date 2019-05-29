@@ -36,13 +36,7 @@ include 'header.php' ?>
 		font-size: 16px;
 	}
 
-	body {
-		width: 100%;
-		background-image: url(image/home2.jpg) !important;
-		background-repeat: no-repeat;
-		background-position: 30% 45%;
-		background-size: cover;
-	}
+
 </style>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <div class="container text-center">
