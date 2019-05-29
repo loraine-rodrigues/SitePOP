@@ -5,7 +5,7 @@ include "funcao.php";
 
 if(strlen($_POST['nome']))
 {
-    if(sendMail($_POST['email'],'seuemail@gmail.com', $_POST['mensagem'], 'Formulário de contato'))
+    if(sendMail($_POST['email'],'popmotos1111@gmail.com', $_POST['mensagem'], 'Formulário de contato'))
     {
         echo "Sua mensagem foi enviada com sucesso!";
     }
@@ -60,26 +60,31 @@ include 'header.php' ?>
 <br>
 <div class="card m-auto text-left" style="width: 24rem;">
 	<div class="card-body">
+    
 
 		<form method="post" id="formulario_contato" onsubmit="validaForm(); return false;" class="form">
-		<p class="name">
-            <label for="name">Nome</label>
-            <input type="text" name="nome" id="nome" placeholder="Seu Nome" />
-		</p>
+           <div class="form-group">
+           		<label for="name">Nome</label>
+               <input type="text" name="nome" id="nome" placeholder="Seu Nome" class="form-control" required="">
+            </div>
+            
+             <div class="form-group">
+           		<label for="name">Email</label>
+               <input type="email" name="nome" id="nome" placeholder="Seu Nome" class="form-control" required="">
+            </div>
+             <div class="form-group">
+           		<label for="name">Mensagem</label>
+               <textarea name="mensagem" id="mensagem" placeholder="Escreva sua mensagem" class="form-control"></textarea>
+            </div>
 		
-		<p class="email">
-            <label for="email">E-mail</label>
-            <input type="text" name="email" id="email" placeholder="mail@exemplo.com.br" />
-		</p>		
+		
+				
 	
-		<p class="text">
-            <label for="mensagem">Mensagem</label>
-            <textarea name="mensagem" id="mensagem" placeholder="Escreva sua mensagem" /></textarea>
-		</p>
 		
-		<p class="submit">
-            <input type="submit" value="Enviar" />
-		</p>
+		<div class="text-center">
+        <button class="btn btn-success" type="submit">Enviar</button>    
+            </div>
+		
 	</form>
 	</div>
 </div>
