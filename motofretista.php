@@ -30,7 +30,7 @@ if (isset($_POST['confirmarCadastro'])) {
         $procedure = "call insMoto('$nome', '$cel', '$tel', '$email', '$cpf', '$cnpj', '$cnh', '$regiao', '$nasc', '$habilitado', '$mei', '$condumoto', '$placa', '$renavam', '$modelo', '$cor', '$marca')";
 
         if ($conexao->query($procedure) == TRUE)
-            echo 'Moto Fretista cadastrado com sucesso!';
+            echo 'Motofretista cadastrado com sucesso!';
         else {
             echo "Erro: $conexao->error" . PHP_EOL;
         }
