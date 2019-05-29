@@ -47,7 +47,7 @@ if (strlen($_POST['nome'])) {
     <div class="row">
         <div class="col-md-11 text-center">
             
-            <h2 class="ml-5">Fale Conosco</h2>
+            <h2 class="ml-5 text-warning">Fale Conosco</h2>
         </div>
     </div>
 </div>
