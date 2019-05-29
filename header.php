@@ -31,16 +31,17 @@ echo '
     <style>
           body {   
                        
-            background-color: #00accd;                      // cor de fundo da pagina 
+            background-color: #f2f2f2;                      // cor de fundo da pagina 
             font-family: \'Montserrat\', sans-serif;
                // fonte do site
          }
          .navbar-customizada{
           width: 100%;
-          opacity: 0.6;        
+                
           padding:20px;
-          background-color:black;
+          background-color:teal;
        }
+    
     
     .navbar-brand:focus,
     .navbar-brand:hover {
