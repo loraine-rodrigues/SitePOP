@@ -3,6 +3,7 @@ $title = "ESQUECI MINHA SENHA";
 include 'conexao.php';
 include 'header.php';
 
+
 if(isset($_POST['recuperando']) && $_POST['recuperando'] == 'rec'){
 	$email =    strip_tags(trim($_POST['email']));
    

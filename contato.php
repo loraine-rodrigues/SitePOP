@@ -1,7 +1,8 @@
 <?php
 $title = "CONTATO";
 
-include "funcao.php";
+include 'funcao.php';
+include 'header.php';
 
 if(strlen($_POST['nome']))
 {
@@ -13,11 +14,11 @@ if(strlen($_POST['nome']))
     {
         echo "Ocorreu um erro ao enviar";
     }
-    echo "<br><a href='index.php'>Voltar</a>";
+    echo "<br><a href='home.php'>Voltar</a>";
     exit();
 }
 
-include 'header.php' ?>
+ ?>
 
 <style type="text/css">
 	h2 {
@@ -36,7 +37,11 @@ include 'header.php' ?>
 		font-size: 16px;
 	}
 
+<<<<<<< Updated upstream
 
+=======
+	
+>>>>>>> Stashed changes
 </style>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <div class="container text-center">
@@ -58,16 +63,16 @@ include 'header.php' ?>
 
 		<form method="post" id="formulario_contato" onsubmit="validaForm(); return false;" class="form">
            <div class="form-group">
-           		<label for="name">Nome</label>
+           		<label for="nome">Nome</label>
                <input type="text" name="nome" id="nome" placeholder="Seu Nome" class="form-control" required="">
             </div>
             
              <div class="form-group">
-           		<label for="name">Email</label>
-               <input type="email" name="nome" id="nome" placeholder="Seu Nome" class="form-control" required="">
+           		<label for="email">Email</label>
+               <input type="email" name="email" id="email" placeholder="Seu Email" class="form-control" required="">
             </div>
              <div class="form-group">
-           		<label for="name">Mensagem</label>
+           		<label for="mensagem">Mensagem</label>
                <textarea name="mensagem" id="mensagem" placeholder="Escreva sua mensagem" class="form-control"></textarea>
             </div>
 		
@@ -76,7 +81,7 @@ include 'header.php' ?>
 	
 		
 		<div class="text-center">
-        <button class="btn btn-success" type="submit">Enviar</button>    
+        <button class="btn btn-info" type="submit">Enviar</button>    
             </div>
 		
 	</form>
