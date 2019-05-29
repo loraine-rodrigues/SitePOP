@@ -3,13 +3,7 @@ $title = "SOBRE NÓS";
 
 include 'header.php' ?>
 <style type="text/css">
-    body {
-        width: 100%;
-        background-image: url(image/3.1.png) !important;
-        background-repeat: no-repeat;
-        background-position: 30% 45%;
-        background-size: cover;
-    }
+
 </style>
 <div class="container text-center mb-3">
     <div class="card m-auto text-left" style="width: 54rem;">
