@@ -3,7 +3,16 @@ $title = "TERMOS DE USO";
 
 include 'header.php' ?>
 <style type="text/css">
-   
+body {
+        width: 100%;
+        background-image: url(image/bg-termos.png) !important;
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: cover;
+       
+        
+        
+    }
 </style>
 
 <div class="container text-center mb-3">

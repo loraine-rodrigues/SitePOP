@@ -2,6 +2,18 @@
 $title = "DÚVIDAS";
 
 include 'header.php' ?>
+<style type="text/css">
+body {
+        width: 100%;
+        background-image: url(image/bg-duvida.png) !important;
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: cover;
+       
+        
+        
+    }
+</style>
 
 
 
