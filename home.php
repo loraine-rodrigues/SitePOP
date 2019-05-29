@@ -40,6 +40,13 @@ if (isset($_POST['entrar'])) {
 
     body {
         width: 100%;
+        background-image: url(image/bg-image.png) !important;
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: cover;
+       
+        
+        
     }
 
     p {
