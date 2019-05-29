@@ -3,6 +3,9 @@ $title = "HOME";
 require 'conexao.php';
 include 'header.php';
 
+require 'conexao.php';
+include 'header.php';
+
 if (isset($_POST['entrar'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
@@ -29,42 +32,14 @@ if (isset($_POST['entrar'])) {
         echo "Erro ao logar: " . $excecao->getMessage();
     }
 }
- ?>
+?>
+
+
 <style type="text/css">
-    .btn-home {
-        color: white;
+    .btns {
+        /*color: #0f6674;*/
         font-weight: bold;
-    }
-
-    .botaoLog {
-        background: black;
-        line-height: 40px;
-        border: 2px solid;
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        right: 70%;
-        transform: translate(-50%, -50%);
-        float: right;
-        padding: 5px 20px;
-        vertical-align: middle;
-        ;
-
-    }
-
-    .botao {
-        background: black;
-        line-height: 40px;
-        border: 2px solid;
-        cursor: pointer;
-        padding: 5px 20px;
-        position: absolute;
-        top: 50%;
-        left: 60%;
-        transform: translate(-50%, -50%);
-        opacity: 0.6;
-        float: center;
-        text-decoration: none
+        border-width:  3px;
     }
 
     body {
@@ -78,35 +53,34 @@ if (isset($_POST['entrar'])) {
     }
 
     p {
-
         display: inline;
-
     }
 
     .btn-entrar {
         width: 50%;
         margin-left: 25%;
-
     }
+
 </style>
 
-    <div class="container">
-        <div class="row">
-            <div class=" mt-4 col-md-11 ">
-                <img src="image/LOGO1.png" width="400px" height="300px" class="img-responsive">
-            </div>
+<div class="row">
+    <div class="col">
+        <div class="img-fluid mt-4 col-md-11 ">
+            <img src="image/LOGO1.png" width="400px" height="300px" class="img-responsive">
         </div>
     </div>
-    <div class="container">
+
+<?php if (!isset($_SESSION['logado'])) { ?>
+
+
+    <div class="col">
+        <!--ENTRAR-->
+        <a class="btn btns btn-outline-info m-4 py-2 px-4  rounded-pill float-right" href="#" data-toggle="modal" data-target=#modal1>ENTRAR</a>
+
         <!--CADASTRE-SE-->
-        <div class="botao rounded-pill">
-            <a class="nav-link btn-home" name="cadastrar" href="#" data-toggle="modal" data-target=#modal>CADASTRE-SE</a>
-            <!--ENTRAR-->
-            <div class="botaoLog rounded-pill ">
-                <a class="nav-link btn-home " name="entrar" href="#" data-toggle="modal" data-target=#modal1>ENTRAR</a>
-            </div>
-        </div>
+        <a class="btn btns btn-outline-info m-4 py-2 px-4 rounded-pill float-right" href="#" data-toggle="modal" data-target=#modal>CADASTRE-SE</a>
     </div>
+</div>
 
     <!--Modal para cadastro de CLIENTE ou MOTOFRETISTA-->
     <div id="modal" class="modal fade" role="dialog">
@@ -160,6 +134,7 @@ if (isset($_POST['entrar'])) {
                     </div>
                 <?php
             endif;
+
             session_destroy();
             ?>
 
@@ -176,9 +151,6 @@ if (isset($_POST['entrar'])) {
         </div>
     </div>
 
-
-
-
-
+<?php } ?>
 
 <?php include 'footer.php' ?>

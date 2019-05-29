@@ -11,7 +11,7 @@ if (isset($_POST['excluir'])) {
         $comando->bindParam(':id', $_POST['id']);
         $comando->execute();
 
-        header('Location: index.php');
+        header('Location: home.php');
         exit();
     }
     catch (PDOException $excecao) {

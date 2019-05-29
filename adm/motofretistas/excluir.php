@@ -1,6 +1,6 @@
 <?php
 
-$title = "EDITAR CLIENTE";
+$title = "EXCLUIR CLIENTE";
 
 include "../../header.php";
 require "../../conexao.php";
@@ -11,7 +11,7 @@ if (isset($_POST['excluir'])) { //Se clicar no botão excluir entra no if
         $comando->bindParam(':id', $_POST['id']); //Coloca o id no comando
         $comando->execute();
 
-        header('Location: index.php');//redireciona para index
+        header('Location: home.php');//redireciona para index
         exit();     //Se excluir, finaiza a execução da pagina
     }
     catch (PDOException $excecao) {
@@ -20,7 +20,7 @@ if (isset($_POST['excluir'])) { //Se clicar no botão excluir entra no if
 }
     //Redireciona p index se nao receber um valor ou se esse valor nao for numero
 if (!isset($_GET['id']) || !is_numeric($_GET['id']) ){
-    header('Location: index.php');
+    header('Location: home.php');
     exit();
 }
 
@@ -34,7 +34,7 @@ catch (PDOException $excecao) {
 }
 
 if ($comando->rowCount() == 0){     //se o numero de linhas retornadas for igual a 0, redireciona p index
-    header('Location: index.php');
+    header('Location: home.php');
     exit();
 }
 

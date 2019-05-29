@@ -25,10 +25,11 @@ if (isset($_POST['confirmarCadastro'])) {
             $comando->bindParam(6, $senha);
             $comando->execute();
 
-            echo "Cliente cadastrado!";
+            $mensagem = "Cliente cadastrado com sucesso<br/>Clique <a href='../home.php'>aqui</a> para efetuar login";
         }
         catch (PDOException $excecao) {
-            echo "Erro ao cadastrar clientes: " . $excecao->getMessage();
+            $erro = "Erro ao cadastrar clientes";
+//            $excecao->getMessage();
         }
     }
 }
@@ -38,6 +39,27 @@ if (isset($_POST['confirmarCadastro'])) {
     <h1 class="font-weight-light text-white">CADASTRO CLIENTE</h1>
     <div class="card mx-auto my-5 text-left" style="width: 54rem;"> <!--Div usada para formartar o card de login -->
         <div class="card-body">
+
+            <?php
+            if (isset($erro)):     //Mensagem de erro no cadastro
+                ?>
+                <div class="alert alert-danger">
+                    <?php echo $erro; ?>
+                </div>
+            <?php
+            endif;
+            ?>
+
+            <?php
+            if (isset($mensagem)):   //Mensagem de sucesso no cadastro
+                ?>
+                <div class="alert alert-success">
+                    <?php echo $mensagem; ?>
+                </div>
+            <?php
+            endif;
+            ?>
+
             <h3 class="card-title mb-4">DADOS PESSOAIS</h3>
             <form method="post" id="form" class="needs-validation" novalidate>
                 <div class="row">
@@ -398,7 +420,8 @@ if (isset($_POST['confirmarCadastro'])) {
             }
 
             form.addClass('was-validated');
-            return false;
+
+            return form[0].checkValidity();
 
         });
 

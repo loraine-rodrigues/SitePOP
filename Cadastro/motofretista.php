@@ -11,7 +11,7 @@ function carregarFoto($uuid) {
     $uploadOk = 1;
     $tipo_arquivo = strtolower(pathinfo($caminho_destino,PATHINFO_EXTENSION));
     $caminho_destino = $pasta_destino . $uuid . "." . $tipo_arquivo;
-// Check if image file is a actual image or fake image
+// Verifique se o arquivo de imagem é uma imagem real ou uma imagem falsa
     if(isset($_POST["confirmarCadastro"])) {
         $check = getimagesize($_FILES["foto"]["tmp_name"]);
         if($check !== false) {
@@ -23,32 +23,33 @@ function carregarFoto($uuid) {
         }
     }
 
-// Check if file already exists
+// Verifique se o arquivo já existe
     if (file_exists($caminho_destino)) {
-//        echo "Sorry, file already exists.";
+// echo "Desculpe, o arquivo já existe.";
         $uploadOk = 0;
     }
-// Check file size
+
+// Verifique o tamanho do arquivo
     if ($_FILES["foto"]["size"] > 500000) {
-//        echo "Sorry, your file is too large.";
+// echo "Desculpe, seu arquivo é muito grande.";
         $uploadOk = 0;
     }
-// Allow certain file formats
+// Permitir determinados formatos de arquivo
     if($tipo_arquivo != "jpg" && $tipo_arquivo != "png" && $tipo_arquivo != "jpeg") {
-//        echo "Sorry, only JPG, JPEG & PNG files are allowed.";
+// echo "Desculpe, apenas arquivos JPG, JPEG e PNG são permitidos.";
         $uploadOk = 0;
     }
-// Check if $uploadOk is set to 0 by an error
+// Verifique se $ uploadOk está definido como 0 por um erro
     if ($uploadOk == 0) {
-//        echo "Sorry, your file was not uploaded.";
+// echo "Desculpe, seu arquivo não foi enviado.";
         return 'erro';
-// if everything is ok, try to upload file
+// se tudo estiver ok, tente fazer o upload do arquivo
     } else {
         if (move_uploaded_file($_FILES["foto"]["tmp_name"], $caminho_destino)) {
-//            echo "The file ". basename( $_FILES["foto"]["name"]). " has been uploaded.";
+// echo "O arquivo". basename ($ _FILES ["foto"] ["nome"]). "foi carregado";
             return $uuid . "." . $tipo_arquivo;
         } else {
-//            echo "Sorry, there was an error uploading your file.";
+// echo "Desculpe, houve um erro ao fazer o upload do seu arquivo.";
             return 'erro';
         }
     }
@@ -109,15 +110,14 @@ if (isset($_POST['confirmarCadastro'])) {
                 $comando->bindParam(':foto', $foto);
                 $comando->execute();
 
-                $mensagem = "Motofretista cadastrado com sucesso<br/>Clique <a href='../index.php'>aqui</a> para efetuar login";
+                $mensagem = "Motofretista cadastrado com sucesso<br/>Clique <a href='../home.php'>aqui</a> para efetuar login";
             } else {
                 $erro = 'Erro ao cadastrar';
-                echo $excecao->getMessage();
             }
         }
         catch (PDOException $excecao) {
             $erro = "Erro ao cadastrar";
-            echo $excecao->getMessage();
+//            echo $excecao->getMessage();
         }
     }
 }
@@ -169,7 +169,7 @@ if (isset($_POST['confirmarCadastro'])) {
                     ?>
 
                     <?php
-                    if (isset($mensagem)):   //Mensagem de sucessp no cadastro
+                    if (isset($mensagem)):   //Mensagem de sucesso no cadastro
                         ?>
                         <div class="alert alert-success">
                             <?php echo $mensagem; ?>
