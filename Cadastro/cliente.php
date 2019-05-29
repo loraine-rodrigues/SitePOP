@@ -36,7 +36,7 @@ if (isset($_POST['confirmarCadastro'])) {
 ?>
 
 <div class="container text-center">
-    <h1 class="font-weight-light text-white">CADASTRO CLIENTE</h1>
+    <h1 class="font-weight-light text-warning">CADASTRO CLIENTE</h1>
     <div class="card mx-auto my-5 text-left" style="width: 54rem;"> <!--Div usada para formartar o card de login -->
         <div class="card-body">
 
