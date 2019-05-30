@@ -14,14 +14,7 @@ if (strlen($_POST['nome'])) {
 ?>
 
 <style type="text/css">
-    h2 {
-        background-color: white;
-        line-height: 40px;
-        border-style: 2px;
-        padding: 5px 20px;
-        opacity: 0.6;
-        text-decoration: none
-    }
+    
 
     .field {
         padding: 10px;
