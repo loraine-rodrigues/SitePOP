@@ -6,9 +6,8 @@ include 'header.php' ?>
 body {
         width: 100%;
         background-image: url(image/bg-termos.png) !important;
-        background-repeat: no-repeat;
         background-position: 100% 100%;
-        background-size: cover;
+        background-size:100%;
        
         
         
@@ -24,7 +23,7 @@ body {
     </div>
 </div>
 <br>
-<div class="card m-auto text-left" style="width: 54rem;">
+<div class="card m-auto text-left" style="width: 74rem;">
     <div class="card-body">
             
             <img src="image/termos.png" width="150" height="150" class="float-right">
