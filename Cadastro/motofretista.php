@@ -388,7 +388,6 @@ if (isset($_POST['confirmarCadastro'])) {
                             </div>
                         </div>
 
-                        <!-- Then put toasts within -->
                         <div class="toast toast-top-center" role="alert" aria-live="assertive" aria-atomic="true">
                             <div class="toast-header bg-danger text-white">
                                 <strong class="mr-auto">Alerta</strong>
@@ -850,9 +849,18 @@ if (isset($_POST['confirmarCadastro'])) {
             });
 
             placa.keyup(() => {
+                placa = $("#placa");
+                var feedbackPlaca = $("#feedbackPlaca");
                 if (placa.val().length > 0) {
-                    placa.get(0).setCustomValidity('');
-                } else {
+                    if (Inputmask.isValid(placa.val(), "AAA-9999")) {
+                        placa.get(0).setCustomValidity('');
+                        feedbackPlaca.text("");
+                    } else {
+                        feedbackPlaca.text("Digite uma placa válida");
+                        placa.get(0).setCustomValidity('Inválido');
+                    }
+                } else{
+                    feedbackPlaca.text("Campo obrigatório");
                     placa.get(0).setCustomValidity('Inválido');
                 }
             });
@@ -1046,9 +1054,18 @@ if (isset($_POST['confirmarCadastro'])) {
                     }
                 }
 
+                var feedbackPlaca = $("#feedbackPlaca");
                 if (placaValida) {
                     placa.get(0).setCustomValidity('');
+                    if (placaValida) {
+                        feedbackPlaca.text("");
+                        placa.get(0).setCustomValidity('');
+                    } else {
+                        feedbackPlaca.text("Digite uma placa válida");
+                        placa.get(0).setCustomValidity('Inválido');
+                    }
                 } else {
+                    feedbackPlaca.text("Campo obrigatório");
                     placa.get(0).setCustomValidity('Inválido');
                 }
 
