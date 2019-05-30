@@ -3,7 +3,7 @@ $title = "CONTATO";
 include 'funcao.php';
 include 'header.php';
 if (strlen($_POST['nome'])) {
-    if (sendMail($_POST['email'], 'popmotos1111.gmail.com', $_POST['mensagem'], 'Formulário de contato')) {
+    if (sendMail($_POST['email'], 'seuemail@gmail.com', $_POST['mensagem'], 'Formulário de contato')) {
         echo "Sua mensagem foi enviada com sucesso!";
     } else {
         echo "Ocorreu um erro ao enviar";
