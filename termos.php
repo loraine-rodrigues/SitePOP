@@ -26,7 +26,7 @@ body {
 <br>
 <div class="card m-auto text-left" style="width: 54rem;">
     <div class="card-body">
-            <hr />
+            
             <img src="image/termos.png" width="150" height="150" class="float-right">
 
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique arcu at urna dignissim, eu rutrum sem fermentum. Sed dapibus sodales nisi a suscipit. Vestibulum et eros non odio congue sodales. Maecenas non turpis in risus porttitor aliquet sit amet non est. Donec at rutrum orci. Etiam malesuada risus vel lectus sagittis ullamcorper. Duis laoreet metus metus, at consectetur enim convallis a. Suspendisse tellus ligula, lacinia id odio id, aliquam rhoncus ex. Sed sodales ultrices auctor. Phasellus quis metus sed sem pretium sollicitudin dapibus ac augue. Etiam ut dolor in augue vulputate vulputate. Nullam placerat lorem fringilla neque tincidunt auctor. Etiam purus velit, semper non nisi quis, tempus convallis mi. Vestibulum porta dolor dapibus, feugiat nunc a, accumsan nibh.
