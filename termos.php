@@ -15,11 +15,17 @@ body {
     }
 </style>
 
-<div class="container text-center mb-3">
-    <div class="card m-auto text-left" style="width: 54rem;">
-
-        <div class="card-body">
-            <h2 class="font-weight-light text-center text-warning ">TERMOS DE USO</h2>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md-11 text-center">
+            
+            <h2 class="ml-5 text-info ">TERMOS DE USO</h2>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card m-auto text-left" style="width: 24rem;">
+    <div class="card-body">
             <hr />
             <img src="image/termos.png" width="150" height="150" class="float-right">
 
