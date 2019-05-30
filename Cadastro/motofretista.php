@@ -152,7 +152,7 @@ if (isset($_POST['confirmarCadastro'])) {
     </style>
 
     <div class="container text-center">
-        <h1 class="font-weight-light text-white mb-5">CADASTRO MOTOFRETISTA</h1>
+        <h1 class="text-info ml-5">CADASTRO MOTOFRETISTA</h1>
         <form enctype="multipart/form-data" method="post" id="form" class="needs-validation" novalidate>
 
             <!--Div usada para formartar o card de login -->

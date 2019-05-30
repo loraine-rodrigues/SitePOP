@@ -2,13 +2,25 @@
 $title = "DÚVIDAS";
 
 include 'header.php' ?>
+<style type="text/css">
+body {
+        width: 100%;
+        background-image: url(image/bg-duvida.png) !important;
+        background-repeat: no-repeat;
+        background-position: 100% 1%;
+        background-size: cover;
+       
+        
+        
+    }
+</style>
 
 
 
 <div class="container text-center">
     
-    <h2 class="font-weight-light text-teal ml-5">DÚVIDAS<img src="image/duvidas.png" width="80" height="80" class="align-middle ml-4"> </h2>
-    <hr />
+    <h2 class="text-info ml-5">DÚVIDAS<img src="image/duvidas.png" width="80" height="80" class="align-middle ml-4"> </h2>
+
 
     <div class="accordion mb-3">
         <!--DÚVIDA 1-->

@@ -2,9 +2,9 @@
 
 echo '
     </main>
-    <footer class="footer mt-auto py-3 text-center bg-dark navbar-customizada";   >
+    <footer class="footer mt-auto py-3 text-center bg-light navbar-customizada";   >
       <div class="container">
-        <span class="text-white-50";   >&copy; 2019 - POP!</span>
+        <span class="text-black-50";   >&copy; 2019 - POP!</span>
         
       </div>
     </footer>

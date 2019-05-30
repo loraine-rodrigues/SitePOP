@@ -40,6 +40,13 @@ if (isset($_POST['entrar'])) {
 
     body {
         width: 100%;
+        background-image: url(image/bg-image.png) !important;
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: cover;
+       
+        
+        
     }
 
     p {
@@ -54,9 +61,9 @@ if (isset($_POST['entrar'])) {
 </style>
 
 <div class="row">
-    <div class="col">
-        <div class="img-fluid mt-4 col-md-11 ">
-            <img src="image/LOGO1.png" width="400px" height="300px" class="img-responsive">
+    <div class="col align-self-center" style="padding-left:250px;">
+      <div class="img-fluid">
+            <img src="image/logoNovo.png" width="400px" height="400px" class="img-responsive">
         </div>
     </div>
 
