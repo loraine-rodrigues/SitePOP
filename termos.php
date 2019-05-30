@@ -24,7 +24,7 @@ body {
     </div>
 </div>
 <br>
-<div class="card m-auto text-left" style="width: 24rem;">
+<div class="card m-auto text-left" style="width: 54rem;">
     <div class="card-body">
             <hr />
             <img src="image/termos.png" width="150" height="150" class="float-right">
