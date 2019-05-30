@@ -20,7 +20,7 @@ body {
 <div class="container text-center">
     
     <h2 class="text-info ml-5">DÚVIDAS<img src="image/duvidas.png" width="80" height="80" class="align-middle ml-4"> </h2>
-    <hr />
+
 
     <div class="accordion mb-3">
         <!--DÚVIDA 1-->
