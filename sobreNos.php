@@ -18,7 +18,7 @@ body {
     <div class="row">
         <div class="col-md-11 text-center">
             
-            <h2 class="ml-5 text-info ">SOBRE NÓS</h2>
+            <h2 class="ml-5 text-info align-middle ml-4">SOBRE NÓS</h2>
              
         </div>
     </div>
