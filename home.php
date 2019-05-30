@@ -61,7 +61,7 @@ if (isset($_POST['entrar'])) {
 </style>
 
 <div class="row">
-    <div class="col">
+    <div class="col-4">
         <div class="img-fluid mt-4 col-md-11 ">
             <img src="image/POP.png" width="400px" height="400px" class="img-responsive">
         </div>
