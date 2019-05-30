@@ -19,13 +19,14 @@ body {
         <div class="col-md-11 text-center">
             
             <h2 class="ml-5 text-info ">SOBRE NÓS</h2>
+                <hr />
         </div>
     </div>
 </div>
 <br>
 <div class="card m-auto text-left" style="width: 54rem;">
     <div class="card-body">
-            <hr />
+            
             <div class="text-center">
                 <b>O POP!</b> é uma plataforma com o objetivo de promover ideias de tecnologia para integração digital de autônomos.
                 Para atender as demandas de mobilidade e rapidez no estilo de vida urbano surgiu o POP! Motofrete.
