@@ -19,7 +19,7 @@ body {
         <div class="col-md-11 text-center">
             
             <h2 class="ml-5 text-info ">SOBRE NÓS</h2>
-                <hr />
+             
         </div>
     </div>
 </div>
