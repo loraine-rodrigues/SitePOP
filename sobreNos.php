@@ -15,10 +15,12 @@ body {
     }
 </style>
 <div class="container text-center mb-3">
-    <div class="card m-auto text-left" style="width: 54rem;">
+    <div class="row">
+        <div class="col-md-11 text-center">
 
-        <div class="card-body">
-            <h2 class="font-weight-light text-center text-warning ">SOBRE NÓS</h2>
+            <h2 class="ml-5 text-info ">SOBRE NÓS</h2>
+        </div>
+    </div>
             <hr />
             <div class="text-center">
                 <b>O POP!</b> é uma plataforma com o objetivo de promover ideias de tecnologia para integração digital de autônomos.
