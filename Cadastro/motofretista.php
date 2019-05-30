@@ -149,6 +149,15 @@ if (isset($_POST['confirmarCadastro'])) {
             width: 18em;
             height: 12em;
         }
+
+        .toast-top-center {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0 auto;
+            z-index: 99999;
+        }
     </style>
 
     <div class="container text-center">
@@ -253,7 +262,7 @@ if (isset($_POST['confirmarCadastro'])) {
                                             Escolher uma foto... <input type="file" name="foto" id="img-input" required>
                                         </span>
                                     </span>
-                                    <input id="img-text" type="text" class="form-control readonly" autocomplete="off" onmousedown="return false" required>
+                                    <input id="img-text" type="text" class="form-control somenteLeitura" autocomplete="off" onmousedown="return false" required>
                                     <div class="invalid-feedback">
                                         <span> É necessário enviar uma foto </span>
                                     </div>
@@ -376,6 +385,19 @@ if (isset($_POST['confirmarCadastro'])) {
                                 <div class="invalid-feedback">
                                     <span id="feedbackMei"> </span>
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- Then put toasts within -->
+                        <div class="toast toast-top-center" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header bg-danger text-white">
+                                <strong class="mr-auto">Alerta</strong>
+                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="toast-body bg-white">
+                                É necessário possuir MEI para efetuar cadastro
                             </div>
                         </div>
 
@@ -525,15 +547,16 @@ if (isset($_POST['confirmarCadastro'])) {
         </form>
     </div>
 
+
+
     <script>
         $(document).ready( () => {
             //teste de script para pegar imagem
-
-            $(".readonly").keydown(function(e){
+            $(".somenteLeitura").keydown(function(e){
                 e.preventDefault();
             });
 
-            $(".readonly").bind('cut copy paste', function (e){
+            $(".somenteLeitura").bind('cut copy paste', function (e){
                 e.preventDefault();
             });
 
@@ -676,6 +699,8 @@ if (isset($_POST['confirmarCadastro'])) {
                         mei.get(0).setCustomValidity('');
                         feedbackMei.text("")
                     } else {
+                        $('.toast').toast({delay : 2000});
+                        $('.toast').toast('show');
                         mei.get(0).setCustomValidity('Inválido');
                         feedbackMei.text("É necessário possuir MEI para efetuar cadastro")
                     }
