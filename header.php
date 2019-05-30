@@ -72,6 +72,9 @@ echo '
           <!--Itens da navbar -->
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+             <li class="nav-item mx-2">
+                <a class="nav-link" href="/catalogo.php">Motofretistas</a>
+              </li> 
               <li class="nav-item mx-2">
                 <a class="nav-link" href="/sobreNos.php">Sobre nós</a>
               </li>
@@ -81,9 +84,6 @@ echo '
               <li class="nav-item mx-2">
                 <a class="nav-link" href="/termos.php">Termos de uso</a>
               </li>
-              <li class="nav-item mx-2">
-                <a class="nav-link" href="/catalogo.php">Motofretistas</a>
-              </li> 
               <li class="nav-item mx-2">
                 <a class="nav-link" href="/contato.php">Contato</a>
               </li>';
