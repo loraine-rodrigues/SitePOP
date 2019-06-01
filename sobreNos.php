@@ -23,10 +23,10 @@ body {
     </div>
 </div>
 <br>
-<div class="card m-auto text-left" style="width: 54rem;">
+<div class="card m-auto text-left" >
     <div class="card-body">
             
-            <div class="text-center">
+            <div class="container text-center">
                 <b>O POP!</b> é uma plataforma com o objetivo de promover ideias de tecnologia para integração digital de autônomos.
                 Para atender as demandas de mobilidade e rapidez no estilo de vida urbano surgiu o POP! Motofrete.
                 Nossa missão é facilitar e divulgar os prestadores de serviço para que sejam protagonistas do seu negócio.

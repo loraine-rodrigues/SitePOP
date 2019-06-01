@@ -3,6 +3,8 @@ $title = "HOME";
 require 'conexao.php';
 include 'header.php';
 
+
+
 if (isset($_POST['entrar'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
@@ -37,12 +39,20 @@ if (isset($_POST['entrar'])) {
         /*color: #0f6674;*/
         font-weight: bold;
     }
-
-    body {
+    
+@media only screen and (max-width: 767px) {
+  body {
+    /* The file size of this background image is 93% smaller
+       to improve page load speed on mobile internet connections */
+       background-image: url(image/bg-image.png) !important;
+  }
+}
+body {
         width: 100%;
-        background-image: url(image/bg-image.png) !important;
+        background-image: url(image/bg-image.png)!important;
         background-repeat: no-repeat;
-        background-position: 100% 100%;
+        background-position: center center;
+        background-attachment: fixed;
         background-size: cover;
        
         
@@ -142,7 +152,7 @@ if (isset($_POST['entrar'])) {
 
                 <!-- Esqueci a senha-->
                 <div class="text-right mt-3">
-                    <span class="mr-2 md-4"><a href="#">Esqueci minha senha</a> </span>
+                    <span class="mr-2 md-4"><a href="esqueceuasenha.php">Esqueci minha senha</a> </span>
                 </div>
             </div>
         </div>

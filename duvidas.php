@@ -3,16 +3,25 @@ $title = "DÚVIDAS";
 
 include 'header.php' ?>
 <style type="text/css">
+@media only screen and (max-width: 767px) {
+  body {
+    /* The file size of this background image is 93% smaller
+       to improve page load speed on mobile internet connections */
+       background-image: url(image/bg-duvida.png) !important;
+  }
+}
 body {
         width: 100%;
         background-image: url(image/bg-duvida.png) !important;
         background-repeat: no-repeat;
-        background-position: 100% 1%;
+        background-position: center center;
+        background-attachment: fixed;
         background-size: cover;
        
         
         
     }
+    
 </style>
 
 

@@ -3,7 +3,7 @@ $title = "CONTATO";
 include 'funcao.php';
 include 'header.php';
 if (strlen($_POST['nome'])) {
-    if (sendMail($_POST['email'], 'seuemail@gmail.com', $_POST['mensagem'], 'Formulário de contato')) {
+    if (sendMail($_POST['email'], 'popmotos1111@gmail.com', $_POST['mensagem'], 'Formulario de contato')) {
         echo "Sua mensagem foi enviada com sucesso!";
     } else {
         echo "Ocorreu um erro ao enviar";
@@ -15,23 +15,18 @@ if (strlen($_POST['nome'])) {
 
 <style type="text/css">
     
-
     .field {
         padding: 10px;
         margin-top: 10px;
         margin-bottom: 30px;
         font-size: 16px;
     }
-
     body {
         width: 100%;
         background-image: url(image/bg-contato.png) !important;
         background-repeat: no-repeat;
         background-position: 100% 100%;
         background-size: cover;
-
-
-
     }
     
 </style>
@@ -89,7 +84,6 @@ if (strlen($_POST['nome'])) {
             alert('Você precisa preencher o campo Mensagem');
             erro = true;
         }
-
         //se nao tiver erros
         if (!erro) {
             $('#formulario_contato').submit();
