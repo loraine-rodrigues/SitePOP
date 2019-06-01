@@ -6,24 +6,30 @@ function sendMail($de,$para,$mensagem,$assunto)
 
     $mail->IsSMTP();
     try {
-      $mail->SMTPAuth   = true;                 
-      $mail->Host       = 'smtp.gmail.com';     
-      $mail->SMTPSecure = "tls";                #remova se nao usar gmail
-	  $mail->Port       = 587;                  #remova se nao usar gmail
-      $mail->Username   = 'popmotos1111@gmail.com'; 
+      $mail->CharSet = 'utf-8';
+      $mail->SMTPAuth   = true;
+      $mail->SMTPDebug  = 2;
+      $mail->Host       = 'smtp.gmail.com';
+      $mail->SMTPSecure = 'tls';
+	  $mail->Port       = 587;
+      $mail->Username   = 'popmotos1111@gmail.com';
       $mail->Password   = 'motofrete';
-      $mail->AddAddress($para);
-	  $mail->AddReplyTo($de);
-      $mail->SetFrom($de);
+      $mail->AddAddress($para, 'email');
+	  $mail->AddReplyTo($de, 'POP!');
+      $mail->SetFrom($de, 'POP!');
       $mail->Subject = $assunto;
       $mail->MsgHTML($mensagem);
-      $mail->Send();     
+      $mail->Send();
       $envio = true;
     } catch (phpmailerException $e) {
+      echo "erro: " . $mail->ErrorInfo;
       $envio = false;
     } catch (Exception $e) {
+      echo "erro: " . $mail->ErrorInfo;
       $envio = false;
     }
     return $envio;
 }
+
+
 ?>

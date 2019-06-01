@@ -28,7 +28,7 @@ catch (PDOException $excecao) {
             <div class="row">
         <div class="col-md-11 text-center">
             
-            <h2 class="ml-5 text-info ">MOTOFRETISTAS</h2>
+            <h2 class="ml-5 ">MOTOFRETISTAS</h2>
         </div>
     </div>
             <div class="container">

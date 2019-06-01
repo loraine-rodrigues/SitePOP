@@ -29,12 +29,28 @@ echo '
     
     <!--Style para padronização de todas as páginas -->
     <style>
-          body {   
-                       
-            background-color: #f2f2f2;                      // cor de fundo da pagina 
+    @media only screen and (min-width: 767px) {
+      body {
+        /* The file size of this background image is 93% smaller
+           to improve page load speed on mobile internet connections */
+
+      }
+      
+
+    }
+    body {
+            width: 100%;
+           
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
             font-family: \'Montserrat\', sans-serif;
-               // fonte do site
-         }
+            // fonte do site
+           
+            
+            
+        }
          .navbar-customizada{
           width: 100%;
           background-color:#0095B6;

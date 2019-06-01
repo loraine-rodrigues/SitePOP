@@ -3,11 +3,20 @@ $title = "TERMOS DE USO";
 
 include 'header.php' ?>
 <style type="text/css">
+@media only screen and (max-width: 767px) {
+  body {
+    /* The file size of this background image is 93% smaller
+       to improve page load speed on mobile internet connections */
+       background-image: url(image/bg-termos.png) !important;
+  }
+}
 body {
         width: 100%;
-        background-image: url(image/bg-termos.png) !important;
-        background-position: 100% 100%;
-        background-size:100%;
+        background-image: url(image/bg-termos.png)!important;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
        
         
         
@@ -18,12 +27,12 @@ body {
     <div class="row">
         <div class="col-md-11 text-center">
             
-            <h2 class="ml-5 text-info ">TERMOS DE USO</h2>
+            <h2 class="ml-5  ">TERMOS DE USO</h2>
         </div>
     </div>
 </div>
 <br>
-<div class="card m-auto text-left" style="width: 74rem;">
+<div class="card m-auto text-left" >
     <div class="card-body">
             
             <img src="image/termos.png" width="150" height="150" class="float-right">
