@@ -27,11 +27,12 @@ body {
     <div class="row">
         <div class="col-md-11 text-center">
             
-            <h2 class="ml-5  ">TERMOS DE USO</h2>
+            <h2 class="ml-5 h1-responsive  ">TERMOS DE USO</h2>
         </div>
     </div>
 </div>
 <br>
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
 <div class="card m-auto text-left" >
     <div class="card-body">
             
@@ -125,7 +126,7 @@ O usuário e o associado aceita a eleição do Foro Central da Comarca da Capita
  
 
 <br> 
-          
+    </div>     
         </div>
     </div>
 </div>
