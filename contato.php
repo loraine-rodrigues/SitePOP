@@ -50,6 +50,7 @@ if (isset($_POST['nome'])) {
 <div class="card m-auto text-left" style="width: 24rem;">
     <div class="card-body">
 
+       <div class="container">
         <form method="post" id="formulario_contato" onsubmit="validaForm(); return false;" class="form">
             <div class="form-group">
                 <label for="nome">Nome</label>
@@ -64,6 +65,7 @@ if (isset($_POST['nome'])) {
                 <label for="mensagem">Mensagem</label>
                 <textarea name="mensagem" id="mensagem" placeholder="Escreva sua mensagem" class="form-control"></textarea>
             </div>
+    </div>
 
 
 
