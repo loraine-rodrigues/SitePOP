@@ -162,11 +162,7 @@ body {
 
                 <!-- Esqueci a senha-->
                 <div class="text-right mt-3">
-<<<<<<< HEAD
                     <span class="mr-2 md-4"><a href="recuperarSenha/esqueciasenha.html">Esqueci minha senha</a> </span>
-=======
-                    <span class="mr-2 md-4"><a href="esqueceuasenha.php">Esqueci minha senha</a> </span>
->>>>>>> master
                 </div>
             </div>
         </div>
@@ -175,3 +171,4 @@ body {
 <?php } ?>
 
 <?php include 'footer.php' ?>
+
