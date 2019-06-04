@@ -21,6 +21,7 @@ if (strlen($_POST['nome'])) {
         margin-bottom: 30px;
         font-size: 16px;
     }
+<<<<<<< HEAD
     @media only screen and (min-width: 767px) {
   body {
     /* The file size of this background image is 93% smaller
@@ -28,6 +29,8 @@ if (strlen($_POST['nome'])) {
        background-image: url(image/bg-contato.png) !important;
   }
 }
+=======
+>>>>>>> master
     body {
         width: 100%;
         background-image: url(image/bg-contato.png) !important;

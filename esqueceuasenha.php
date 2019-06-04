@@ -3,6 +3,7 @@ $title = "RECUPERAR SENHA";
 include 'conexao.php';
 include 'funcao.php';
 include 'header.php';
+<<<<<<< HEAD
 
 
 if (isset($_POST['email'])) {
@@ -12,6 +13,13 @@ if (isset($_POST['email'])) {
      $mensagem .= "Recupere sua senha: ";
      $mensagem = "Clique <a href=".$link.">aqui</a> para recuperar sua senha.";
      
+=======
+if (isset($_POST['email'])) {
+    $email =    strip_tags(trim($_POST['email']));
+     //envia o email para a pessoa juntamente com seu nome e sua senha
+     $mensagem = "Olá $nome, você solicitou a recuperação de senha.\n";
+     $mensagem .= "Sua senha é: $senha";
+>>>>>>> master
     if (sendMail($_POST['email'], $email, $mensagem, 'Recuperação de senha')) {
          //alerta que o email foi enviado e o redireciona para outra página
          echo "<script>alert('Senha enviada por e-mail, verifique sua caixa de mensagens ou sua caixa de spans.'),window.open('home.php','_self')</script>";
@@ -22,7 +30,11 @@ if (isset($_POST['email'])) {
             //tais como o nome e a senha
             while ($exibir = $res->fetch(PDO::FETCH_OBJ)) {
                 $email = $exibir->email;
+<<<<<<< HEAD
                 $recupera = $exibir->recupera;
+=======
+                $senha = $exibir->senha;
+>>>>>>> master
             }
         }
 
@@ -35,7 +47,10 @@ if (isset($_POST['email'])) {
         }
         exit();
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> master
 ?>
 
 <style type="text/css">

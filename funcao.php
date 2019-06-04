@@ -6,7 +6,10 @@ function sendMail($de,$para,$mensagem,$assunto)
 
     $mail->IsSMTP();
     try {
+<<<<<<< HEAD
       $mail->CharSet = 'utf-8';
+=======
+>>>>>>> master
       $mail->SMTPAuth   = true;
       $mail->SMTPDebug  = 2;
       $mail->Host       = 'smtp.gmail.com';
@@ -30,6 +33,9 @@ function sendMail($de,$para,$mensagem,$assunto)
     }
     return $envio;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
 ?>
