@@ -53,7 +53,7 @@ if (isset($_POST['entrar'])) {
 
 body {
         width: 100%;
-        background-image: url(image/bg-image.png)!important;
+        background-image: url(image/bg-home.png)!important;
         background-repeat: no-repeat;
         background-position: center center;
         background-attachment: fixed;
