@@ -2,7 +2,7 @@
 $title = "CONTATO";
 include 'funcao.php';
 include 'header.php';
-if (strlen($_POST['nome'])) {
+if (isset($_POST['nome'])) {
     if (sendMail($_POST['email'], 'popmotos1111@gmail.com', $_POST['mensagem'], 'Formulario de contato')) {
         echo "Sua mensagem foi enviada com sucesso!";
     } else {
@@ -21,7 +21,6 @@ if (strlen($_POST['nome'])) {
         margin-bottom: 30px;
         font-size: 16px;
     }
-<<<<<<< HEAD
     @media only screen and (min-width: 767px) {
   body {
     /* The file size of this background image is 93% smaller
@@ -29,8 +28,6 @@ if (strlen($_POST['nome'])) {
        background-image: url(image/bg-contato.png) !important;
   }
 }
-=======
->>>>>>> master
     body {
         width: 100%;
         background-image: url(image/bg-contato.png) !important;
