@@ -36,7 +36,7 @@ body {
         <div class="card">
             <div class="card-header">
                 <h2 class="mb-0">
-                    <button class="btn btn-link text-warning" type="button" data-toggle="collapse" data-target="#pergunta1">
+                    <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta1">
                         <img src="image/duvida1.png" class="mr-3" width="50" height="50">
                         O serviço do POP! é gratuito?
                     </button>
@@ -56,7 +56,7 @@ body {
         <div class="card">
             <div class="card-header">
                 <h2 class="mb-0">
-                    <button class="btn btn-link text-warning" type="button" data-toggle="collapse" data-target="#pergunta2">
+                    <button class="btn btn-link  text-info" type="button" data-toggle="collapse" data-target="#pergunta2">
                         <img src="image/credit-card.svg" width="50" height="50" class="mr-3">
                         Onde pago pelo serviço do motofretista?
                     </button>
@@ -73,7 +73,7 @@ body {
         <div class="card">
             <div class="card-header">
                 <h2 class="mb-0">
-                    <button class="btn btn-link text-warning" type="button" data-toggle="collapse" data-target="#pergunta3">
+                    <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta3">
                         <img src="image/duvida3.png" width="50" height="50" class="mr-3">
                         Porque preciso me cadastrar?
                     </button>
@@ -90,7 +90,7 @@ body {
         <div class="card">
             <div class="card-header">
                 <h2 class="mb-0">
-                    <button class="btn btn-link text-warning" type="button" data-toggle="collapse" data-target="#pergunta4">
+                    <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta4">
                         <img src="image/duvida4.png" width="50" height="50" class="mr-3">
                         O que o site oferece?
                     </button>
@@ -106,7 +106,7 @@ body {
         <div class="card">
             <div class="card-header">
                 <h2 class="mb-0">
-                    <button class="btn btn-link text-warning" type="button" data-toggle="collapse" data-target="#pergunta5">
+                    <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta5">
                         <img src="image/duvida5.png" width="50" height="50" class="mr-3">
                         E os valores das entregas?
                     </button>
@@ -125,7 +125,7 @@ body {
         <div class="card">
             <div class="card-header">
                 <h2 class="mb-0">
-                    <button class="btn btn-link text-warning" type="button" data-toggle="collapse" data-target="#pergunta6">
+                    <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta6">
                         <img src="image/duvidas6.png" width="50" height="50" class="mr-3">
                         É seguro?
                     </button>
@@ -144,7 +144,7 @@ body {
         <div class="card">
             <div class="card-header">
                 <h2 class="mb-0">
-                    <button class="btn btn-link text-warning" type="button" data-toggle="collapse" data-target="#pergunta7">
+                    <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta7">
                         <img src="image/duvidas7.png" width="50" height="50" class="mr-3">
                         Quem tem acesso as informações cadastradas no POP! ?
                     </button>
