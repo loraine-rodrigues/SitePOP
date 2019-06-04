@@ -71,7 +71,14 @@ echo '
           padding-left: 30px;
           background: url("phone.svg") no-repeat scroll 0 0 transparent;
         }
-
+    .my-custom-scrollbar {
+          position: relative;
+          height: 500px;
+          overflow: auto;
+          }
+          .table-wrapper-scroll-y {
+          display: block;
+          }
          
     </style>
 </head>
