@@ -41,7 +41,6 @@ if (isset($_POST['entrar'])) {
         font-weight: bold;
         
     }
-<<<<<<< HEAD
 }
 @media only screen and (min-width: 767px) {
   img {
@@ -52,16 +51,6 @@ if (isset($_POST['entrar'])) {
   }
 }
 
-=======
-    
-@media only screen and (max-width: 767px) {
-  body {
-    /* The file size of this background image is 93% smaller
-       to improve page load speed on mobile internet connections */
-       background-image: url(image/bg-image.png) !important;
-  }
-}
->>>>>>> master
 body {
         width: 100%;
         background-image: url(image/bg-image.png)!important;
