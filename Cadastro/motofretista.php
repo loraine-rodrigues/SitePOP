@@ -146,8 +146,8 @@ if (isset($_POST['confirmarCadastro'])) {
         }
 
         #img-uploaded {
-            width: 18em;
-            height: 12em;
+            width: 12em;
+            height: 6.5em;
         }
 
         .toast-top-center {
@@ -166,7 +166,7 @@ if (isset($_POST['confirmarCadastro'])) {
 
             <!--Div usada para formartar o card de login -->
             <div class="card mx-auto my-5 text-left" style="width: 54rem;">
-                <div class="card-body">
+                <div class="card-body" style="border-color:">
                     <?php
                     if (isset($erro)):     //Mensagem de erro no cadastro
                         ?>
@@ -187,10 +187,9 @@ if (isset($_POST['confirmarCadastro'])) {
                     endif;
                     ?>
 
-                    <h3 class="card-title mb-4">DADOS PESSOAIS</h3>
-                    <div class="row">
 
-                        <!--Nome motofretista-->
+                    <h3 class="card-title mb-5">DADOS PESSOAIS <img src="num1.png" width="50" height="50" class="float-right"></h3>
+                    <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 <label for="nome"> Nome: </label>
@@ -230,36 +229,53 @@ if (isset($_POST['confirmarCadastro'])) {
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="celular"> Celular/WhatsApp: </label> <!--WhatsApp para contato-->
-                                        <input type="tel" class="form-control" name="celular" id="celular" placeholder="Celular para contato" required>
+                                        <label for="cnpj">CNPJ: </label>
+                                        <input type="text" class="form-control" name="cnpj" id="cnpj" placeholder="Informe seu cpf" required>
                                         <div class="invalid-feedback">
-                                            <span id="feedbackCelular"> </span>
+                                            <span id="feedbackCnpj"> </span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="celularAlternativo"> Celular: </label> <!--Celular para emergência-->
-                                        <input type="tel" class="form-control" name="celularAlternativo" id="celularAlternativo" placeholder="Celular alternativo" required>
+                                        <label for="mei">Possui MEI? </label>
+                                        <select class="form-control" name="mei" id="mei" required>
+                                            <option value=""> Selecione </option>
+                                            <option value="Sim"> SIM </option>
+                                            <option value="Não"> NÃO </option>
+                                        </select>
                                         <div class="invalid-feedback">
-                                            <span id="feedbackCelularAlternativo"> </span>
+                                            <span id="feedbackMei"> </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
 
-                        <!--Adicionar foto-->
                         <div class="col text-center">
-                            <div class="form-group">
-                                <img id='img-uploaded' src="../avatar.svg" class="rounded mb-2"/>
-                                <div class="input-group mt-1">
+                            <!--Adicionar foto-->
+                            <div class="row">
+                                <div class="form-group">
+                                    <img id='img-uploaded' src="../avatar.svg" class="rounded mb-2"/>
+                                    <div class="input-group mt-1">
                                     <span class="input-group-btn">
                                         <span class="btn btn-outline-primary btn-file">
                                             Escolher uma foto... <input type="file" name="foto" id="img-input" required>
+                                        </span>
+                                    </span>
+                                        <input id="img-text" type="text" class="form-control somenteLeitura" autocomplete="off" onmousedown="return false" required>
+                                        <div class="invalid-feedback">
+                                            <span> É necessário enviar uma foto </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="input-group mt-4">
+                                    <span class="input-group-btn">
+                                        <span class="btn btn-outline-primary btn-file">
+                                            Escolher uma foto... <input type="file" name="foto" id="mei-input" required>
                                         </span>
                                     </span>
                                     <input id="img-text" type="text" class="form-control somenteLeitura" autocomplete="off" onmousedown="return false" required>
@@ -271,6 +287,41 @@ if (isset($_POST['confirmarCadastro'])) {
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="cpf">CPF: </label>
+                                <input type="text" class="form-control" name="cpf" id="cpf" placeholder="Informe seu cpf" required>
+                                <div class="invalid-feedback">
+                                    <span id="feedbackCpf"> </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="cnh">CNH: </label>
+                                <input type=text class="form-control" name="cnh" id="cnh" placeholder="Informe o número da cnh" required>
+                                <div class="invalid-feedback">
+                                    <span id="feedbackCnh"> </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="toast toast-top-center" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header bg-danger text-white">
+                                <strong class="mr-auto">Alerta</strong>
+                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="toast-body bg-white">
+                                É necessário possuir MEI para efetuar cadastro
+                            </div>
+                        </div>
+
+                        <!--Númeração da cnh para cofirmar autorização p dirigir-->
+                    </div>
                     <!--Checkboxes para seleção de região-->
                     <div class="row">
                         <div class="col">
@@ -349,73 +400,44 @@ if (isset($_POST['confirmarCadastro'])) {
 
                     </div>
 
+                </div>
+            </div>
+
+
+        <form enctype="multipart/form-data" method="post" id="form" class="needs-validation" novalidate>
+
+                <!--Div usada para formartar o card de login -->
+                <div class="card mx-auto my-5 text-left" style="width: 54rem;">
+                    <div class="card-body">
+
+
+                    <div class="card-body">
+                    <h3 class="card-title mb-5">DADOS PARA CONTATO <img src="num2.png" width="50" height="50" class="float-right"></h3>
                     <div class="row">
-
-                        <!--Cpf para confirmar identidade-->
                         <div class="col">
-                            <div class="form-group">
-                                <label for="cpf">CPF: </label>
-                                <input type="text" class="form-control" name="cpf" id="cpf" placeholder="Informe seu cpf" required>
-                                <div class="invalid-feedback">
-                                    <span id="feedbackCpf"> </span>
+                                <div class="form-group">
+                                    <label for="celular"> Celular/WhatsApp: </label> <!--WhatsApp para contato-->
+                                    <input type="tel" class="form-control" name="celular" id="celular" placeholder="Celular para contato" required>
+                                    <div class="invalid-feedback">
+                                        <span id="feedbackCelular"> </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!--Cnpj para confirmar autonomia-->
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="cnpj">CNPJ: </label>
-                                <input type="text" class="form-control" name="cnpj" id="cnpj" placeholder="Informe seu cpf" required>
-                                <div class="invalid-feedback">
-                                    <span id="feedbackCnpj"> </span>
-                                </div>
-                            </div>
                         </div>
 
                         <!--Opção de sexo, usado um select para aparecer as duas opções-->
                         <div class="col">
                             <div class="form-group">
-                                <label for="mei">Possui MEI? </label>
-                                <select class="form-control" name="mei" id="mei" required>
-                                    <option value=""> Selecione </option>
-                                    <option value="Sim"> SIM </option>
-                                    <option value="Não"> NÃO </option>
-                                </select>
+                                <label for="celularAlternativo"> Celular: </label> <!--Celular para emergência-->
+                                <input type="tel" class="form-control" name="celularAlternativo" id="celularAlternativo" placeholder="Celular alternativo" required>
                                 <div class="invalid-feedback">
-                                    <span id="feedbackMei"> </span>
+                                    <span id="feedbackCelularAlternativo"> </span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="toast toast-top-center" role="alert" aria-live="assertive" aria-atomic="true">
-                            <div class="toast-header bg-danger text-white">
-                                <strong class="mr-auto">Alerta</strong>
-                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="toast-body bg-white">
-                                É necessário possuir MEI para efetuar cadastro
-                            </div>
-                        </div>
-
-                        <!--Númeração da cnh para cofirmar autorização p dirigir-->
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="cnh">CNH: </label>
-                                <input type=text class="form-control" name="cnh" id="cnh" placeholder="Informe o número da cnh" required>
-                                <div class="invalid-feedback">
-                                    <span id="feedbackCnh"> </span>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
 
                     <div class="row">
 
-                        <!--Email que será usado para login-->
                         <div class="col">
                             <div class="form-group">
                                 <label for="email"> Email: </label>
@@ -425,6 +447,10 @@ if (isset($_POST['confirmarCadastro'])) {
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+
+                    <div class="row">
 
                         <!--Escolha uma senha que será usado para login-->
                         <div class="col">
@@ -450,13 +476,20 @@ if (isset($_POST['confirmarCadastro'])) {
 
                     </div>
                 </div>
+                </div>
+            </div>
+        </div>
 
-                <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+        <form enctype="multipart/form-data" method="post" id="form" class="needs-validation" novalidate>
+
+                        <!--Div usada para formartar o card de login -->
+        <div class="card mx-auto my-5 text-left" style="width: 54rem;">
+            <div class="card-body">
+
 
                 <div class="card-body">
-                    <h3 class="card-title mb-4">DADOS DO VEÍCULO</h3>
+                    <h3 class="card-title mb-5">DADOS DO VEÍCULO <img src="num3.png" width="50" height="50" class="float-right"></h3>
                     <div class="row">
-
                         <!-- Marca do veículo -->
                         <div class="col">
                             <div class="form-group">
@@ -467,7 +500,6 @@ if (isset($_POST['confirmarCadastro'])) {
                                 </div>
                             </div>
                         </div>
-
                         <!-- Modelo do veículo -->
                         <div class="col">
                             <div class="form-group">
@@ -478,7 +510,6 @@ if (isset($_POST['confirmarCadastro'])) {
                                 </div>
                             </div>
                         </div>
-
                         <!-- Cor do veículo -->
                         <div class="col">
                             <div class="form-group">
@@ -489,11 +520,9 @@ if (isset($_POST['confirmarCadastro'])) {
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="row">
-
                         <!-- Placa do veículo -->
                         <div class="col">
                             <div class="form-group">
@@ -504,7 +533,6 @@ if (isset($_POST['confirmarCadastro'])) {
                                 </div>
                             </div>
                         </div>
-
                         <!-- Renavam do veículo -->
                         <div class="col">
                             <div class="form-group">
@@ -515,13 +543,9 @@ if (isset($_POST['confirmarCadastro'])) {
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
 
                     <div class="row mt-5">
-
                         <!-- Termos de uso -->
                         <div class="col">
                             <div class="form-group form-check">
@@ -533,14 +557,11 @@ if (isset($_POST['confirmarCadastro'])) {
                                 </div>
                             </div>
                         </div>
-
                         <!-- Botão confirmar -->
                         <div class="col">
                             <button type="submit" name="confirmarCadastro" class="btn btn-outline-success float-right mx-5">Confirmar </button> <!--Botão entrar-->
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </form>
@@ -698,7 +719,7 @@ if (isset($_POST['confirmarCadastro'])) {
                         mei.get(0).setCustomValidity('');
                         feedbackMei.text("")
                     } else {
-                        $('.toast').toast({delay : 2000});
+                        $('.toast').toast({delay : 2000, autohide: false});
                         $('.toast').toast('show');
                         mei.get(0).setCustomValidity('Inválido');
                         feedbackMei.text("É necessário possuir MEI para efetuar cadastro")
@@ -1389,5 +1410,19 @@ O usuário e o associado aceita a eleição do Foro Central da Comarca da Capita
 
         </div>
 
+<<<<<<< Updated upstream
+=======
+        <div class="toast toast-top-center" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-danger text-white">
+                <strong class="mr-auto">Alerta</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body bg-white">
+                É necessário possuir MEI para efetuar cadastro
+            </div>
+        </div>
+>>>>>>> Stashed changes
 
 <?php include '../footer.php' ?>
