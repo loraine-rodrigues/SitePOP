@@ -18,7 +18,7 @@ include 'header.php';
     <!-- Grid column -->
     <div class="col-lg-5 mb-lg-0 mb-5">
       <!--Image-->
-      <img src="image/foto2.jpg" alt="Sample project image" class="img-fluid rounded z-depth-1">
+      <img src="image/foto2.jpg" alt="imagem cliente" class="img-fluid rounded z-depth-1">
     </div>
     <!-- Grid column -->
 
@@ -120,7 +120,7 @@ include 'header.php';
     <!-- Grid column -->
     <div class="col-lg-4 m-auto">
       <!--Image-->
-      <img src="image/foto.jpg" alt="Sample project image" class="img-fluid rounded z-depth-1">
+      <img src="image/foto.jpg" alt="imagem motofretista" class="img-fluid rounded z-depth-1">
     </div>
     <!-- Grid column -->
 
