@@ -120,7 +120,7 @@ include 'header.php';
     <!-- Grid column -->
     <div class="col-lg-4 m-auto">
       <!--Image-->
-      <img src="image/foto.jpg" alt="imagem motofretista" class="img-fluid rounded z-depth-1">
+      <img src="image/foto1.jpg" alt="imagem motofretista" class="img-fluid rounded z-depth-1">
     </div>
     <!-- Grid column -->
 
