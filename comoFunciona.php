@@ -70,7 +70,7 @@ include 'header.php';
   <hr class="my-5">
 
   <!-- Grid row -->
-  <div class="row">
+  <div class="row m-2">
 
     <!-- Grid column -->
     <div class="col-lg-7">
@@ -118,7 +118,7 @@ include 'header.php';
     <!-- Grid column -->
 
     <!-- Grid column -->
-    <div class="col-lg-5">
+    <div class="col-lg-4">
       <!--Image-->
       <img src="image/foto.jpg" alt="Sample project image" class="img-fluid rounded z-depth-1">
     </div>
