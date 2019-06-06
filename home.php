@@ -95,8 +95,9 @@ if (isset($_POST['entrar'])) {
     }
 </style>
 
-<div class="row">
-    <div class="col-lg-4 ">
+
+   <div class="row m-3">
+    <div class="col-5">
 
         <img src="image/logoNovo.png" height="300px;" class="img-responsive ">
 
