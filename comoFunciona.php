@@ -13,7 +13,7 @@ include 'header.php';
   <p class="grey-text text-center w-responsive mx-auto mb-5">Veja como é rápido e fácil utilizar nossa plataforma</p>
 
   <!-- Grid row -->
-  <div class="row">
+  <div class="row m-3">
 
     <!-- Grid column -->
     <div class="col-lg-5 mb-lg-0 mb-5">
@@ -32,7 +32,7 @@ include 'header.php';
         </div>
         <div class="col-md-11 col-10">
           <h5 class="font-weight-bold mb-3">Efetue seu cadastro</h5>
-          <p class="grey-text">Assim você terá total acesso a plataforma e aos Motofretistas.</p>
+          <p class="grey-text">Ao realizá-lo você terá total acesso a plataforma e aos Motofretistas disponíveis.</p>
         </div>
       </div>
       <!-- Grid row -->
@@ -44,7 +44,7 @@ include 'header.php';
         </div>
         <div class="col-md-11 col-10">
           <h5 class="font-weight-bold mb-3">Escolha um Motofretista</h5>
-          <p class="grey-text">Você poderá visualizar e escolher o motofretista de sua preferência.</p>
+          <p class="grey-text">Você poderá visualizar e escolher o motofretista de sua preferência e terá acesso aos seus dados.</p>
         </div>
       </div>
       <!-- Grid row -->
@@ -56,7 +56,7 @@ include 'header.php';
         </div>
         <div class="col-md-11 col-10">
           <h5 class="font-weight-bold mb-3">Entre em contato</h5>
-          <p class="grey-text mb-0">Faça contato com o motofretista de forma rápida e negocie da forma que desejar.</p>
+          <p class="grey-text mb-0">Faça contato com o motofretista de forma rápida e negocie da forma que desejar através do número de WhatsApp fornecido.</p>
         </div>
       </div>
       <!-- Grid row -->
@@ -83,8 +83,8 @@ include 'header.php';
         
         <div class="col-md-11 col-10">
           <h5 class="font-weight-bold mb-3">Efetue seu cadastro</h5>
-          <p class="grey-text">Cadastre-se na plataforma, assim você poderá divulgar seus serviços através de seu perfil visível para 
-            os clientes.</p>
+          <p class="grey-text">Ao realizá-lo você poderá divulgar seus serviços através de seu perfil visível para os clientes. 
+            </p>
         </div>
       </div>
       <!-- Grid row -->
@@ -109,7 +109,7 @@ include 'header.php';
         </div>
         <div class="col-md-11 col-10">
           <h5 class="font-weight-bold mb-3">Aguarde contato</h5>
-          <p class="grey-text mb-0">Aguade até seu perfil ser visualizado e o cliente entre em contato com você através do número de WhatsApp fornecido.</p>
+          <p class="grey-text mb-0">Aguarde até que o cliente que deseja contratar seus serviços com base no seus dados e perfil entre em contato com você através do número de WhatsApp fornecido.</p>
         </div>
       </div>
       <!-- Grid row -->
@@ -118,7 +118,7 @@ include 'header.php';
     <!-- Grid column -->
 
     <!-- Grid column -->
-    <div class="col-lg-4">
+    <div class="col-lg-4 m-auto">
       <!--Image-->
       <img src="image/foto.jpg" alt="Sample project image" class="img-fluid rounded z-depth-1">
     </div>
