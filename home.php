@@ -35,6 +35,7 @@ if (isset($_POST['entrar'])) {
 
 
 <style type="text/css">
+    /*responsivo para as classes */
     @media only screen and (min-width: 767px) {
         img {
             /* The file size of this background image is 93% smaller
@@ -44,12 +45,33 @@ if (isset($_POST['entrar'])) {
 
         }
 
+
         .btns {
             color: #0f6674;
             font-weight: bold;
 
         }
 
+        body {
+            width: 100%;
+            background-image: url(image/bg-home.png) !important;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+
+        p {
+            display: inline;
+        }
+
+        /*fim do responsivo*/
+        .btns {
+            color: #0f6674;
+            font-weight: bold;
+
+        }
 
     }
 
@@ -74,9 +96,9 @@ if (isset($_POST['entrar'])) {
 </style>
 
 <div class="row">
-    <div class="col align-self-center ">
+    <div class="col-lg-4 ">
 
-        <img src="image/logoNovo.png" height="300px;"   class="img-responsive">
+        <img src="image/logoNovo.png" height="300px;" class="img-responsive ">
 
     </div>
 
@@ -94,7 +116,7 @@ if (isset($_POST['entrar'])) {
     </div>
     <div class="col-ml mr-5 float-right" style="color:orange;">
 
-        <h1 class="ml-5 ">Liberdade para negociar</h1>
+        <h1 class="h1-responsive font-weight-bold text-center my-5">Liberdade para negociar</h1>
     </div>
 
     <!--Modal para cadastro de CLIENTE ou MOTOFRETISTA-->
