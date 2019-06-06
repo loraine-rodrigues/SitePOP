@@ -98,14 +98,11 @@ echo '
              <li class="nav-item mx-2">
                 <a class="nav-link" href="/catalogo.php">Catálogo</a>
               </li> 
+            
+              
+              
               <li class="nav-item mx-2">
-                <a class="nav-link" href="/sobreNos.php">Sobre nós</a>
-              </li>
-              <li class="nav-item mx-2">
-                <a class="nav-link" href="/duvidas.php">Dúvidas Frequentes</a>
-              </li>
-              <li class="nav-item mx-2">
-                <a class="nav-link" href="/termos.php">Termos de uso</a>
+                <a class="nav-link" href="/comoFunciona.php">Como Funciona</a>
               </li>
               <li class="nav-item mx-2">
                 <a class="nav-link" href="/contato.php">Contato</a>
