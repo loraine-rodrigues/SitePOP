@@ -46,11 +46,7 @@ if (isset($_POST['entrar'])) {
         }
 
 
-        .btns {
-            color: #0f6674;
-            font-weight: bold;
-
-        }
+      
 
         body {
             width: 100%;
@@ -67,6 +63,7 @@ if (isset($_POST['entrar'])) {
         }
 
         /*fim do responsivo*/
+
         .btns {
             color: #0f6674;
             font-weight: bold;
