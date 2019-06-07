@@ -11,6 +11,8 @@ echo '<!doctype html>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Language" content="pt-br">
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="image/favicon.ico" type="image/x-icon">
     ';
 
 echo "<title>POP! - $title</title>"; //Para receber o titulo
