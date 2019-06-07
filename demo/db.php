@@ -9,6 +9,6 @@ $con = mysqli_connect("localhost","azure","6#vWHD_$","motofrete");
 		die();
 		}
 
-date_default_timezone_set('Asia/Karachi');	
+date_default_timezone_set('America/Sao_Paulo');	
 $error="";	
 ?>
