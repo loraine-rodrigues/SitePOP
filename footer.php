@@ -10,17 +10,16 @@ echo '
         
       </div>
     
-      <div class="container-fluid bg-light mt-3">
-      <ul class="list-unstyled ">
+      <div class="container-fluid bg-light">
+      <ul class="nav justify-content-center">
       <li>
-                  <a class="text-dark" href="/duvidas.php">Dúvidas Frequentes</a>
+                  <a class="text-dark m-3" href="/duvidas.php">Dúvidas Frequentes</a>
                 </li>
       <li>
-        <a class="text-dark" href="sobreNos.php">Sobre nós</a>
+        <a class="text-dark m-3" href="sobreNos.php">Sobre nós</a>
       </li>
-      <ul class="list-unstyled">
       <li>
-      <a class="text-dark" href="termos.php">Termos de uso</a>
+      <a class="text-dark m-3" href="termos.php">Termos de uso</a>
       </li>
       
       </div> 
