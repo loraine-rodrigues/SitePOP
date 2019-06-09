@@ -9,6 +9,7 @@ include 'header.php' ?>
        to improve page load speed on mobile internet connections */
        background-image: url(image/bg-duvida.png) !important;
   }
+
 }
 body {
         width: 100%;
@@ -21,24 +22,27 @@ body {
         
         
     }
+   
     
 </style>
 
 
 
-<div class="container text-center">
+<div class="container text-center ">
     
     <h2 class=" ml-5">DÚVIDAS<img src="image/duvidas.png" width="80" height="80" class="align-middle ml-4"> </h2>
 
-
-    <div class="accordion mb-3">
+    
+    <div class="accordion mb-3 ">
         <!--DÚVIDA 1-->
+        
         <div class="card">
+            
             <div class="card-header">
                 <h2 class="mb-0">
                     <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta1">
                         <img src="image/duvida1.png" class="mr-3" width="50" height="50">
-                        O serviço do POP! é gratuito?
+                       <p > serviço do POP! é gratuito?</p>
                     </button>
                 </h2>
             </div>
@@ -55,10 +59,10 @@ body {
         <!--DÚVIDA 2-->
         <div class="card">
             <div class="card-header">
-                <h2 class="mb-0">
-                    <button class="btn btn-link  text-info" type="button" data-toggle="collapse" data-target="#pergunta2">
+                <h2 class="mb-0 ">
+                    <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta2">
                         <img src="image/credit-card.svg" width="50" height="50" class="mr-3">
-                        Onde pago pelo serviço do motofretista?
+                        <p>Onde pago pelo serviço do motofretista?</p>
                     </button>
                 </h2>
             </div>
@@ -75,7 +79,7 @@ body {
                 <h2 class="mb-0">
                     <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta3">
                         <img src="image/duvida3.png" width="50" height="50" class="mr-3">
-                        Porque preciso me cadastrar?
+                        <p> preciso me cadastrar?</p>
                     </button>
                 </h2>
             </div>
@@ -92,7 +96,7 @@ body {
                 <h2 class="mb-0">
                     <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta4">
                         <img src="image/duvida4.png" width="50" height="50" class="mr-3">
-                        O que o site oferece?
+                        <P>O que o site oferece?</P>
                     </button>
                 </h2>
             </div>
@@ -108,7 +112,7 @@ body {
                 <h2 class="mb-0">
                     <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta5">
                         <img src="image/duvida5.png" width="50" height="50" class="mr-3">
-                        E os valores das entregas?
+                        <p>E os valores das entregas?</p>
                     </button>
                 </h2>
             </div>
@@ -127,7 +131,7 @@ body {
                 <h2 class="mb-0">
                     <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta6">
                         <img src="image/duvidas6.png" width="50" height="50" class="mr-3">
-                        É seguro?
+                        <p>É seguro?</p>
                     </button>
                 </h2>
             </div>
@@ -146,7 +150,7 @@ body {
                 <h2 class="mb-0">
                     <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta7">
                         <img src="image/duvidas7.png" width="50" height="50" class="mr-3">
-                        Quem tem acesso as informações cadastradas no POP! ?
+                        <p>Quem tem acesso as informações cadastradas no POP! ?</p>
                     </button>
                 </h2>
             </div>

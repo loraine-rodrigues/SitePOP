@@ -11,6 +11,7 @@ echo '<!doctype html>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Language" content="pt-br">
+   
     ';
 
 echo "<title>POP! - $title</title>"; //Para receber o titulo
@@ -23,7 +24,7 @@ echo '
     <link rel="stylesheet" href="/terceiros/bootstrap/css/sticky-footer.css">
     <script src="/terceiros/bootstrap/js/bootstrap.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> <!-- link importado para font Montserrat -->
-
+     <link rel="shortcut icon" type="image/x-icon" href="image/P.ico">
     <link href="/terceiros/fontawesome/css/all.css" rel="stylesheet">
     
     
@@ -71,7 +72,7 @@ echo '
           padding-left: 30px;
           background: url("phone.svg") no-repeat scroll 0 0 transparent;
         }
-    .my-custom-scrollbar {
+        .my-custom-scrollbar {
           position: relative;
           height: 500px;
           overflow: auto;
@@ -98,14 +99,11 @@ echo '
              <li class="nav-item mx-2">
                 <a class="nav-link" href="/catalogo.php">Catálogo</a>
               </li> 
+            
+              
+              
               <li class="nav-item mx-2">
-                <a class="nav-link" href="/sobreNos.php">Sobre nós</a>
-              </li>
-              <li class="nav-item mx-2">
-                <a class="nav-link" href="/duvidas.php">Dúvidas Frequentes</a>
-              </li>
-              <li class="nav-item mx-2">
-                <a class="nav-link" href="/termos.php">Termos de uso</a>
+                <a class="nav-link" href="/comoFunciona.php">Como Funciona</a>
               </li>
               <li class="nav-item mx-2">
                 <a class="nav-link" href="/contato.php">Contato</a>
