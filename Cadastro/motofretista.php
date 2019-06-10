@@ -716,7 +716,7 @@ if (isset($_POST['confirmarCadastro'])) {
                     mei.get(0).setCustomValidity('');
                     feedbackMei.text("")
                 } else {
-                    $('#modalMei').modal({});
+                    $('#modalMei').modal('show');
                     mei.get(0).setCustomValidity('Inválido');
                     feedbackMei.text("É necessário possuir MEI para efetuar cadastro")
                 }
