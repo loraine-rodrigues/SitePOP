@@ -23,8 +23,10 @@ echo '
     <link rel="stylesheet" href="/terceiros/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/terceiros/bootstrap/css/sticky-footer.css">
     <script src="/terceiros/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/terceiros/datatables/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="/terceiros/datatables/css/jquery.dataTables.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> <!-- link importado para font Montserrat -->
-     <link rel="shortcut icon" type="image/x-icon" href="image/P.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="image/P.ico">
     <link href="/terceiros/fontawesome/css/all.css" rel="stylesheet">
     
     
@@ -110,7 +112,7 @@ echo '
               </li>';
 
 if ($_SESSION['adm'] == TRUE) {     //Se for adm mostrar mais dois botões
-  echo '                  <li class="nav-item mx-2">
+    echo '                  <li class="nav-item mx-2">
                 <a class="nav-link" href="/adm/motofretistas">Motofretistas</a>
               </li>
               <li class="nav-item mx-2">
@@ -124,14 +126,19 @@ echo '            </ul>';
 
 if (isset($_SESSION['logado'])) {  //Se o usuario estiver logado mostrar botão SAIR
 
-  echo '        <!--BOTÃO SAIR-->                                    
+    echo '
                 <ul class="nav navbar-nav navbar-right" >
-                    <li >
+                    <!-- BEM VINDO AO USUARIO -->
+                    <li>
+                        <span class="navbar-text text-white mr-3">Bem vindo, '; echo $_SESSION['nome']; echo '</span> 
+                    </li>
+                    <!--BOTÃO SAIR-->                                    
+                    <li>
                         <div class="btn-nav" >
-                            <a class="btn btn-warning btn-small navbar-btn" href="/logout.php"> Sair <i class="fas fa-sign-out-alt"></i></a >                   
-                        </div >
-                    </li >                                
-                </ul >';
+                            <a class="btn btn-sm btn-warning navbar-btn mt-1" href="/logout.php"> Sair <i class="fas fa-sign-out-alt"></i></a>                   
+                        </div>
+                    </li>                                
+                </ul>';
 }
 
 echo '          
