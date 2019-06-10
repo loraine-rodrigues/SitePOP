@@ -19,13 +19,14 @@ if (isset($_POST['entrar'])) {
             while ($resultado = $comando->fetch(PDO::FETCH_ASSOC)) {
                 $_SESSION['id'] = $resultado['id_login'];
                 $_SESSION['nome'] = $resultado['nm_usuario'];
+                $_SESSION['login'] = $resultado['nm_login'];
                 $_SESSION['tipo'] = $resultado['id_tipo_login'];
             }
             $_SESSION['logado'] = TRUE;
             header('Location: home.php');
             exit();
         } else {
-            $_SESSION['erro'] = "Email e/ou senha incorretos";
+            $_SESSION['erroLogin'] = "Email e/ou senha incorretos";
         }
     } catch (PDOException $excecao) {
         echo "Erro ao logar: " . $excecao->getMessage();
@@ -46,7 +47,7 @@ if (isset($_POST['entrar'])) {
         }
 
 
-      
+
 
         body {
             width: 100%;
@@ -92,8 +93,19 @@ if (isset($_POST['entrar'])) {
     }
 </style>
 
+<?php
+if (isset($_SESSION['erroLogin'])) {
+    ?>
+    <script type="text/javascript">
+        $(document).ready( () => {
+            $('#modalLogin').modal('show');
+        });
+    </script>
+<?php } ?>
 
-   <div class="row m-3">
+
+
+<div class="row m-3">
     <div class="col-5">
 
         <img src="image/logoNovo.png" height="300px;" class="img-responsive ">
@@ -104,20 +116,20 @@ if (isset($_POST['entrar'])) {
     <?php if (!isset($_SESSION['logado'])) { ?>
 
 
-        <div class="col">
-            <!--ENTRAR-->
-            <a class="btn btns btn-outline-info m-4 py-2 px-4  rounded-pill float-right" href="#" data-toggle="modal" data-target=#modal1>ENTRAR</a>
+    <div class="col">
+        <!--ENTRAR-->
+        <a class="btn btns btn-outline-info m-4 py-2 px-4  rounded-pill float-right" href="#" data-toggle="modal" data-target=#modalLogin>ENTRAR</a>
 
-            <!--CADASTRE-SE-->
-            <a class="btn btns btn-outline-info m-4 py-2 px-4 rounded-pill float-right" href="#" data-toggle="modal" data-target=#modal>CADASTRE-SE</a>
-        </div>
+        <!--CADASTRE-SE-->
+        <a class="btn btns btn-outline-info m-4 py-2 px-4 rounded-pill float-right" href="#" data-toggle="modal" data-target=#modal>CADASTRE-SE</a>
     </div>
+</div>
     <div class="col-ml mr-5 float-right" style="color:orange;">
 
         <h1 class="h1-responsive font-weight-bold text-center my-5">Liberdade para negociar</h1>
     </div>
 
-    <!--Modal para cadastro de CLIENTE ou MOTOFRETISTA-->
+<!--Modal para cadastro de CLIENTE ou MOTOFRETISTA-->
     <div id="modal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -137,8 +149,8 @@ if (isset($_POST['entrar'])) {
         </div>
     </div>
 
-    <!--Div usada para formartar o card de login -->
-    <div id="modal1" class="modal fade">
+<!--Div usada para formartar o card de login -->
+    <div id="modalLogin" class="modal fade">
         <div class="modal-dialog">
             <!-- Conteúdo do modal Login-->
             <div class="modal-content">
@@ -151,37 +163,36 @@ if (isset($_POST['entrar'])) {
                 <!--Entrada de email para login-->
                 <div class="modal-body">
                     <form method="post">
-                        <label for="email"> Email: </label>
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Digite seu email" required>
-                </div>
+                        <?php
+                        if (isset($_SESSION['erroLogin'])) {
+                            ?>
+                            <div class="alert alert-danger">
+                                <?php echo $_SESSION['erroLogin']; ?>
+                            </div>
+                        <?php }
+                        session_destroy();
+                        ?>
+                        <div class="form-group">
+                            <label for="email"> Email: </label>
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Digite seu email" required>
+                        </div>
 
-                <!--Entrada de senha para login-->
-                <div class="modal-body">
-                    <label for="senha"> Senha: </label>
-                    <input type="password" class="form-control" name="senha" id="senha" placeholder="Digite sua senha" required>
-                </div>
+                        <div class="form-group">
+                            <label for="senha"> Senha: </label>
+                            <input type="password" class="form-control" name="senha" id="senha" placeholder="Digite sua senha" required>
+                        </div>
 
-                <?php
-                if (isset($_SESSION['erro'])) :
-                    ?>
-                    <div class="alert alert-danger">
-                        <?php echo $_SESSION['erro']; ?>
+                        <input class="btn btn-outline-info btn-entrar" type="submit" name="entrar" value="Entrar">
+
+                    </form>
+
+                    <div class="text-right mt-3">
+                        <span class="mr-2 md-4"><a href="demo/index.php">Esqueci minha senha</a> </span>
                     </div>
-                <?php
-            endif;
-
-            session_destroy();
-            ?>
-
-                <!-- Botão entrar -->
-                <input class="btn btn-outline-info btn-entrar" type="submit" name="entrar" value="Entrar">
-
-                </form>
+                </div>
 
                 <!-- Esqueci a senha-->
-                <div class="text-right mt-3">
-                    <span class="mr-2 md-4"><a href="demo/index.php">Esqueci minha senha</a> </span>
-                </div>
+
             </div>
         </div>
     </div>
