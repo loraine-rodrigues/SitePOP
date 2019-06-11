@@ -2,40 +2,44 @@
 
 require "../../conexao.php";
 
-if (isset($_POST['excluir'])) {
-    try {
-        $comando = $conexao->prepare("CALL desativarCliente(:id)");
-        $comando->bindParam(':id', $_POST['id']);
-
-        if ($comando->execute()) {
-            header('Location: index.php');
-            exit();
+if (isset($_POST['editar'])) {
+    foreach ($_POST as $campo) {
+        if (empty($campo)) {
+            $erro = "É necessário preencher todos os campos";
         }
     }
-    catch (PDOException $excecao) {
-        $erro = "Erro ao excluir o cliente";
-    }
-}
 
-//Redireciona p index se nao receber um valor ou se esse valor nao for numero
-if (!isset($_GET['id']) || !is_numeric($_GET['id']) ){
-    header('Location: index.php');
-    exit();
+    if (empty($erro)) {
+        try {
+            $id = $_POST['id'];
+            $nome = $_POST ['nome'];
+            $nascimento = $_POST ['nascimento'];
+            $cpf = $_POST ['cpf'];
+            $celular = $_POST ['celular'];
+            $email = $_POST ['email'];
+            $termos = $_POST ['termos'];
+
+            $comando = $conexao->prepare("CALL editarCliente(:id, :nome, :nascimento, :cpf, :email, :celular)");
+            $comando->bindParam(':id', $id);
+            $comando->bindParam(':nome', $nome);
+            $comando->bindParam(':nascimento', $nascimento);
+            $comando->bindParam(':cpf', $cpf);
+            $comando->bindParam(':email', $email);
+            $comando->bindParam(':celular', $celular);
+            $comando->execute();
+
+            $mensagem = "Cliente editado com sucesso";
+        } catch (PDOException $excecao) {
+            $erro = "Erro ao editar cliente";
+            echo $excecao->getMessage();
+        }
+    }
 }
 
 try {
     $comando = $conexao->prepare("CALL buscarCliente(:id)");
     $comando->bindParam(':id', $_GET['id']);
-    $comando->execute();
-} catch (PDOException $excecao) {
-    $erro = "Erro ao mostrar o cliente";
-}
-
-try {
-    $comando = $conexao->prepare("CALL buscarCliente(:id)"); //prepara o comando para buscar cliente pelo ID
-    $comando->bindParam(':id', $_GET['id']);
-    if ($comando->execute())
-    {
+    if ($comando->execute()) {
         if ($comando->rowCount() <= 0){     //se o numero de linhas retornadas for igual a 0, redireciona p index
             header('Location: index.php');
             exit();
@@ -43,21 +47,29 @@ try {
     } else {
         $erro = "Não foi possível mostrar o cliente";
     }
-}
-catch (PDOException $excecao) {
-    $erro = "Erro ao buscar o cliente";
+} catch (PDOException $excecao) {
+    $erro = "Erro ao mostrar o cliente";
+    echo $excecao->getMessage();
 }
 
-$title = "EXCLUIR CLIENTE";
+$title = "EDITAR CLIENTE";
 
-include "../../header.php";
-?>
+include "../../header.php"; ?>
 
     <div class="container text-center">
-        <h1 class="font-weight-light">EXCLUIR CLIENTE</h1>
+        <h1 class="font-weight-light">EDITAR CLIENTE</h1>
+
+
 
         <div class="card m-auto text-left" style="width: 54rem;">
             <div class="card-body">
+
+                <?php if (isset($erro)) { ?>
+                    <div class="alert alert-danger">
+                        <?= $erro ?>
+                    </div>
+                <?php } ?>
+
                 <h3 class="card-title mb-4">DADOS PESSOAIS</h3>
 
                 <?php if ($resultado = $comando->fetch()) { ?>
@@ -77,7 +89,7 @@ include "../../header.php";
                             <div class="col">
                                 <div class="form-group">
                                     <label for="email"> Email: </label>
-                                    <input type="email" class="form-control" id="email" name="email" value="<?= $resultado['nm_email'] ?>" readonly>
+                                    <input type="email" class="form-control" id="email" name="email" value="<?= $resultado['nm_email'] ?>" required>
                                 </div>
                             </div>
 
@@ -85,7 +97,7 @@ include "../../header.php";
                             <div class="col">
                                 <div class="form-group">
                                     <label for="data"> Data de nascimento: </label>
-                                    <input type="date" class="form-control" id="data" name="nascimento" placeholder="Informe a data de nascimento" value="<?= $resultado['dt_nascimento'] ?>" readonly>
+                                    <input type="date" class="form-control" id="data" name="nascimento" placeholder="Informe a data de nascimento" value="<?= $resultado['dt_nascimento'] ?>" required>
                                 </div>
                             </div>
 
@@ -97,7 +109,7 @@ include "../../header.php";
                             <div class="col">
                                 <div class="form-group">
                                     <label for="nome"> Nome: </label>
-                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe a nome completo" value="<?= $resultado['nm_cliente'] ?>" readonly>
+                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe a nome completo" value="<?= $resultado['nm_cliente'] ?>" required>
                                 </div>
                             </div>
 
@@ -105,7 +117,7 @@ include "../../header.php";
                             <div class="col">
                                 <div class="form-group">
                                     <label for="cpf"> CPF: </label>
-                                    <input type="tel" class="form-control" id="cpf" name="cpf" placeholder="Informe o cpf" value="<?= $resultado['id_cpf'] ?>" readonly>
+                                    <input type="tel" class="form-control" id="cpf" name="cpf" placeholder="Informe o cpf" value="<?= $resultado['id_cpf'] ?>" required>
                                 </div>
                             </div>
 
@@ -113,7 +125,7 @@ include "../../header.php";
                             <div class="col">
                                 <div class="form-group">
                                     <label for="celular"> Celular: </label>
-                                    <input type="tel" class="form-control" id="celular" name="celular" placeholder="Celular para contato" value="<?= $resultado['cd_celular'] ?>" readonly>
+                                    <input type="tel" class="form-control" id="celular" name="celular" placeholder="Celular para contato" value="<?= $resultado['cd_celular'] ?>" required>
                                 </div>
                             </div>
 
@@ -125,16 +137,16 @@ include "../../header.php";
                                 <a href="index.php" class="btn btn-outline-warning float-left mx-5"><i class="fas fa-chevron-left"></i> Voltar</a> <!--Botão voltar-->
                             </div>
 
-                            <!-- Botão de excluir cadastro-->
+                            <!-- Botão de editar cadastro-->
                             <div class="col">
-                                <button type="submit" name="excluir" class="btn btn-outline-danger float-right mx-5">Excluir <i class="fas fa-times"></i></button> <!--Botão excluir-->
+                                <button type="submit" name="editar" value="ok" class="btn btn-outline-success float-right mx-5">Editar <i class="fas fa-edit"></i></button> <!--Botão editar-->
                             </div>
                         </div>
                     </form>
 
                 <?php } else  { ?>
                     <div class="alert alert-danger">
-                        <?= $erro ?>
+                        <?= isset($erro) ? $erro : "Erro ao mostrar o cliente" ?>
                     </div>
                 <?php } ?>
             </div>
@@ -143,8 +155,8 @@ include "../../header.php";
 
     <script>
         $(document).ready(() => {
-            $("#celular").inputmask("(99)9999-9999[9]");
-            $("#cpf").inputmask("999.999.999-99");
+            $("#celular").inputmask("(99)9999-9999[9]", {removeMaskOnSubmit: true});
+            $("#cpf").inputmask("999.999.999-99", {removeMaskOnSubmit: true});
         });
     </script>
 
