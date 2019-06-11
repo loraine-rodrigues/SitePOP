@@ -96,7 +96,7 @@ if (isset($_SESSION['erroLogin'])) {
 
 
 <div class="row m-3">
-    <div class="col-md-5">
+    <div class="col-md-6">
 
         <img src="image/Imagem1.png" height="300px;" class="img-responsive py-2">
 
