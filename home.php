@@ -106,7 +106,7 @@ if (isset($_SESSION['erroLogin'])) {
 
 
 <div class="row m-3">
-    <div class="col-5">
+    <div class="col-6">
 
         <img src="image/logoNovo.png" height="300px;" class="img-responsive ">
 
@@ -116,7 +116,7 @@ if (isset($_SESSION['erroLogin'])) {
     <?php if (!isset($_SESSION['logado'])) { ?>
 
 
-    <div class="col">
+    <div class="col-6">
         <!--ENTRAR-->
         <a class="btn btns btn-outline-info m-4 py-2 px-4  rounded-pill float-right" href="#" data-toggle="modal" data-target=#modalLogin>ENTRAR</a>
 
