@@ -116,7 +116,7 @@ if (isset($_SESSION['erroLogin'])) {
     <?php if (!isset($_SESSION['logado'])) { ?>
 
 
-    <div class="col-6">
+    <div class="col">
         <!--ENTRAR-->
         <a class="btn btns btn-outline-info m-4 py-2 px-4  rounded-pill float-right" href="#" data-toggle="modal" data-target=#modalLogin>ENTRAR</a>
 
