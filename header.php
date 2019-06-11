@@ -33,14 +33,8 @@ echo '
     <!--Style para padronização de todas as páginas -->
     <style>
     @media only screen and (min-width: 767px) {
-      body {
-        /* The file size of this background image is 93% smaller
-           to improve page load speed on mobile internet connections */
 
-      }
-      
-
-    }
+    
     body {
             width: 100%;
            
@@ -52,6 +46,7 @@ echo '
             // fonte do site
            
             
+    }
             
         }
          .navbar-customizada{
