@@ -21,15 +21,8 @@ if (isset($_POST['nome'])) {
         margin-bottom: 30px;
         font-size: 16px;
     }
-   @media only screen and (min-width: 767px) {
-        body {
-        width: 100%;
-        background-image: url(image/bg-contato.png) !important;
-        background-repeat: no-repeat;
-        background-position: 100% 100%;
-        background-size: cover;
-    }
-}
+   
+
     body {
         width: 100%;
         background-image: url(image/bg-contato.png) !important;
