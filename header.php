@@ -1,146 +1,197 @@
 <?php
+$title = "HOME";
+require 'conexao.php';
+include 'header.php';
 
-session_start();
+if (isset($_POST['entrar'])) {
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
-include 'adm/verificaAdm.php';
+    try {
+        $comando = $conexao->prepare("CALL verificaLogin(?, ?)");
+        $comando->bindParam(1, $email);
+        $comando->bindParam(2, $senha);
+        $comando->execute();
+        if ($comando->rowCount() > 0) {
 
-echo '<!doctype html>
-<html lang="pt-br" class="h-100">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Content-Language" content="pt-br">
-   
-    ';
+            while ($resultado = $comando->fetch(PDO::FETCH_ASSOC)) {
+                $_SESSION['id'] = $resultado['id_login'];
+                $_SESSION['nome'] = $resultado['nm_usuario'];
+                $_SESSION['login'] = $resultado['nm_login'];
+                $_SESSION['tipo'] = $resultado['id_tipo_login'];
+            }
+            $_SESSION['logado'] = TRUE;
+            header('Location: home.php');
+            exit();
+        } else {
+            $_SESSION['erroLogin'] = "Email e/ou senha incorretos";
+        }
+    } catch (PDOException $excecao) {
+        $_SESSION['erroLogin'] = "Erro ao logar: " . $excecao->getMessage();
+    }
+}
+?>
 
-echo "<title>POP! - $title</title>"; //Para receber o titulo
 
-echo '
-    <script src="/terceiros/jquery/jquery.js"></script>
-    <script src="/terceiros/popper/popper.js"></script>
-    <script src="/terceiros/inputmask/inputmask.js"></script>
-    <link rel="stylesheet" href="/terceiros/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/terceiros/bootstrap/css/sticky-footer.css">
-    <script src="/terceiros/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/terceiros/datatables/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="/terceiros/datatables/css/jquery.dataTables.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> <!-- link importado para font Montserrat -->
-    <link rel="shortcut icon" type="image/x-icon" href="image/P.ico">
-    <link href="/terceiros/fontawesome/css/all.css" rel="stylesheet">
-    
-    
-    <!--Style para padronização de todas as páginas -->
-    <style>
+<style type="text/css">
+    /*responsivo para as classes */
     @media only screen and (min-width: 767px) {
+        img {
+            /* The file size of this background image is 93% smaller
+       to improve page load speed on mobile internet connections */
+            padding-left: 300px;
+            height: 400px;
 
-    
-    body {
+        }
+
+        body {
             width: 100%;
-           
+            background-image: url(image/bg-home.png) !important;
             background-repeat: no-repeat;
             background-position: center center;
             background-attachment: fixed;
             background-size: cover;
-            font-family: \'Montserrat\', sans-serif;
-            // fonte do site
-           
-            
-    }
-            
+
         }
-         .navbar-customizada{
-          width: 100%;
-          background-color:#0095B6;
-       }
-    
-    
-    .navbar-brand:focus,
-    .navbar-brand:hover {
-    text-decoration: none
+
+        p {
+            display: inline;
+        }
+
+        /*fim do responsivo*/
+
+        .btns {
+            color: #0f6674;
+            font-weight: bold;
+
+        }
+
     }
 
-         .card {
-            border-radius: 25px;
-         }
-         .icon {
-          display: inline-block;
-          line-height: 30px;
-          padding-left: 30px;
-          background: url("phone.svg") no-repeat scroll 0 0 transparent;
-        }
-        .my-custom-scrollbar {
-          position: relative;
-          height: 500px;
-          overflow: auto;
-          }
-          .table-wrapper-scroll-y {
-          display: block;
-          }
-         
-    </style>
-</head>
-<body class="d-flex flex-column h-100">
-    <header>    
-        
-       <!--INICIO da navbar-->
-        <nav class="navbar navbar-expand-lg navbar-customizada navbar-dark"> 
-        <a class="navbar-brand" href="/home.php">POP!</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          
-          <!--Itens da navbar -->
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-             <li class="nav-item mx-2">
-                <a class="nav-link" href="/catalogo.php">Catálogo</a>
-              </li> 
-            
-              
-              
-              <li class="nav-item mx-2">
-                <a class="nav-link" href="/comoFunciona.php">Como Funciona</a>
-              </li>
-              <li class="nav-item mx-2">
-                <a class="nav-link" href="/contato.php">Contato</a>
-              </li>';
+    body {
+        width: 100%;
+        background-image: url(image/bg-home.png) !important;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
 
-if ($_SESSION['adm'] == TRUE) {     //Se for adm mostrar mais dois botões
-    echo '                  <li class="nav-item mx-2">
-                <a class="nav-link" href="/adm/motofretistas">Motofretistas</a>
-              </li>
-              <li class="nav-item mx-2">
-                <a class="nav-link" href="/adm/clientes">Clientes</a>
-              </li>
-    ';
-}
+    }
 
-echo '            </ul>';
+    p {
+        display: inline;
+    }
+
+    .btn-entrar {
+        width: 50%;
+        margin-left: 25%;
+    }
+</style>
+
+<?php
+if (isset($_SESSION['erroLogin'])) {
+    ?>
+    <script type="text/javascript">
+        $(document).ready( () => {
+            $('#modalLogin').modal('show');
+        });
+    </script>
+<?php } ?>
 
 
-if (isset($_SESSION['logado'])) {  //Se o usuario estiver logado mostrar botão SAIR
 
-    echo '
-                <ul class="nav navbar-nav navbar-right" >
-                    <!-- BEM VINDO AO USUARIO -->
-                    <li>
-                        <span class="navbar-text text-white mr-3">Bem vindo, '; echo $_SESSION['nome']; echo '</span> 
-                    </li>
-                    <!--BOTÃO SAIR-->                                    
-                    <li>
-                        <div class="btn-nav" >
-                            <a class="btn btn-sm btn-warning navbar-btn mt-1" href="/logout.php"> Sair <i class="fas fa-sign-out-alt"></i></a>                   
+<div class="row m-3">
+    <div class="col-5">
+
+        <img alt="Logo" src="image/logoNovo.png" height="250px" class="img-responsive ">
+
+    </div>
+
+
+    <?php if (!isset($_SESSION['logado'])) { ?>
+
+
+    <div class="col">
+        <!--ENTRAR-->
+        <a class="btn btns btn-outline-info m-4 py-2 px-4 rounded-pill float-right" href="#" data-toggle="modal" data-target=#modalLogin>ENTRAR</a>
+
+        <!--CADASTRE-SE-->
+        <a class="btn btns btn-outline-info m-4 py-2 px-4 rounded-pill float-right" href="#" data-toggle="modal" data-target=#modal>CADASTRE-SE</a>
+    </div>
+</div>
+    <div class="col-ml mr-5 float-right" style="color:orange;">
+
+        <h1 class="h1-responsive font-weight-bold text-center my-5">Liberdade para negociar</h1>
+    </div>
+
+<!--Modal para cadastro de CLIENTE ou MOTOFRETISTA-->
+    <div id="modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Conteúdo do modal -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Para iniciar o cadastro selecione:</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <a href="Cadastro/motofretista.php" class="btn btn-outline-warning">Sou motofretista</a>
+                    <a href="Cadastro/cliente.php" class="btn btn-outline-info float-right">Sou cliente</a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+<!--Div usada para formartar o card de login -->
+    <div id="modalLogin" class="modal fade">
+        <div class="modal-dialog">
+            <!-- Conteúdo do modal Login-->
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Entrar:</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!--Entrada de email para login-->
+                <div class="modal-body">
+                    <form method="post">
+                        <?php
+                        if (isset($_SESSION['erroLogin'])) {
+                            ?>
+                            <div class="alert alert-danger">
+                                <?= $_SESSION['erroLogin'] ?>
+                            </div>
+                        <?php }
+                        session_destroy();
+                        ?>
+                        <div class="form-group">
+                            <label for="email"> Email: </label>
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Digite seu email" required autofocus>
                         </div>
-                    </li>                                
-                </ul>';
-}
 
-echo '          
-          </div>
-        </nav> 
-        <!--FIM da navbar-->    
-            
-    </header>
-    <main role="main" class="flex-shrink-0">
-    ';
+                        <div class="form-group">
+                            <label for="senha"> Senha: </label>
+                            <input type="password" class="form-control" name="senha" id="senha" placeholder="Digite sua senha" required>
+                        </div>
+
+                        <input class="btn btn-outline-info btn-entrar" type="submit" name="entrar" value="Entrar">
+
+                    </form>
+
+                    <div class="text-right mt-3">
+                        <span class="mr-2 md-4"><a href="demo/index.php">Esqueci minha senha</a> </span>
+                    </div>
+                </div>
+
+                <!-- Esqueci a senha-->
+
+            </div>
+        </div>
+    </div>
+
+<?php } ?>
+
+<?php include 'footer.php'; ?>
