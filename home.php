@@ -108,9 +108,9 @@ if (isset($_SESSION['erroLogin'])) {
     <?php if (!isset($_SESSION['logado'])) { ?>
 
 
-  <div class="col">
-            <!--ENTRAR-->
-            <a class="btn btns btn-outline-info m-4 py-2 px-4  rounded-pill float-right" href="#" data-toggle="modal" data-target=#modalLogin>ENTRAR</a>
+    <div class="col">
+        <!--ENTRAR-->
+        <a class="btn btns btn-outline-info m-4 py-2 px-4 rounded-pill float-right" href="#" data-toggle="modal" data-target=#modalLogin>ENTRAR</a>
 
             <!--CADASTRE-SE-->
             <a class="btn btns btn-outline-info m-4 py-2 px-4 rounded-pill float-right" href="#" data-toggle="modal" data-target=#modal>CADASTRE-SE</a>
@@ -165,7 +165,7 @@ if (isset($_SESSION['erroLogin'])) {
                         ?>
                         <div class="form-group">
                             <label for="email"> Email: </label>
-                            <input type="text" class="form-control" name="email" id="email" placeholder="Digite seu email" required>
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Digite seu email" required autofocus>
                         </div>
 
                         <div class="form-group">
