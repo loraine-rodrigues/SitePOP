@@ -21,3 +21,5 @@ CALL cadastrarMotofretista('Giulia Souza', '13992340102', '1325627087', 'motob@e
 CALL cadastrarMotofretista('Leandro Silva', '13995065821', '1337304728', 'motoc@email.com', '42861681900', '22032090000135', '18540211902', 'Feminino', 'Praia Grande', '1983-03-03', 'Sim', 'CCC3333', '13092514164', 'Modelo C', 'Cor C', 'Marca C', '123456', 'avatar3.jpeg');
 CALL cadastrarMotofretista('Letícia Sampaio', '13992871026', '1328555486', 'motod@email.com', '26953633549', '63639971000104', '27739446832', 'Masculino', 'Guarujá,Praia Grande,Santos,São Vicente', '1984-04-04', 'Sim', 'DDD4444', '43516138069', 'Modelo D', 'Cor D', 'Marca D', '123456', 'avatar4.jpeg');
 CALL cadastrarMotofretista('Loraine Rodrigues', '13994677983', '1338944072', 'motoe@email.com', '00292341156', '77355009000140', '24511553828', 'Masculino', 'Santos,Guarujá', '1985-05-05', 'Sim', 'EEE5555', '22729196195', 'Modelo E', 'Cor E', 'Marca E', '123456', 'avatar5.jpeg');
+
+call buscarClientes();

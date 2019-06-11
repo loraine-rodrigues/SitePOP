@@ -10,6 +10,7 @@ CREATE TABLE `motofrete`.`tb_login`
     `nm_login`      VARCHAR(45)          NOT NULL UNIQUE,
     `id_senha`      VARCHAR(32)          NOT NULL,
     `id_tipo_login` ENUM ('1', '2', '3') NOT NULL,
+    `ativo`         BOOLEAN              NOT NULL,
     PRIMARY KEY (`id_login`)
 ) ENGINE = INNODB
   DEFAULT CHARACTER SET = UTF8;
@@ -23,6 +24,7 @@ CREATE TABLE `tb_cliente`
     `id_cpf`        CHAR(11)     NOT NULL UNIQUE,
     `nm_email`      VARCHAR(100) NOT NULL UNIQUE,
     `cd_celular`    VARCHAR(11)  NOT NULL UNIQUE,
+    `ativo`         BOOLEAN      NOT NULL,
     PRIMARY KEY (`id_cliente`)
 ) ENGINE = INNODB
   DEFAULT CHARSET = UTF8;
@@ -48,13 +50,7 @@ CREATE TABLE `tb_motofretista`
     `nm_cor`          VARCHAR(45)  NOT NULL,
     `nm_marca`        VARCHAR(45)  NOT NULL,
     `urlFoto`         VARCHAR(100) NOT NULL,
+    `ativo`           BOOLEAN      NOT NULL,
     PRIMARY KEY (`id_motofretista`)
 ) ENGINE = INNODB
   DEFAULT CHARSET = UTF8;
-
-
-  
-
-
-
- 

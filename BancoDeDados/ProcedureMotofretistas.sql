@@ -27,10 +27,10 @@ CREATE PROCEDURE `cadastrarMotofretista` (
     IN foto varchar(100))
 
 BEGIN
-    INSERT INTO tb_login (nm_usuario, nm_login, id_senha, id_tipo_login)
-    VALUES (nome, email, md5(senha), '2');
-    INSERT INTO tb_motofretista (nm_motofretista, id_celular, id_telefone, nm_email, id_cpf, id_cnpj, id_cnh, ic_genero, nm_regiao, dt_nascimento, ic_mei, id_placa, id_renavam, nm_modelo, nm_cor, nm_marca, urlFoto)
-    VALUES (nome, celular, telefone, email, cpf, cnpj, cnh, genero, regiao, nascimento, mei, placa, renavam, modelo, cor, marca, foto);
+    INSERT INTO tb_login (nm_usuario, nm_login, id_senha, id_tipo_login, ativo)
+    VALUES (nome, email, md5(senha), '2', true);
+    INSERT INTO tb_motofretista (nm_motofretista, id_celular, id_telefone, nm_email, id_cpf, id_cnpj, id_cnh, ic_genero, nm_regiao, dt_nascimento, ic_mei, id_placa, id_renavam, nm_modelo, nm_cor, nm_marca, urlFoto, ativo)
+    VALUES (nome, celular, telefone, email, cpf, cnpj, cnh, genero, regiao, nascimento, mei, placa, renavam, modelo, cor, marca, foto, true);
 END$$
 DELIMITER ;
 
@@ -60,7 +60,7 @@ create procedure `editarMotofretista` (
     IN foto varchar(100))
 
 BEGIN
-    UPDATE tb_login SET nm_login = email, nm_usuario = nome;
+    UPDATE tb_login SET nm_login = email, nm_usuario = nome WHERE nm_login = (SELECT nm_email from tb_motofretista WHERE id_motofretista = id);
     UPDATE tb_motofretista SET nm_motofretista = nome, id_celular = celular, id_telefone = telefone, nm_email = email, id_cpf = cpf, id_cnpj = cnpj, id_cnh = cnh, ic_genero = genero,
                                nm_regiao = regiao, dt_nascimento = nascimento, ic_mei = mei, id_placa = placa, id_renavam = renavam, nm_modelo = modelo, nm_cor = cor, nm_marca = marca, urlFoto = foto where id_motofretista = id;
 END $$
@@ -93,13 +93,13 @@ DELIMITER ;
 
 
 -- DELETAR MOTOFRETISTA
-drop procedure if exists deletarMotofretista;
+drop procedure if exists desativarMotofretista;
 
 DELIMITER $$
-create procedure `deletarMotofretista` (in id int(11))
+create procedure `desativarMotofretista` (in id int(11))
 begin
-    delete from tb_login where nm_login = (SELECT nm_email from tb_motofretista WHERE id_motofretista = id);
-    delete from tb_motofretista where id_motofretista = id;
+    UPDATE tb_login SET ativo = false where nm_login = (SELECT nm_email from tb_motofretista WHERE id_motofretista = id);
+    UPDATE tb_motofretista SET ativo = false where id_motofretista = id;
 
 end $$
 DELIMITER ;
