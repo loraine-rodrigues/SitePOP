@@ -42,7 +42,7 @@ if (isset($_POST['entrar'])) {
         img {
             /* The file size of this background image is 93% smaller
        to improve page load speed on mobile internet connections */
-            padding-left: 220px;
+            padding-left: 200px;
             margin-top: 100px;
             height: 300px;
 
@@ -87,7 +87,7 @@ if (isset($_SESSION['erroLogin'])) {
 
 
 <div class="row m-3">
-    <div class="col-6">
+    <div class="col-5">
 
         <img src="image/Imagem1.png" height="300px;" class="img-responsive ">
 
