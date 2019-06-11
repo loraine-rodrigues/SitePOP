@@ -37,33 +37,17 @@ if (isset($_POST['entrar'])) {
 
 <style type="text/css">
     /*responsivo para as classes */
+
     @media only screen and (min-width: 767px) {
         img {
             /* The file size of this background image is 93% smaller
        to improve page load speed on mobile internet connections */
-            padding-left: 300px;
-            height: 400px;
+            padding-left: 220px;
+            margin-top: 100px;
+            height: 300px;
 
         }
 
-
-
-
-        body {
-            width: 100%;
-            background-image: url(image/bg-home.png) !important;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-            background-size: cover;
-
-        }
-
-        p {
-            display: inline;
-        }
-
-        /*fim do responsivo*/
 
         .btns {
             color: #0f6674;
@@ -71,8 +55,10 @@ if (isset($_POST['entrar'])) {
 
         }
 
+
     }
 
+    /*fim do responsivo*/
     body {
         width: 100%;
         background-image: url(image/bg-home.png) !important;
@@ -85,11 +71,6 @@ if (isset($_POST['entrar'])) {
 
     p {
         display: inline;
-    }
-
-    .btn-entrar {
-        width: 50%;
-        margin-left: 25%;
     }
 </style>
 
@@ -108,27 +89,28 @@ if (isset($_SESSION['erroLogin'])) {
 <div class="row m-3">
     <div class="col-6">
 
-        <img src="image/logoNovo.png" height="300px;" class="img-responsive ">
+        <img src="image/Imagem1.png" height="300px;" class="img-responsive ">
 
     </div>
+
+
 
 
     <?php if (!isset($_SESSION['logado'])) { ?>
 
 
-    <div class="col">
-        <!--ENTRAR-->
-        <a class="btn btns btn-outline-info m-4 py-2 px-4  rounded-pill float-right" href="#" data-toggle="modal" data-target=#modalLogin>ENTRAR</a>
+  <div class="col">
+            <!--ENTRAR-->
+            <a class="btn btns btn-outline-info m-4 py-2 px-4  rounded-pill float-right" href="#" data-toggle="modal" data-target=#modalLogin>ENTRAR</a>
 
-        <!--CADASTRE-SE-->
-        <a class="btn btns btn-outline-info m-4 py-2 px-4 rounded-pill float-right" href="#" data-toggle="modal" data-target=#modal>CADASTRE-SE</a>
+            <!--CADASTRE-SE-->
+            <a class="btn btns btn-outline-info m-4 py-2 px-4 rounded-pill float-right" href="#" data-toggle="modal" data-target=#modal>CADASTRE-SE</a>
+        </div>
     </div>
-</div>
-    <div class="col-ml mr-5 float-right" style="color:orange;">
+    <div class="mr-5" style="color:orange;">
 
-        <h1 class="h1-responsive font-weight-bold text-center my-5">Liberdade para negociar</h1>
+        <h1 class=" display-4 h1-responsive font-weight-bold text-right ">Liberdade para negociar</h1>
     </div>
-
 <!--Modal para cadastro de CLIENTE ou MOTOFRETISTA-->
     <div id="modal" class="modal fade" role="dialog">
         <div class="modal-dialog">
