@@ -3,8 +3,6 @@ $title = "HOME";
 require 'conexao.php';
 include 'header.php';
 
-
-
 if (isset($_POST['entrar'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
@@ -34,25 +32,20 @@ if (isset($_POST['entrar'])) {
 }
 ?>
 
-
 <style type="text/css">
     /*responsivo para as classes */
-
     @media only screen and (min-width: 767px) {
         img {
             /* The file size of this background image is 93% smaller
-       to improve page load speed on mobile internet connections */
+            to improve page load speed on mobile internet connections */
             padding-left: 200px;
             margin-top: 100px;
             height: 300px;
-
         }
-          .img-moto {
+        .img-moto {
             /* The file size of this background image is 93% smaller
-       to improve page load speed on mobile internet connections */
-         
+            to improve page load speed on mobile internet connections */
             height: 250px;
-
         }
 
 
@@ -62,17 +55,14 @@ if (isset($_POST['entrar'])) {
             font-weight: bold;
 
         }
-              body {
-        width: 100%;
-        background-image: url(image/bg-home.png) !important;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-attachment: fixed;
-        background-size: cover;
-
-    }
-
-
+        body {
+            width: 100%;
+            background-image: url(image/bg-home.png) !important;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+        }
     }
 
     /*fim do responsivo*/
@@ -83,7 +73,6 @@ if (isset($_POST['entrar'])) {
         background-position: center center;
         background-attachment: fixed;
         background-size: cover;
-
     }
 
     p {
@@ -106,13 +95,13 @@ if (isset($_SESSION['erroLogin'])) {
 <div class="row">
     <div class="col-md-6">
 
-        <img src="image/Imagem1.png" height="250px;" class="img-responsive">
+        <img alt="Logo" src="image/Imagem1.png" height="250px" class="img-responsive">
 
     </div>
 <div class="row">
 <div class="col-md-6">
 
-        <img src="image/scooterColorida.png" height="200px;" class="img-responsive">
+        <img alt="Scooter" src="image/scooterColorida.png" height="200px" class="img-responsive">
 
     </div>
 </div>
@@ -145,8 +134,8 @@ if (isset($_SESSION['erroLogin'])) {
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <a href="Cadastro/motofretista.php" class="btn btn-outline-warning">Sou motofretista</a>
-                    <a href="Cadastro/cliente.php" class="btn btn-outline-info float-right">Sou cliente</a>
+                    <a href="cadastro/motofretista.php" class="btn btn-outline-warning">Sou motofretista</a>
+                    <a href="cadastro/cliente.php" class="btn btn-outline-info float-right">Sou cliente</a>
                 </div>
 
             </div>
@@ -187,8 +176,7 @@ if (isset($_SESSION['erroLogin'])) {
                             <input type="password" class="form-control" name="senha" id="senha" placeholder="Digite sua senha" required>
                         </div>
 
-                        <input class="btn btn-outline-info btn-entrar" type="submit" name="entrar" value="Entrar">
-
+                        <input class="btn btn-block btn-outline-info btn-entrar" type="submit" name="entrar" value="Entrar">
                     </form>
 
                     <div class="text-right mt-3">

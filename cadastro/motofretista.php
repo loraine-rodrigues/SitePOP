@@ -62,13 +62,6 @@ if (isset($_POST['confirmarCadastro'])) {
         }
     }
 
-    if (isset($_POST['regiao'])) {
-        $regiao = implode(",", $_POST ['regiao']);
-    }
-    else {
-        $erro = "Informe ao menos uma cidade para atuar!";
-    }
-
     $nome = $_POST ['nome'];
     $data = $_POST ['data'];
     $genero = $_POST ['genero'];

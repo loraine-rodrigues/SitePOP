@@ -2,7 +2,7 @@
 
 session_start();
 
-include 'adm/verificaAdm.php';
+include 'admin/verificaAdm.php';
 
 echo '<!doctype html>
 <html lang="pt-br" class="h-100">
@@ -33,51 +33,41 @@ echo '
     <!--Style para padronização de todas as páginas -->
     <style>
     @media only screen and (min-width: 767px) {
-
-    
-    body {
-            width: 100%;
-           
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-            background-size: cover;
-            font-family: \'Montserrat\', sans-serif;
-            // fonte do site
-           
-            
-    }
-            
+        body {
+                width: 100%;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-attachment: fixed;
+                background-size: cover;
+                font-family: \'Montserrat\', sans-serif;
+                // fonte do site
         }
-         .navbar-customizada{
-          width: 100%;
-          background-color:#0095B6;
-       }
-    
-    
+    }
+    .navbar-customizada{
+        width: 100%;
+        background-color:#0095B6;
+    }
     .navbar-brand:focus,
     .navbar-brand:hover {
-    text-decoration: none
+        text-decoration: none
     }
-
-         .card {
-            border-radius: 25px;
-         }
-         .icon {
-          display: inline-block;
-          line-height: 30px;
-          padding-left: 30px;
-          background: url("phone.svg") no-repeat scroll 0 0 transparent;
-        }
-        .my-custom-scrollbar {
-          position: relative;
-          height: 500px;
-          overflow: auto;
-          }
-          .table-wrapper-scroll-y {
-          display: block;
-          }
-         
+    .card {
+        border-radius: 25px;
+    }
+    .icon {
+        display: inline-block;
+        line-height: 30px;
+        padding-left: 30px;
+        background: url("image/phone.svg") no-repeat scroll 0 0 transparent;
+    }
+    .my-custom-scrollbar {
+        position: relative;
+        height: 500px;
+        overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+        display: block;
+    }
     </style>
 </head>
 <body class="d-flex flex-column h-100">
@@ -106,12 +96,12 @@ echo '
                 <a class="nav-link" href="/contato.php">Contato</a>
               </li>';
 
-if ($_SESSION['adm'] == TRUE) {     //Se for adm mostrar mais dois botões
+if ($_SESSION['admin'] == TRUE) {     //Se for admin mostrar mais dois botões
     echo '                  <li class="nav-item mx-2">
-                <a class="nav-link" href="/adm/motofretistas">Motofretistas</a>
+                <a class="nav-link" href="/admin/motofretistas">Motofretistas</a>
               </li>
               <li class="nav-item mx-2">
-                <a class="nav-link" href="/adm/clientes">Clientes</a>
+                <a class="nav-link" href="/admin/clientes">Clientes</a>
               </li>
     ';
 }

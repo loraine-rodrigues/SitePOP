@@ -185,7 +185,7 @@ if (isset($_POST['confirmarCadastro'])) {
 
                     <!-- Botão de confirmar cadastro-->
                     <div class="col">
-                        <button type="submit" name="confirmarCadastro" class="btn btn-outline-success float-right mx-5">
+                        <button type="submit" name="confirmarCadastro" value="ok" class="btn btn-outline-success float-right mx-5">
                             Confirmar
                         </button> <!--Botão entrar-->
                     </div>

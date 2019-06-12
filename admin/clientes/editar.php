@@ -17,7 +17,6 @@ if (isset($_POST['editar'])) {
             $cpf = $_POST ['cpf'];
             $celular = $_POST ['celular'];
             $email = $_POST ['email'];
-            $termos = $_POST ['termos'];
 
             $comando = $conexao->prepare("CALL editarCliente(:id, :nome, :nascimento, :cpf, :email, :celular)");
             $comando->bindParam(':id', $id);
