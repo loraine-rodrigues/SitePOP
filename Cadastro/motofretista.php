@@ -1131,7 +1131,7 @@ if (isset($_POST['confirmarCadastro'])) {
         placa.inputmask("AAA-9999", {removeMaskOnSubmit: true});
         email.inputmask("email");
         nome.inputmask({regex: "[a-zà-úA-ZÀ-Ú ]*", placeholder: ""});
-        data.inputmask("datetime", {placeholder: "DD/MM/AAAA", inputFormat: "dd/mm/yyyy", max: "01/01/1998", min: "01/01/1919", outputFormat: "yyyy-mm-dd", removeMaskOnSubmit: true});
+        data.inputmask("datetime", {placeholder: "DD/MM/AAAA", inputFormat: "dd/mm/yyyy", max: "01/06/1998", min: "01/01/1919", outputFormat: "yyyy-mm-dd", removeMaskOnSubmit: true});
         marca.inputmask({regex: "[a-zà-úA-ZÀ-Ú- ]*", placeholder: ""});
         modelo.inputmask({regex: "[a-zà-úA-ZÀ-Ú0-9- ]*", placeholder: ""});
         cor.inputmask({regex: "[a-zà-úA-ZÀ-Ú ]*", placeholder: ""});
