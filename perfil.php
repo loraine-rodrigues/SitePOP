@@ -99,7 +99,7 @@ include 'header.php' ?>
                         <!--Adicionar foto-->
                         <div class="row">
                             <div class="form-group">
-                                <img id='img-upload' src="avatar.svg" class="rounded mb-2"/>
+                                <img id='img-upload' src="image/avatar.svg" class="rounded mb-2"/>
                             </div>
                         </div>
                     </div>

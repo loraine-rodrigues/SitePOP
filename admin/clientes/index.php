@@ -4,7 +4,7 @@ $title = "CLIENTES";
 
 include '../../header.php';
 
-if (!$_SESSION['adm']) {
+if (!$_SESSION['admin']) {
     header('Location: /home.php');
     exit();
 }

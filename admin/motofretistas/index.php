@@ -4,8 +4,8 @@ $title = "MOTOFRETISTAS";
 
 include '../../header.php';
 
-if (!$_SESSION['adm']) {
-    header('Location: /home.php');      //Se não for adm redireciona para HOME
+if (!$_SESSION['admin']) {
+    header('Location: /home.php');      //Se não for admin redireciona para HOME
     exit();
 }
 

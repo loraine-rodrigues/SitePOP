@@ -261,7 +261,7 @@ if (isset($_POST['confirmarCadastro'])) {
                     <!--Adicionar foto-->
                     <div class="col text-center">
                         <div class="form-group">
-                            <img id='img-uploaded' src="../avatar.svg" class="rounded mb-2"/>
+                            <img id='img-uploaded' src="../image/avatar.svg" class="rounded mb-2"/>
                             <div class="input-group mt-1">
                                     <span class="input-group-btn">
                                         <span class="btn btn-outline-primary btn-file">
