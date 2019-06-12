@@ -95,13 +95,19 @@ if (isset($_SESSION['erroLogin'])) {
 
 
 
-<div class="row m-3">
+<div class="row">
     <div class="col-md-6">
 
         <img src="image/Imagem1.png" height="250px;" class="img-responsive">
 
     </div>
+<div class="row">
+<div class="col-md-6">
 
+        <img src="image/scooterColorida.png" height="250px;" class="img-responsive">
+
+    </div>
+</div>
 
 
 
