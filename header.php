@@ -130,7 +130,7 @@ if (isset($_SESSION['logado'])) {  //Se o usuario estiver logado mostrar botão 
                     <!--BOTÃO SAIR-->                                    
                     <li>
                         <div class="btn-nav" >
-                            <a class="btn btn-sm btn-warning navbar-btn mt-1" href="/logout.php"> Sair <i class="fas fa-sign-out-alt"></i></a>                   
+                            <a class="btn btn-sm btn-danger navbar-btn mt-1" href="/logout.php"> Sair <i class="fas fa-sign-out-alt"></i></a>                   
                         </div>
                     </li>                                
                 </ul>';
