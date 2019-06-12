@@ -47,6 +47,14 @@ if (isset($_POST['entrar'])) {
             height: 300px;
 
         }
+          .img-moto {
+            /* The file size of this background image is 93% smaller
+       to improve page load speed on mobile internet connections */
+         
+            height: 250px;
+
+        }
+
 
 
         .btns {
@@ -104,7 +112,7 @@ if (isset($_SESSION['erroLogin'])) {
 <div class="row">
 <div class="col-md-6">
 
-        <img src="image/scooterColorida.png" height="250px;" class="img-responsive">
+        <img src="image/scooterColorida.png" height="200px;" class="img-responsive">
 
     </div>
 </div>
