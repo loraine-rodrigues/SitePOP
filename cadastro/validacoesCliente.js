@@ -253,5 +253,5 @@ $(document).ready(() => {
     cpf.inputmask("999.999.999-99", {removeMaskOnSubmit: true});
     email.inputmask("email");
     nome.inputmask({regex: "[a-zà-úA-ZÀ-Ú ]*", placeholder: ""});
-    data.inputmask("datetime", {placeholder: "DD/MM/AAAA", inputFormat: "dd/mm/yyyy", max: "01/01/1998", min: "01/01/1919", outputFormat: "yyyy-mm-dd", removeMaskOnSubmit: true});
+    data.inputmask("datetime", {placeholder: "DD/MM/AAAA", min: "01/01/1919", outputFormat: "yyyy-mm-dd", removeMaskOnSubmit: true});
 });
