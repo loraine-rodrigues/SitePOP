@@ -84,14 +84,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-
-
-call buscarClientes();
-select * from tb_login;
-
-call adminBuscarCliente(7);
-call buscarCliente(7);
-
-select * from tb_login;
-
-SELECT nm_login FROM tb_login WHERE id_login = 7
