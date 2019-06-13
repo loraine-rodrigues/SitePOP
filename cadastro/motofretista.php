@@ -476,7 +476,7 @@ if (isset($_POST['salvar'])) {
                     <!-- Termos de uso -->
                     <div class="col">
                         <div class="form-group form-check">
-                            <input type="checkbox" name="termos" value="true" class="form-check-input" id="checkTermos" required>
+                            <input type="checkbox" name="termos" value="true" class="form-check-input" id="termos" required>
                             <label for="termos">Eu li e aceito os </label>
                             <label class="form-check-label" for="checkTermos"><a href="#" data-toggle="modal" data-target="#modal">termos de uso</a></label>
                             <div class="invalid-feedback">

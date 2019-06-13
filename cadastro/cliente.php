@@ -76,7 +76,7 @@ if (isset($_POST['confirmarCadastro'])) {
             <?php } ?>
 
             <h3 class="card-title mb-4">DADOS PESSOAIS</h3>
-            <form method="post" id="form" class="needs-validation">
+            <form method="post" id="form" class="needs-validation" novalidate>
                 <div class="row">
 
                     <!--Nome completo do cliente-->
@@ -173,11 +173,9 @@ if (isset($_POST['confirmarCadastro'])) {
                     <!-- Termos de uso -->
                     <div class="col">
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="checkTermo" name="termos">
+                            <input type="checkbox" class="form-check-input" id="termos" name="termos">
                             <label for="termos">Eu li e aceito os </label>
-                            <label class="form-check-label" for="checkTermo"><a href="#" data-toggle="modal"
-                                                                                data-target="#modal">termos de
-                                    uso</a></label>
+                            <label class="form-check-label" for="termos"><a href="#" data-toggle="modal" data-target="#modal">termos de uso</a></label>
                             <div class="invalid-feedback">
                                 É necessário aceitar os termos de uso
                             </div>

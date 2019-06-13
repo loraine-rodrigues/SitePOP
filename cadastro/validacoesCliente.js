@@ -20,6 +20,8 @@ $(document).ready(() => {
     var confirmarSenha = $("#confirmarSenha");
     var feedbackConfirmarSenha = $("#feedbackConfirmarSenha");
 
+    var termos = $("#termos");
+
     //Validação ao digitar no campo
 
     nome.keyup(() => {
@@ -243,6 +245,12 @@ $(document).ready(() => {
             if (confirmarSenha.val().length <= 0) {
                 feedbackConfirmarSenha.text("Campo obrigatório")
             }
+        }
+
+        if (termos.is(":checked")) {
+            termos.get(0).setCustomValidity('');
+        } else {
+            termos.get(0).setCustomValidity('Inválido');
         }
 
         form.addClass('was-validated');

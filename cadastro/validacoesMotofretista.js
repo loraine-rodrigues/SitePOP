@@ -1,10 +1,12 @@
 $(document).ready( () => {
     //teste de script para pegar imagem
-    $(".somenteLeitura").keydown(function(e){
+    var somenteLeitura = $(".somenteLeitura");
+
+    somenteLeitura.keydown(function(e){
         e.preventDefault();
     });
 
-    $(".somenteLeitura").bind('cut copy paste', function (e){
+    somenteLeitura.bind('cut copy paste', function (e){
         e.preventDefault();
     });
 
@@ -32,12 +34,20 @@ $(document).ready( () => {
     });   //fim do script de pegar imagem
 
     var form = $("#form");
+
     var nome = $("#nome");
+
     var data = $("#data");
     var feedbackData = $("#feedbackData");
+
     var genero = $("#genero");
+
     var celular = $("#celular");
+    var feedbackCelular = $("#feedbackCelular");
+
     var celularAlternativo = $("#celularAlternativo");
+    var feedbackCelularAlternativo = $("#feedbackCelularAlternativo");
+
     var regioes = $("input[name^='regiao']");
     var regioesValidas = false;
     regioes.each((regiao) => {
@@ -45,25 +55,39 @@ $(document).ready( () => {
             regioesValidas = true;
         }
     });
+
     var cpf = $("#cpf");
     var feedbackCpf = $("#feedbackCpf");
+
     var cnpj = $("#cnpj");
     var feedbackCnpj = $("#feedbackCnpj");
+
     var mei = $("#mei");
     var feedbackMei = $("#feedbackMei");
+
     var cnh = $("#cnh");
     var feedbackCnh = $("#feedbackCnh");
+
     var email = $("#email");
+    var feedbackEmail = $("#feedbackEmail");
+
     var senha = $("#senha");
     var feedbackSenha = $("#feedbackSenha");
+
     var confirmarSenha = $("#confirmarSenha");
     var feedbackConfirmarSenha = $("#feedbackConfirmarSenha");
+
     var marca = $("#marca");
     var modelo = $("#modelo");
     var cor = $("#cor");
+
     var placa = $("#placa");
+    var feedbackPlaca = $("#feedbackPlaca");
+
     var renavam = $("#renavam");
     var feedbackRenavam = $("#feedbackRenavam");
+
+    var termos = $("#termos");
 
     //Validação ao digitar no campo
 
@@ -77,7 +101,6 @@ $(document).ready( () => {
 
     data.keyup(() => {
         data = $("#data");
-        var feedbackData = $("#feedbackData");
         if (data.val().length > 0) {
             if (Inputmask.isValid(data.val(), {alias: "datetime", inputFormat: "dd/mm/yyyy"})) {
                 data.get(0).setCustomValidity('');
@@ -159,7 +182,6 @@ $(document).ready( () => {
 
     celular.keyup(() => {
         celular = $("#celular");
-        var feedbackCelular = $("#feedbackCelular");
         if (celular.val().length > 0) {
             if (Inputmask.isValid(celular.val(), "(99)9999-9999[9]")) {
                 celular.get(0).setCustomValidity('');
@@ -176,7 +198,6 @@ $(document).ready( () => {
 
     celularAlternativo.keyup(() => {
         celularAlternativo = $("#celularAlternativo");
-        var feedbackCelularAlternativo = $("#feedbackCelularAlternativo");
         if (celularAlternativo.val().length > 0) {
             if (Inputmask.isValid(celularAlternativo.val(), "(99)9999-9999[9]")) {
                 celularAlternativo.get(0).setCustomValidity('');
@@ -212,7 +233,6 @@ $(document).ready( () => {
 
     email.keyup(() => {
         email = $("#email");
-        var feedbackEmail = $("#feedbackEmail");
         if (email.val().length > 0) {
             if (Inputmask.isValid(email.val(), {alias: "email"})) {
                 email.get(0).setCustomValidity('');
@@ -230,8 +250,6 @@ $(document).ready( () => {
     senha.keyup(() => {
         senha = $("#senha");
         confirmarSenha = $("#confirmarSenha");
-        feedbackSenha = $("#feedbackSenha");
-        feedbackConfirmarSenha = $("#feedbackConfirmarSenha");
         if (senha.val().length > 0) {
             feedbackSenha.text("");
             if (senha.val() === confirmarSenha.val()) {
@@ -253,8 +271,6 @@ $(document).ready( () => {
     confirmarSenha.keyup(() => {
         senha = $("#senha");
         confirmarSenha = $("#confirmarSenha");
-        feedbackSenha = $("#feedbackSenha");
-        feedbackConfirmarSenha = $("#feedbackConfirmarSenha");
         if (confirmarSenha.val().length > 0) {
             if (senha.val() === confirmarSenha.val()) {
                 senha.get(0).setCustomValidity('');
@@ -298,7 +314,6 @@ $(document).ready( () => {
 
     placa.keyup(() => {
         placa = $("#placa");
-        var feedbackPlaca = $("#feedbackPlaca");
         if (placa.val().length > 0) {
             if (Inputmask.isValid(placa.val(), "AAA-9999")) {
                 placa.get(0).setCustomValidity('');
@@ -432,7 +447,6 @@ $(document).ready( () => {
             feedbackMei.text("Campo obrigatório")
         }
 
-        var feedbackCelular = $("#feedbackCelular");
         if (celular.val().length > 0) {
             if (celularValido) {
                 feedbackCelular.text("");
@@ -446,7 +460,6 @@ $(document).ready( () => {
             celular.get(0).setCustomValidity('Inválido');
         }
 
-        var feedbackCelularAlternativo = $("#feedbackCelularAlternativo");
         if (celularAlternativo.val().length > 0) {
             if (celularAlternativoValido) {
                 feedbackCelularAlternativo.text("");
@@ -460,7 +473,6 @@ $(document).ready( () => {
             celularAlternativo.get(0).setCustomValidity('Inválido');
         }
 
-        var feedbackEmail = $("#feedbackEmail");
         if (email.val().length > 0) {
             if (emailValido) {
                 feedbackEmail.text("");
@@ -474,8 +486,6 @@ $(document).ready( () => {
             email.get(0).setCustomValidity('Inválido');
         }
 
-        feedbackSenha = $("#feedbackSenha");
-        feedbackConfirmarSenha = $("#feedbackConfirmarSenha");
         if (senha.val().length > 0) {
             feedbackSenha.text("");
             if (confirmarSenha.val().length > 0) {
@@ -502,7 +512,6 @@ $(document).ready( () => {
             }
         }
 
-        var feedbackPlaca = $("#feedbackPlaca");
         if (placaValida) {
             placa.get(0).setCustomValidity('');
             if (placaValida) {
@@ -544,6 +553,12 @@ $(document).ready( () => {
             regioes.each((regiao) => {
                 regioes.get(regiao).setCustomValidity('Inválido');
             });
+        }
+
+        if (termos.is(":checked")) {
+            termos.get(0).setCustomValidity('');
+        } else {
+            termos.get(0).setCustomValidity('Inválido');
         }
 
         form.addClass('was-validated');
