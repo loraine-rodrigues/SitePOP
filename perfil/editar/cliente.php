@@ -129,7 +129,7 @@ catch (PDOException $excecao) {
                         <div class="col">
                             <div class="form-group">
                                 <label for="cpf"> CPF: </label>
-                                <input type="text" class="form-control" id="cpf" name="cpf" required  value="<?= $resultado['id_cpf'] ?>">
+                                <input type="text" class="form-control" id="cpf" name="cpf" readonly  value="<?= $resultado['id_cpf'] ?>">
                                 <div class="invalid-feedback">
                                     <span id="feedbackCpf"> </span>
                                 </div>
