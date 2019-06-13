@@ -145,24 +145,26 @@ if (isset($_SESSION['erroLogin'])) {
                     <?php }
                     session_destroy();
                     ?>
-                    <div class="form-group">
+                    <div class="form-group m-2">
                         <label for="email"> Email: </label>
                         <input type="text" class="form-control" name="email" id="email" placeholder="Digite seu email"
                                required autofocus>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group m-2">
                         <label for="senha"> Senha: </label>
                         <input type="password" class="form-control" name="senha" id="senha"
                                placeholder="Digite sua senha" required>
                     </div>
 
-                    <input class="btn btn-outline-info btn-entrar" type="submit" name="entrar" value="Entrar">
-
+                    <div class="row">
+                        <div class="col m-2">
+                            <input class="btn btn-outline-info btn-block" type="submit" name="entrar" value="Entrar">
+                        </div>
+                    </div>
                     <div class="text-right mt-3">
                         <span class="mr-2 md-4"><a href="esqueciMinhaSenha.php">Esqueci minha senha</a> </span>
                     </div>
-
             </div>
         </div>
     </div>
