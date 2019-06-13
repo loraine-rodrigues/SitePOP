@@ -24,7 +24,7 @@ function carregarFoto($uuid) {
     }
 
 // Verifique o tamanho do arquivo
-    if ($_FILES["foto"]["size"] > 500000) {
+    if ($_FILES["foto"]["size"] > 5000000) {
 // echo "Desculpe, seu arquivo é muito grande.";
         $uploadOk = 0;
     }
