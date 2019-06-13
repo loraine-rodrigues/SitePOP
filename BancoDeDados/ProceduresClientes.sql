@@ -26,7 +26,19 @@ DELIMITER $$
 create procedure editarCliente (in id int(11), IN nome varchar(255), IN nascimento date, IN cpf char(11), IN email varchar(100), IN celular varchar(11))
 
 begin
-  update tb_login set nm_login = email, nm_usuario = nome WHERE nm_login = (SELECT nm_email from tb_cliente WHERE id_cliente = id);
+	update tb_cliente set nm_cliente = nome, dt_nascimento = nascimento, id_cpf = cpf, nm_email = email, cd_celular = celular where nm_email = (SELECT nm_login FROM tb_login WHERE id_login = id);
+	update tb_login set nm_login = email, nm_usuario = nome WHERE id_login = id;
+end $$
+DELIMITER ;
+
+-- EDITAR MOTOFRETISTA
+drop procedure if exists `adminEditarCliente`;
+
+DELIMITER $$
+create procedure adminEditarCliente (in id int(11), IN nome varchar(255), IN nascimento date, IN cpf char(11), IN email varchar(100), IN celular varchar(11))
+
+begin
+	update tb_login set nm_login = email, nm_usuario = nome WHERE nm_login = (SELECT nm_email from tb_cliente WHERE id_cliente = id);
 	update tb_cliente set nm_cliente = nome, dt_nascimento = nascimento, id_cpf = cpf, nm_email = email, cd_celular = celular where id_cliente = id;
 end $$
 DELIMITER ;
@@ -37,6 +49,17 @@ drop procedure if exists `buscarCliente`;
 
 DELIMITER $$
 create procedure buscarCliente (in id int(11))
+
+begin
+	select * from tb_cliente where nm_email = (SELECT nm_login FROM tb_login WHERE id_login = id);
+end $$
+DELIMITER ;
+
+-- BUSCAR CLIENTE
+drop procedure if exists `adminBuscarCliente`;
+
+DELIMITER $$
+create procedure adminBuscarCliente (in id int(11))
 
 begin
 	select * from tb_cliente where id_cliente = id;

@@ -1,9 +1,3 @@
-<?php
-
-$title = "PÁGINA PRINCIPAL";
-
-include 'home.php';
-
-
-?>
-
+<script>
+    window.location.href = 'home.php';
+</script>

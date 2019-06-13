@@ -12,7 +12,7 @@ if (!$_SESSION['admin']) {
 require '../../conexao.php';
 
 try {
-    $comando = $conexao->prepare("CALL buscarMotofretistas()");      //Busca as informações dos motofretistas no banco
+    $comando = $conexao->prepare("CALL buscarMotofretistas()"); //Busca as informações dos motofretistas no banco
     $comando->execute();
 }
 catch (PDOException $excecao) {

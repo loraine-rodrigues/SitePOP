@@ -49,23 +49,95 @@ create procedure `editarMotofretista` (
     IN cnpj char(14),
     IN cnh char(11),
     IN genero varchar(9),
-    in regiao varchar(11),
+    in regiao set ('Bertioga', 'Cubatão', 'Guarujá', 'Itanhaém', 'Mongaguá', 'Peruíbe', 'Praia Grande', 'Santos', 'São Vicente'),
     IN nascimento DATE,
     IN mei enum ('Sim', 'Não'),
     IN placa char(7),
     IN renavam char(11),
     IN modelo varchar(45),
     IN cor varchar(45),
-    IN marca varchar(45),
-    IN foto varchar(100))
+    IN marca varchar(45)
+)
 
 BEGIN
-    UPDATE tb_login SET nm_login = email, nm_usuario = nome WHERE nm_login = (SELECT nm_email from tb_motofretista WHERE id_motofretista = id);
-    UPDATE tb_motofretista SET nm_motofretista = nome, id_celular = celular, id_telefone = telefone, nm_email = email, id_cpf = cpf, id_cnpj = cnpj, id_cnh = cnh, ic_genero = genero,
-                               nm_regiao = regiao, dt_nascimento = nascimento, ic_mei = mei, id_placa = placa, id_renavam = renavam, nm_modelo = modelo, nm_cor = cor, nm_marca = marca, urlFoto = foto where id_motofretista = id;
+    UPDATE tb_login SET nm_login = email, nm_usuario = nome WHERE id_login = id;
+    UPDATE tb_motofretista SET nm_motofretista = nome,
+                               id_celular = celular,
+                               id_telefone = telefone,
+                               nm_email = email,
+                               id_cpf = cpf,
+                               id_cnpj = cnpj,
+                               id_cnh = cnh,
+                               ic_genero = genero,
+                               nm_regiao = regiao,
+                               dt_nascimento = nascimento,
+                               ic_mei = mei,
+                               id_placa = placa,
+                               id_renavam = renavam,
+                               nm_modelo = modelo,
+                               nm_cor = cor,
+                               nm_marca = marca
+    WHERE nm_email = (SELECT nm_login FROM tb_login WHERE id_login = id);
 END $$
 DELIMITER ;
 
+-- ADMIN EDITAR MOTOFRETISTA
+drop procedure if exists adminEditarMotofretista;
+
+DELIMITER $$
+create procedure `adminEditarMotofretista` (
+    IN id int (11),
+    IN nome varchar(100),
+    IN celular char(11),
+    IN telefone char(11),
+    IN email varchar(100),
+    IN cpf char(11),
+    IN cnpj char(14),
+    IN cnh char(11),
+    IN genero varchar(9),
+    in regiao set ('Bertioga', 'Cubatão', 'Guarujá', 'Itanhaém', 'Mongaguá', 'Peruíbe', 'Praia Grande', 'Santos', 'São Vicente'),
+    IN nascimento DATE,
+    IN mei enum ('Sim', 'Não'),
+    IN placa char(7),
+    IN renavam char(11),
+    IN modelo varchar(45),
+    IN cor varchar(45),
+    IN marca varchar(45)
+)
+
+BEGIN
+    UPDATE tb_login SET nm_login = email, nm_usuario = nome WHERE nm_login = (SELECT nm_email FROM tb_motofretista WHERE id_motofretista = id);
+    UPDATE tb_motofretista SET nm_motofretista = nome,
+                               id_celular = celular,
+                               id_telefone = telefone,
+                               nm_email = email,
+                               id_cpf = cpf,
+                               id_cnpj = cnpj,
+                               id_cnh = cnh,
+                               ic_genero = genero,
+                               nm_regiao = regiao,
+                               dt_nascimento = nascimento,
+                               ic_mei = mei,
+                               id_placa = placa,
+                               id_renavam = renavam,
+                               nm_modelo = modelo,
+                               nm_cor = cor,
+                               nm_marca = marca
+    WHERE id_motofretista = id;
+END $$
+DELIMITER ;
+
+
+-- EDITAR FOTO
+drop procedure if exists mudarFoto;
+
+DELIMITER $$
+create procedure `mudarFoto` (IN email varchar(100), IN foto varchar(100))
+BEGIN
+    SELECT urlFoto FROM tb_motofretista WHERE nm_email = email;
+    UPDATE tb_motofretista SET urlFoto = foto where nm_email = email;
+END $$
+DELIMITER ;
 
 -- BUSCAR MOTOFRETISTA
 drop procedure if exists buscarMotofretista;
@@ -75,6 +147,18 @@ create procedure `buscarMotofretista` (in id int (11))
 begin
 
     select * from tb_motofretista where id_motofretista = id;
+
+end $$
+DELIMITER ;
+
+-- BUSCAR MOTOFRETISTA PELO NOME DE USUÁRIO
+drop procedure if exists buscarMotofretistaPorUsuario;
+
+DELIMITER $$
+create procedure `buscarMotofretistaPorUsuario` (IN usuario VARCHAR (100))
+begin
+
+    select * from tb_motofretista where nm_email = usuario;
 
 end $$
 DELIMITER ;

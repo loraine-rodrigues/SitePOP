@@ -2,6 +2,7 @@ Create database if not exists motofrete;
 
 use motofrete;
 
+-- TABELA DE LOGINS
 DROP TABLE IF EXISTS `motofrete`.`tb_login`;
 CREATE TABLE `motofrete`.`tb_login`
 (
@@ -15,6 +16,15 @@ CREATE TABLE `motofrete`.`tb_login`
 ) ENGINE = INNODB
   DEFAULT CHARACTER SET = UTF8;
 
+-- TABELA PARA ESQUECI MINHA SENHA
+DROP TABLE IF EXISTS `motofrete`.`tb_senhaTemporaria`;
+CREATE TABLE `tb_senhaTemporaria` (
+    `email` varchar(45) NOT NULL,
+    `chaveTemporaria` varchar(45) NOT NULL,
+    `dataExpiracao` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- TABELA DE CLIENTES
 DROP TABLE IF EXISTS `motofrete`.`tb_cliente`;
 CREATE TABLE `tb_cliente`
 (
@@ -29,6 +39,7 @@ CREATE TABLE `tb_cliente`
 ) ENGINE = INNODB
   DEFAULT CHARSET = UTF8;
 
+-- TABELA DE MOTOFRETISTAS
 DROP TABLE IF EXISTS `motofrete`.`tb_motofretista`;
 CREATE TABLE `tb_motofretista`
 (
@@ -43,7 +54,7 @@ CREATE TABLE `tb_motofretista`
     `nm_email`        VARCHAR(100) NOT NULL UNIQUE,
     `nm_regiao`       SET ('Bertioga', 'Cubatão', 'Guarujá', 'Itanhaém', 'Mongaguá', 'Peruíbe', 'Praia Grande', 'Santos', 'São Vicente') DEFAULT 'Praia Grande',
     `dt_nascimento`   DATE         NOT NULL,
-    `ic_mei`          ENUM ('Sim', 'Não')                                                                                                DEFAULT NULL,
+    `ic_mei`          ENUM ('Sim', 'Não') NOT NULL,
     `id_placa`        CHAR(7)      NOT NULL UNIQUE,
     `id_renavam`      CHAR(11)     NOT NULL UNIQUE,
     `nm_modelo`       VARCHAR(45)  NOT NULL,

@@ -1,6 +1,3 @@
-<?php
-
-echo '
     </main>
     
     <footer class="mt-auto p-3 text-center bg-light" >
@@ -16,10 +13,10 @@ echo '
                   <a class="text-dark m-3" href="/duvidas.php">Dúvidas Frequentes</a>
                 </li>
       <li>
-        <a class="text-dark m-3" href="sobreNos.php">Sobre nós</a>
+        <a class="text-dark m-3" href="/sobreNos.php">Sobre nós</a>
       </li>
       <li>
-      <a class="text-dark m-3" href="termos.php">Termos de uso</a>
+      <a class="text-dark m-3" href="/termos.php">Termos de uso</a>
       </li>
       
       </div> 
@@ -27,7 +24,24 @@ echo '
     
     <script>
         $(document).ready(function() {
-            $(\'a[href="\' + this.location.pathname + \'"]\').parent().addClass(\'active\');
+            if (this.location.pathname.includes('perfil')) {
+                $('a[href*="/perfil"]').parent().addClass('active');
+            }
+            if (this.location.pathname.includes('catalogo')) {
+                $('a[href*="/catalogo.php"]').parent().addClass('active');
+            }
+            if (this.location.pathname.includes('comoFunciona')) {
+                $('a[href*="/comoFunciona.php"]').parent().addClass('active');
+            }
+            if (this.location.pathname.includes('contato')) {
+                $('a[href*="/contato.php"]').parent().addClass('active');
+            }
+            if (this.location.pathname.includes('admin/motofretistas')) {
+                $('a[href*="/admin/motofretistas"]').parent().addClass('active');
+            }
+            if (this.location.pathname.includes('admin/clientes')) {
+                $('a[href*="/admin/clientes"]').parent().addClass('active');
+            }
         });
     </script>
 </body>

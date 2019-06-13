@@ -24,15 +24,7 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id']) ){
 }
 
 try {
-    $comando = $conexao->prepare("CALL buscarCliente(:id)");
-    $comando->bindParam(':id', $_GET['id']);
-    $comando->execute();
-} catch (PDOException $excecao) {
-    $erro = "Erro ao mostrar o cliente";
-}
-
-try {
-    $comando = $conexao->prepare("CALL buscarCliente(:id)"); //prepara o comando para buscar cliente pelo ID
+    $comando = $conexao->prepare("CALL adminBuscarCliente(:id)"); //prepara o comando para buscar cliente pelo ID
     $comando->bindParam(':id', $_GET['id']);
     if ($comando->execute())
     {
@@ -45,7 +37,7 @@ try {
     }
 }
 catch (PDOException $excecao) {
-    $erro = "Erro ao buscar o cliente";
+    $erro = "Erro ao buscar o cliente" . $excecao->getMessage();
 }
 
 $title = "EXCLUIR CLIENTE";
@@ -58,9 +50,11 @@ include "../../header.php";
 
         <div class="card m-auto text-left" style="width: 54rem;">
             <div class="card-body">
-                <h3 class="card-title mb-4">DADOS PESSOAIS</h3>
 
                 <?php if ($resultado = $comando->fetch()) { ?>
+
+                    <h3 class="card-title mb-4">DADOS PESSOAIS</h3>
+
 
                     <form method="post">
                         <div class="row">
@@ -135,6 +129,9 @@ include "../../header.php";
                 <?php } else  { ?>
                     <div class="alert alert-danger">
                         <?= $erro ?>
+                    </div>
+                    <div class="col text-center">
+                        <a href="index.php" class="btn btn-outline-primary mx-5"><i class="fas fa-chevron-left"></i> Voltar</a> <!--Botão voltar-->
                     </div>
                 <?php } ?>
             </div>

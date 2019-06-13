@@ -1,13 +1,16 @@
 <?php
 $title = "HOME";
-require 'conexao.php';
+
 include 'header.php';
+
+require 'conexao.php';
 
 if (isset($_POST['entrar'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
     try {
+
         $comando = $conexao->prepare("CALL verificaLogin(?, ?)");
         $comando->bindParam(1, $email);
         $comando->bindParam(2, $senha);
@@ -21,62 +24,38 @@ if (isset($_POST['entrar'])) {
                 $_SESSION['tipo'] = $resultado['id_tipo_login'];
             }
             $_SESSION['logado'] = TRUE;
-            header('Location: home.php');
-            exit();
+?>
+            <script>
+                window.location.href = 'home.php';
+            </script>
+<?php
         } else {
             $_SESSION['erroLogin'] = "Email e/ou senha incorretos";
         }
     } catch (PDOException $excecao) {
-        echo "Erro ao logar: " . $excecao->getMessage();
+        $_SESSION['erroLogin'] =  "Erro ao logar";
     }
-}
-?>
+} ?>
 
 <style type="text/css">
-    /*responsivo para as classes */
-    @media only screen and (min-width: 767px) {
-        img {
-            /* The file size of this background image is 93% smaller
-            to improve page load speed on mobile internet connections */
-            padding-left: 200px;
-            margin-top: 100px;
-            height: 300px;
-        }
-        .img-moto {
-            /* The file size of this background image is 93% smaller
-            to improve page load speed on mobile internet connections */
-            height: 250px;
-        }
-
-
-
-        .btns {
-            color: #0f6674;
-            font-weight: bold;
-
-        }
-        body {
-            width: 100%;
-            background-image: url(image/bg-home.png) !important;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-            background-size: cover;
-        }
+    .img-logo {
+        height: 26em;
     }
+    .img-moto {
+        height: 24em;
+    }
+    .btns {
+        color: #0f6674;
+        font-weight: bold;
 
-    /*fim do responsivo*/
+    }
     body {
-        width: 100%;
         background-image: url(image/bg-home.png) !important;
         background-repeat: no-repeat;
         background-position: center center;
         background-attachment: fixed;
         background-size: cover;
-    }
-
-    p {
-        display: inline;
+        overflow-x: hidden;
     }
 </style>
 
@@ -90,40 +69,32 @@ if (isset($_SESSION['erroLogin'])) {
     </script>
 <?php } ?>
 
-
-
-<div class="row">
-    <div class="col-md-6">
-
-        <img alt="Logo" src="image/Imagem1.png" height="250px" class="img-responsive">
-
-    </div>
-<div class="row">
-<div class="col-md-6">
-
-        <img alt="Scooter" src="image/scooterColorida.png" height="200px" class="img-responsive">
-
-    </div>
-</div>
-
-
-
-    <?php if (!isset($_SESSION['logado'])) { ?>
-
-
-    <div class="col">
-        <!--ENTRAR-->
-        <a class="btn btns btn-outline-info m-4 py-2 px-4 rounded-pill float-right" href="#" data-toggle="modal" data-target=#modalLogin>ENTRAR</a>
-
-            <!--CADASTRE-SE-->
-            <a class="btn btns btn-outline-info m-4 py-2 px-4 rounded-pill float-right" href="#" data-toggle="modal" data-target=#modal>CADASTRE-SE</a>
+    <div class="row h-25 text-center">
+        <div class="col col-8">
+        </div>
+        <div class="col col-4">
+            <?php if (!isset($_SESSION['logado'])) { ?>
+            <a class="btn btns btn-outline-info m-3 py-2 px-4 rounded-pill" href="#" data-toggle="modal" data-target=#modalLogin>ENTRAR</a>
+            <a class="btn btns btn-outline-info m-3 py-2 px-4 rounded-pill" href="#" data-toggle="modal" data-target=#modal>CADASTRE-SE</a>
+            <?php } ?>
         </div>
     </div>
-    <div class="mr-5" style="color:orange;">
 
-        <h1 class=" display-4 h1-responsive font-weight-bold text-right ">Liberdade para negociar</h1>
+    <div class="row h-100 text-center">
+        <div class="col-6">
+            <img src="image/logo.png" class="img-logo img-responsive m-auto" alt="Logo">
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <img src="image/scooterColorida.png" class="img-moto img-responsive m-auto" alt="Scooter">
+            </div>
+            <div class="row">
+                <p class="text text-warning font-weight-bold display-4 m-auto">Liberdade para negociar</p>
+            </div>
+        </div>
     </div>
-<!--Modal para cadastro de CLIENTE ou MOTOFRETISTA-->
+
+    <!--Modal para cadastro de CLIENTE ou MOTOFRETISTA-->
     <div id="modal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -143,7 +114,9 @@ if (isset($_SESSION['erroLogin'])) {
         </div>
     </div>
 
-<!--Div usada para formartar o card de login -->
+<?php if (!isset($_SESSION['logado'])) { ?>
+
+    <!--Div usada para formartar o card de login -->
     <div id="modalLogin" class="modal fade">
         <div class="modal-dialog">
             <!-- Conteúdo do modal Login-->
@@ -180,7 +153,7 @@ if (isset($_SESSION['erroLogin'])) {
                     </form>
 
                     <div class="text-right mt-3">
-                        <span class="mr-2 md-4"><a href="demo/index.php">Esqueci minha senha</a> </span>
+                        <span class="mr-2 md-4"><a href="esqueciMinhaSenha.php">Esqueci minha senha</a> </span>
                     </div>
                 </div>
 
@@ -192,4 +165,5 @@ if (isset($_SESSION['erroLogin'])) {
 
 <?php } ?>
 
-<?php include 'footer.php' ?>
+
+<?php include 'footer.php'; ?>

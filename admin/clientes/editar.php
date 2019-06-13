@@ -11,44 +11,47 @@ if (isset($_POST['editar'])) {
 
     if (empty($erro)) {
         try {
-            $id = $_POST['id'];
+            $id = $_GET['id'];
             $nome = $_POST ['nome'];
             $nascimento = $_POST ['nascimento'];
             $cpf = $_POST ['cpf'];
             $celular = $_POST ['celular'];
             $email = $_POST ['email'];
 
-            $comando = $conexao->prepare("CALL editarCliente(:id, :nome, :nascimento, :cpf, :email, :celular)");
+            $comando = $conexao->prepare("CALL adminEditarCliente(:id, :nome, :nascimento, :cpf, :email, :celular)");
             $comando->bindParam(':id', $id);
             $comando->bindParam(':nome', $nome);
             $comando->bindParam(':nascimento', $nascimento);
             $comando->bindParam(':cpf', $cpf);
             $comando->bindParam(':email', $email);
             $comando->bindParam(':celular', $celular);
-            $comando->execute();
+            if ($comando->execute()) {
+                $mensagem = "Alteração realizada com sucesso";
+            }
 
             $mensagem = "Cliente editado com sucesso";
         } catch (PDOException $excecao) {
-            $erro = "Erro ao editar cliente";
-            echo $excecao->getMessage();
+            $erro = "Erro ao editar cliente" . $excecao->getMessage();
         }
     }
 }
 
 try {
-    $comando = $conexao->prepare("CALL buscarCliente(:id)");
+    $comando = $conexao->prepare("CALL adminBuscarCliente(:id)");
     $comando->bindParam(':id', $_GET['id']);
     if ($comando->execute()) {
-        if ($comando->rowCount() <= 0){     //se o numero de linhas retornadas for igual a 0, redireciona p index
-            header('Location: index.php');
-            exit();
+        if ($comando->rowCount() <= 0) {     //se o numero de linhas retornadas for igual a 0, redireciona p index
+            ?>
+            <script>
+                window.location.href = 'index.php';
+            </script>
+            <?php
         }
     } else {
         $erro = "Não foi possível mostrar o cliente";
     }
 } catch (PDOException $excecao) {
     $erro = "Erro ao mostrar o cliente";
-    echo $excecao->getMessage();
 }
 
 $title = "EDITAR CLIENTE";
@@ -59,36 +62,44 @@ include "../../header.php"; ?>
         <h1 class="font-weight-light">EDITAR CLIENTE</h1>
 
 
-
         <div class="card m-auto text-left" style="width: 54rem;">
             <div class="card-body">
 
                 <?php if (isset($erro)) { ?>
+
                     <div class="alert alert-danger">
                         <?= $erro ?>
                     </div>
-                <?php } ?>
+                    <div class="col text-center">
+                        <a href="index.php" class="btn btn-outline-primary mx-5"><i class="fas fa-chevron-left"></i> Voltar</a> <!--Botão voltar-->
+                    </div>
 
-                <h3 class="card-title mb-4">DADOS PESSOAIS</h3>
+                <?php } else if (isset($mensagem)) { ?>
 
-                <?php if ($resultado = $comando->fetch()) { ?>
+                    <div class="alert alert-success">
+                        <?= $mensagem ?>
+                    </div>
+                    <div class="col text-center">
+                        <a href="index.php" class="btn btn-outline-primary mx-5"><i class="fas fa-chevron-left"></i> Voltar</a> <!--Botão voltar-->
+                    </div>
 
-                    <form method="post">
+                <?php } else if ($resultado = $comando->fetch()) { ?>
+
+                    <h3 class="card-title mb-4">DADOS PESSOAIS</h3>
+
+                    <form id="form" method="post" class="needs-validation" novalidate>
                         <div class="row">
 
-                            <!--Id do cliente-->
+                            <!--Nome completo do cliente-->
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="id"> Id: </label>
-                                    <input type="text" class="form-control" id="id" name="id" value="<?= $resultado['id_cliente'] ?>" readonly>
-                                </div>
-                            </div>
-
-                            <!--Email usado para login-->
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="email"> Email: </label>
-                                    <input type="email" class="form-control" id="email" name="email" value="<?= $resultado['nm_email'] ?>" required>
+                                    <label for="nome"> Nome: </label>
+                                    <input type="text" class="form-control" id="nome" name="nome"
+                                           placeholder="Informe a nome completo" value="<?= $resultado['nm_cliente'] ?>"
+                                           required>
+                                    <div class="invalid-feedback">
+                                        Campo obrigatório
+                                    </div>
                                 </div>
                             </div>
 
@@ -96,7 +107,13 @@ include "../../header.php"; ?>
                             <div class="col">
                                 <div class="form-group">
                                     <label for="data"> Data de nascimento: </label>
-                                    <input type="date" class="form-control" id="data" name="nascimento" placeholder="Informe a data de nascimento" value="<?= $resultado['dt_nascimento'] ?>" required>
+                                    <input type="text" class="form-control" id="data" name="nascimento"
+                                           placeholder="Informe a data de nascimento"
+                                           value="<?= date("d/m/Y", strtotime($resultado['dt_nascimento'])) ?>"
+                                           required>
+                                    <div class="invalid-feedback">
+                                        <span id="feedbackData"> </span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -104,11 +121,15 @@ include "../../header.php"; ?>
 
                         <div class="row">
 
-                            <!--Nome completo do cliente-->
+                            <!--Email usado para login-->
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="nome"> Nome: </label>
-                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe a nome completo" value="<?= $resultado['nm_cliente'] ?>" required>
+                                    <label for="email"> Email: </label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                           value="<?= $resultado['nm_email'] ?>" required>
+                                    <div class="invalid-feedback">
+                                        <span id="feedbackEmail"> </span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -116,7 +137,11 @@ include "../../header.php"; ?>
                             <div class="col">
                                 <div class="form-group">
                                     <label for="cpf"> CPF: </label>
-                                    <input type="tel" class="form-control" id="cpf" name="cpf" placeholder="Informe o cpf" value="<?= $resultado['id_cpf'] ?>" required>
+                                    <input type="tel" class="form-control" id="cpf" name="cpf"
+                                           placeholder="Informe o cpf" value="<?= $resultado['id_cpf'] ?>" required>
+                                    <div class="invalid-feedback">
+                                        <span id="feedbackCpf"> </span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -124,7 +149,12 @@ include "../../header.php"; ?>
                             <div class="col">
                                 <div class="form-group">
                                     <label for="celular"> Celular: </label>
-                                    <input type="tel" class="form-control" id="celular" name="celular" placeholder="Celular para contato" value="<?= $resultado['cd_celular'] ?>" required>
+                                    <input type="tel" class="form-control" id="celular" name="celular"
+                                           placeholder="Celular para contato" value="<?= $resultado['cd_celular'] ?>"
+                                           required>
+                                    <div class="invalid-feedback">
+                                        <span id="feedbackCelular"> </span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -143,7 +173,7 @@ include "../../header.php"; ?>
                         </div>
                     </form>
 
-                <?php } else  { ?>
+                <?php } else { ?>
                     <div class="alert alert-danger">
                         <?= isset($erro) ? $erro : "Erro ao mostrar o cliente" ?>
                     </div>
@@ -152,12 +182,8 @@ include "../../header.php"; ?>
         </div>
     </div>
 
-    <script>
-        $(document).ready(() => {
-            $("#celular").inputmask("(99)9999-9999[9]", {removeMaskOnSubmit: true});
-            $("#cpf").inputmask("999.999.999-99", {removeMaskOnSubmit: true});
-        });
-    </script>
+    <script src="../../scripts/validaCpf.js"></script>
+    <script src="validacoes.js"></script>
 
 <?php
 include "../../footer.php";

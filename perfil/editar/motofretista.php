@@ -13,7 +13,7 @@ if (isset($_POST['salvar'])) {
         }
     }
 
-    $nome = $_POST ['nome'];
+        $nome = $_POST ['nome'];
     $data = $_POST ['data'];
     $genero = $_POST ['genero'];
     $celular = $_POST ['celular'];
@@ -36,8 +36,8 @@ if (isset($_POST['salvar'])) {
 
     if (empty($erro)) {
         try {
-            $comando = $conexao->prepare("CALL adminEditarMotofretista(:id, :nome, :celular, :celularAlternativo, :email, :cpf, :cnpj, :cnh, :genero, :regiao, :data, :mei, :placa, :renavam, :modelo, :cor, :marca)");
-            $comando->bindParam(':id', $_GET['id']);
+            $comando = $conexao->prepare("CALL editarMotofretista(:id, :nome, :celular, :celularAlternativo, :email, :cpf, :cnpj, :cnh, :genero, :regiao, :data, :mei, :placa, :renavam, :modelo, :cor, :marca)");
+            $comando->bindParam(':id', $_SESSION['id']);
             $comando->bindParam(':nome', $nome);
             $comando->bindParam(':data', $data);
             $comando->bindParam(':genero', $genero);
@@ -57,6 +57,8 @@ if (isset($_POST['salvar'])) {
 
             if ($comando->execute()) {
                 $mensagem = "Alteração realizada com sucesso";
+                $_SESSION['nome'] = $nome;
+                $_SESSION['login'] = $email;
                 ?>
                 <script>
                     $("#nome_sessao").text("<?= $nome ?>")
@@ -72,8 +74,23 @@ if (isset($_POST['salvar'])) {
 }
 
 try {
-    $comando = $conexao->prepare("CALL buscarMotofretista(:id)");
-    $comando->bindParam(':id', $_GET['id']);
+    if ($_SESSION['tipo'] == 2) { // Se for do tipo motofretista (2)
+        $comando = $conexao->prepare("CALL buscarMotofretistaPorUsuario(:usuario)");
+    } else if ($_SESSION['tipo'] == 1) { // Se for do tipo cliente (1)
+        ?>
+        <script>
+            window.location.href = 'cliente.php';
+        </script>
+        <?php
+    } else { // Se for do tipo admin (3)
+        ?>
+        <script>
+            window.location.href = 'admin.php';
+        </script>
+        <?php
+    }
+
+    $comando->bindParam(':usuario', $_SESSION['login']);
 
     if ($comando->execute()) {
         if ($comando->rowCount() <= 0) {
@@ -86,27 +103,61 @@ try {
     echo "Erro ao exibir perfil";
 } ?>
 
+<!-- Imagem -->
+<style>
+    .btn-foto {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-foto input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+    #img-uploaded {
+        width: 18em;
+        height: 12em;
+    }
+</style>
+
 <div class="container text-center mb-5">
     <h1 class="font-weight-light"> PERFIL </h1>
 
     <div class="card m-auto text-left" style="width: 54rem;">
 
-        <?php if (isset($erro)) { ?>
 
-            <div class="card-body">
-                <div class="alert alert-danger">
-                    <?= $erro ?>
-                </div>
-                <div class="col text-center">
-                    <a href="index.php" class="btn btn-outline-primary mx-5"><i class="fas fa-chevron-left"></i> Voltar</a> <!--Botão voltar-->
-                </div>
-            </div>
-
-        <?php } if ($resultado = $comando->fetch()) { ?>
 
             <form id="form" method="post" class="needs-validation" novalidate>
 
                 <div class="card-body">
+
+                    <?php if (isset($erro)) { ?>
+                        <div class="alert alert-danger">
+                            <?= $erro ?>
+                        </div>
+                        <div class="col text-center">
+                            <a href="../index.php" class="btn btn-outline-primary mx-5"><i class="fas fa-chevron-left"></i> Voltar</a> <!--Botão voltar-->
+                        </div>
+                    <?php } else if (isset($mensagem)) { //Mensagem de sucesso ?>
+                        <div class="alert alert-success">
+                            <?= $mensagem ?>
+                        </div>
+                        <div class="col text-center">
+                            <a href="../index.php" class="btn btn-outline-primary mx-5"><i class="fas fa-chevron-left"></i> Voltar</a> <!--Botão voltar-->
+                        </div>
+                    <?php } else if ($resultado = $comando->fetch()) { ?>
 
                     <h3 class="card-title mb-4">SEUS DADOS PESSOAIS</h3>
 
@@ -315,6 +366,7 @@ try {
                         </div>
                     </div>
 
+
                 </div>
 
                 <hr style="width: 100%; color: black; height: 1px; background-color:black;"/>
@@ -427,6 +479,7 @@ try {
                         </div>
                     </div>
 
+
             </form>
 
         <?php } ?>
@@ -439,7 +492,7 @@ try {
 <script src="/scripts/validaCnh.js"></script>
 <script src="/scripts/validaCnpj.js"></script>
 <script src="/scripts/validaRenavam.js"></script>
-<script src="validacoes.js"></script>
+<script src="validacoesMotofretista.js"></script>
 
 <?php include '../../footer.php'; ?>
 
