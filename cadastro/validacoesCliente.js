@@ -1,16 +1,24 @@
 $(document).ready(() => {
     var form = $("#form");
     var nome = $("#nome");
+
     var data = $("#data");
+    var feedbackData = $("#feedbackData");
+
     var cpf = $("#cpf");
+    var feedbackCpf = $("#feedbackCpf");
+
     var celular = $("#celular");
+    var feedbackCelular = $("#feedbackCelular");
+
     var email = $("#email");
+    var feedbackEmail = $("#feedbackEmail");
+
     var senha = $("#senha");
     var feedbackSenha = $("#feedbackSenha");
+
     var confirmarSenha = $("#confirmarSenha");
     var feedbackConfirmarSenha = $("#feedbackConfirmarSenha");
-
-
 
     //Validação ao digitar no campo
 
@@ -24,7 +32,6 @@ $(document).ready(() => {
 
     data.keyup(() => {
         data = $("#data");
-        var feedbackData = $("#feedbackData");
         if (data.val().length > 0) {
             if (Inputmask.isValid(data.val(), {alias: "datetime", inputFormat: "dd/mm/yyyy"})) {
                 data.get(0).setCustomValidity('');
@@ -41,7 +48,6 @@ $(document).ready(() => {
 
     cpf.keyup(() => {
         cpf = $("#cpf");
-        var feedbackCpf = $("#feedbackCpf");
         if (cpf.val().length > 0) {
             if (validarCPF(cpf.val())) {
                 cpf.get(0).setCustomValidity('');
@@ -58,7 +64,6 @@ $(document).ready(() => {
 
     celular.keyup(() => {
         celular = $("#celular");
-        var feedbackCelular = $("#feedbackCelular");
         if (celular.val().length > 0) {
             if (Inputmask.isValid(celular.val(), "(99)9999-9999[9]")) {
                 celular.get(0).setCustomValidity('');
@@ -75,7 +80,6 @@ $(document).ready(() => {
 
     email.keyup(() => {
         email = $("#email");
-        var feedbackEmail = $("#feedbackEmail");
         if (email.val().length > 0) {
             if (Inputmask.isValid(email.val(), {alias: "email"})) {
                 email.get(0).setCustomValidity('');
@@ -150,7 +154,6 @@ $(document).ready(() => {
         var emailValido = Inputmask.isValid(email.val(),{alias: "email"});
         senha = $("#senha");
         confirmarSenha = $("#confirmarSenha");
-
 
         if (nome.val().length > 0){
             nome.get(0).setCustomValidity('');
@@ -253,5 +256,5 @@ $(document).ready(() => {
     cpf.inputmask("999.999.999-99", {removeMaskOnSubmit: true});
     email.inputmask("email");
     nome.inputmask({regex: "[a-zà-úA-ZÀ-Ú ]*", placeholder: ""});
-    data.inputmask("datetime", {placeholder: "DD/MM/AAAA", min: "01/01/1919", outputFormat: "yyyy-mm-dd", removeMaskOnSubmit: true});
+    data.inputmask("datetime", {placeholder: "DD/MM/AAAA", inputFormat: "dd/mm/yyyy", min: "01/01/1919", outputFormat: "yyyy-mm-dd", removeMaskOnSubmit: true});
 });

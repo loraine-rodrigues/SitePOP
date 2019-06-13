@@ -1,4 +1,5 @@
 <?php
+
 $title = "CADASTRO CLIENTE";
 
 include '../header.php';
@@ -12,11 +13,19 @@ if (isset($_POST['confirmarCadastro'])) {
     }
 
     if ($_POST ['senha'] != $_POST ['confirmarSenha']) {
-        $erro .= "<li>As senhas estão diferentes</li>";
+        if (isset($erro)) {
+            $erro .= "<li>As senhas estão diferentes</li>";
+        } else {
+            $erro = "<li>As senhas estão diferentes</li>";
+        }
     }
 
-    if ($_POST['termos'] != TRUE) {
-        $erro .= "<li>É necessário ler e aceitar os termos para prosseguir</li>";
+    if (!isset($_POST['termos'])) {
+        if (isset($erro)) {
+            $erro .= "<li>É necessário ler e aceitar os termos para prosseguir</li>";
+        } else {
+            $erro = "<li>É necessário ler e aceitar os termos para prosseguir</li>";
+        }
     }
 
     if (empty($erro)) {
@@ -86,8 +95,7 @@ if (isset($_POST['confirmarCadastro'])) {
                     <div class="col">
                         <div class="form-group">
                             <label for="data"> Data de nascimento: </label>
-                            <input type="text" class="form-control" id="data" name="nascimento"
-                                   placeholder="Informe sua data de nascimento">
+                            <input type="text" class="form-control" id="data" name="nascimento" placeholder="Informe sua data de nascimento">
                             <div class="invalid-feedback">
                                 <span id="feedbackData"> </span>
                             </div>
