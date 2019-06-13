@@ -19,6 +19,14 @@ catch (PDOException $excecao) {
     $erro = "Erro ao mostrar clientes";
 }
 ?>
+<style>
+    table{
+       table-layout: fixed;
+    }
+    td{
+        word-wrap:break-word
+    }
+</style>
 
     <div class="container text-center">
         <h1 class="font-weight-light">CLIENTES</h1>

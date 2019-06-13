@@ -42,7 +42,7 @@ body {
                 <h2 class="mb-0">
                     <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta1">
                         <img src="image/duvida1.png" class="mr-3" width="50" height="50">
-                       <p > serviço do POP! é gratuito?</p>
+                       <p > Serviço do POP! é gratuito?</p>
                     </button>
                 </h2>
             </div>
@@ -79,7 +79,7 @@ body {
                 <h2 class="mb-0">
                     <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#pergunta3">
                         <img src="image/duvida3.png" width="50" height="50" class="mr-3">
-                        <p> preciso me cadastrar?</p>
+                        <p> Preciso me cadastrar?</p>
                     </button>
                 </h2>
             </div>
@@ -161,6 +161,7 @@ body {
 
                 </div>
             </div>
+           Caso tenha mais alguma dúvida, <a class="text-dark" href="contato.php"> Fale Conosco.</a>
         </div>
     </div>
 </div>

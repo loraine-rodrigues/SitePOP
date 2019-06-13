@@ -32,7 +32,7 @@ include 'header.php';
         </div>
         <div class="col-md-11 col-10">
           <h5 class="font-weight-bold mb-3">Efetue seu cadastro</h5>
-          <p class="grey-text">Ao realizá-lo você terá total acesso a plataforma e aos Motofretistas disponíveis.</p>
+          <p class="grey-text">Após o cadastro, você terá total acesso a plataforma e aos Motofretistas disponíveis.</p>
         </div>
       </div>
       <!-- Grid row -->
@@ -44,7 +44,8 @@ include 'header.php';
         </div>
         <div class="col-md-11 col-10">
           <h5 class="font-weight-bold mb-3">Escolha um Motofretista</h5>
-          <p class="grey-text">Você poderá visualizar e escolher o motofretista de sua preferência e terá acesso aos seus dados.</p>
+          <p class="grey-text">No Catálogo você poderá filtrar e escolher o motofretista mais próximo ou que atenda suas necessidades.Você terá acesso aos
+          dados profissionais e do veículo para sua maior segurança.</p>
         </div>
       </div>
       <!-- Grid row -->
@@ -56,7 +57,7 @@ include 'header.php';
         </div>
         <div class="col-md-11 col-10">
           <h5 class="font-weight-bold mb-3">Entre em contato</h5>
-          <p class="grey-text mb-0">Faça contato com o motofretista de forma rápida e negocie da forma que desejar através do número de WhatsApp fornecido.</p>
+          <p class="grey-text mb-0">Negocie de forma rápida através do contato fornecido pelo motofretista no “catálogo”.</p>
         </div>
       </div>
       <!-- Grid row -->

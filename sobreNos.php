@@ -32,7 +32,29 @@ body {
                 Nossa missão é facilitar e divulgar os prestadores de serviço para que sejam protagonistas do seu negócio.
                 E permitir que clientes que buscam por essa mão de obra tenham maior comodidade acessando o POP! para encontrá-los.
                 Priorizamos a transparência, ética e eficiência para que todos possam aproveitar o melhor dessa ferramenta.
-                Comece agora mesmo! CADASTRE-SE no POP! para escolher o Motofretista ideal para realizar serviços de entregas, retiradas,
+                Comece agora mesmo!
+                <!--CADASTRE-SE-->
+                <a class="nav-item" href="#" data-toggle="modal" data-target="#modal">CADASTRE-SE</a>     
+
+                <!--Modal para cadastro de CLIENTE ou MOTOFRETISTA-->
+                   <div id="modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+                     <div class="modal-dialog">
+
+                <!-- Conteúdo do modal -->
+                 <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Para iniciar o cadastro selecione:</h5>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <a href="Cadastro/motofretista.php" class="btn btn-outline-warning">Sou motofretista</a>
+                        <a href="Cadastro/cliente.php" class="btn btn-outline-info float-right">Sou cliente</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div> no POP! para escolher o Motofretista ideal para realizar serviços de entregas, retiradas,
                 recebimentos e muito mais!
             </div>
         </div>

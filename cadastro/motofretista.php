@@ -112,8 +112,8 @@ if (isset($_POST['salvar'])) {
     <h1 class=" ml-5">CADASTRO MOTOFRETISTA</h1>
     <form enctype="multipart/form-data" method="post" id="form" class="needs-validation" novalidate>
 
-        <!--Div usada para formartar o card de login -->
-        <div class="card mx-auto my-5 text-left" style="width: 54rem;">
+        <!--Div usada para formartar o card -->
+        <div class="card mx-auto my-5 text-left" content="width=device-width">
             <div class="card-body">
                 <?php
                 if (isset($erro)):     //Mensagem de erro no cadastro

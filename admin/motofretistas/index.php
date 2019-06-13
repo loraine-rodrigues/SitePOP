@@ -20,6 +20,15 @@ catch (PDOException $excecao) {
 }
 ?>
 
+<style>
+    table{
+       table-layout: fixed;
+    }
+    td{
+        word-wrap:break-word
+    }
+</style>
+
     <div class="container text-center">
         <h1 class="font-weight-light">MOTOFRETISTAS</h1>
         <table id="tabelaMotofretistas" class="table table-responsive-lg table-bordered table-hover" style="display: table;">
@@ -39,7 +48,7 @@ catch (PDOException $excecao) {
             while ($resultado = $comando->fetch(PDO::FETCH_ASSOC)) {
                 if (!$resultado['ativo']) { continue; } ?>
                 <tr>
-                    <td nowrap><?= $resultado['nm_motofretista'] ?> </td>
+                    <td><?= $resultado['nm_motofretista'] ?> </td>
                     <td><?= date("d/m/Y", strtotime($resultado['dt_nascimento'])) ?></td>
                     <td><?= $resultado['ic_genero'] ?></td>
                     <td><?= $resultado['nm_email'] ?></td>

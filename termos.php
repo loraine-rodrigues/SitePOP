@@ -109,11 +109,8 @@ O POP! Motofrete, em função de uso irregular do sistema e dos seus conteúdos,
 O prazo de duração deste sistema é indeterminado.
  <br> 
 11 –PLANO PREMIUM(monetização do site - Forma 1)
-Em elaboração
- Em caso de opção do usuário pela contratação do PLANO PREMIUM que oferece recursos extras na plataforma como: xxx xxx xxx xxxx xxx , será selecionado o  sistema de pagamento mensal ao  POP! Motofrete por meio de ______________  todo dia _____. 
-
-O valor da taxa de serviço Premium pelo uso do sistema do POP! Motofrete 
-________________poderá ser conferido antes do aceite do serviço de cadastro nessa modalidade, sendo da sua única e exclusiva vontade acerca da aceitação ou não proposta de serviços. Esse valor também poderá sofrer alterações e /ou promoções com aviso prévio ao usuário cadastrado no plano para que fique ciente de qualquer mudança. 
+ Em caso de opção do usuário pela contratação do PLANO PREMIUM que oferece recursos extras na plataforma, estarão sujeitos a cobranças e podem ocorrer reajustes. 
+poderá ser conferido antes do aceite do serviço de cadastro nessa modalidade, sendo da sua única e exclusiva vontade acerca da aceitação ou não proposta de serviços. Esse valor também poderá sofrer alterações e /ou promoções com aviso prévio ao usuário cadastrado no plano para que fique ciente de qualquer mudança. 
 O usuário poderá cancelar a qualquer momento o Plano Premium, ou acrescentar novos recursos. Em caso de escolha das opções de cancelamento ou migração o usuário se compromete a efetuar o pagamento do período utilizado. 
  <br> 
 12 – DISPOSIÇÕES GERAIS

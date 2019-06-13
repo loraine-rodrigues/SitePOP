@@ -47,7 +47,7 @@ include 'admin/verificaAdm.php'; // Se o usuário logado for admin, $_SESSION['a
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <!-- Ícone -->
-    <link rel="shortcut icon" type="image/x-icon" href="/image/P.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/image/icone.ico">
 
     <!-- FontAwesome -->
     <link href="/terceiros/fontawesome/css/all.css" rel="stylesheet">
@@ -56,13 +56,11 @@ include 'admin/verificaAdm.php'; // Se o usuário logado for admin, $_SESSION['a
     <style>
     @media only screen and (min-width: 767px) {
         body {
-                width: 100%;
-                background-repeat: no-repeat;
-                background-position: center center;
-                background-attachment: fixed;
-                background-size: cover;
-                font-family: \'Montserrat\', sans-serif;
-                // fonte do site
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: \'Montserrat\', sans-serif; /* fonte do site */
         }
     }
     .navbar-customizada{
