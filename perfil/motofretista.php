@@ -99,13 +99,6 @@ catch (PDOException $excecao) {
                                 </div>
                             </div>
 
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="mei">Possui MEI? </label>
-                                    <input type="text" class="form-control" id="mei" readonly value="<?= $resultado['ic_mei'] ?>">
-                                </div>
-
-                            </div>
 
                         </div>
 

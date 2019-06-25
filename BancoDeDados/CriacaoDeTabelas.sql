@@ -54,14 +54,16 @@ CREATE TABLE `tb_motofretista`
     `nm_email`        VARCHAR(100) NOT NULL UNIQUE,
     `nm_regiao`       SET ('Bertioga', 'Cubatão', 'Guarujá', 'Itanhaém', 'Mongaguá', 'Peruíbe', 'Praia Grande', 'Santos', 'São Vicente') DEFAULT 'Praia Grande',
     `dt_nascimento`   DATE         NOT NULL,
-    `ic_mei`          ENUM ('Sim', 'Não') NOT NULL,
     `id_placa`        CHAR(7)      NOT NULL UNIQUE,
     `id_renavam`      CHAR(11)     NOT NULL UNIQUE,
     `nm_modelo`       VARCHAR(45)  NOT NULL,
     `nm_cor`          VARCHAR(45)  NOT NULL,
     `nm_marca`        VARCHAR(45)  NOT NULL,
     `urlFoto`         VARCHAR(100) NOT NULL,
+    `urlMei`          VARCHAR(100) NOT NULL,
     `ativo`           BOOLEAN      NOT NULL,
     PRIMARY KEY (`id_motofretista`)
 ) ENGINE = INNODB
   DEFAULT CHARSET = UTF8;
+
+call buscarMotofretistas();

@@ -17,20 +17,20 @@ CREATE PROCEDURE `cadastrarMotofretista` (
     IN genero enum ('Masculino','Feminino','Outros'),
     in regiao set ('Bertioga', 'Cubatão', 'Guarujá', 'Itanhaém', 'Mongaguá', 'Peruíbe', 'Praia Grande', 'Santos', 'São Vicente'),
     IN nascimento DATE,
-    IN mei enum ('Sim', 'Não'),
     IN placa char(7),
     IN renavam char(11),
     IN modelo varchar(45),
     IN cor varchar(45),
     IN marca varchar(45),
     IN senha varchar(45),
-    IN foto varchar(100))
+    IN foto varchar(100),
+    IN mei varchar(100))
 
 BEGIN
     INSERT INTO tb_login (nm_usuario, nm_login, id_senha, id_tipo_login, ativo)
     VALUES (nome, email, md5(senha), '2', true);
-    INSERT INTO tb_motofretista (nm_motofretista, id_celular, id_telefone, nm_email, id_cpf, id_cnpj, id_cnh, ic_genero, nm_regiao, dt_nascimento, ic_mei, id_placa, id_renavam, nm_modelo, nm_cor, nm_marca, urlFoto, ativo)
-    VALUES (nome, celular, telefone, email, cpf, cnpj, cnh, genero, regiao, nascimento, mei, placa, renavam, modelo, cor, marca, foto, true);
+    INSERT INTO tb_motofretista (nm_motofretista, id_celular, id_telefone, nm_email, id_cpf, id_cnpj, id_cnh, ic_genero, nm_regiao, dt_nascimento, id_placa, id_renavam, nm_modelo, nm_cor, nm_marca, urlFoto, urlMei, ativo)
+    VALUES (nome, celular, telefone, email, cpf, cnpj, cnh, genero, regiao, nascimento, placa, renavam, modelo, cor, marca, foto, mei, true);
 END$$
 DELIMITER ;
 
@@ -51,7 +51,6 @@ create procedure `editarMotofretista` (
     IN genero varchar(9),
     in regiao set ('Bertioga', 'Cubatão', 'Guarujá', 'Itanhaém', 'Mongaguá', 'Peruíbe', 'Praia Grande', 'Santos', 'São Vicente'),
     IN nascimento DATE,
-    IN mei enum ('Sim', 'Não'),
     IN placa char(7),
     IN renavam char(11),
     IN modelo varchar(45),
@@ -71,7 +70,6 @@ BEGIN
                                ic_genero = genero,
                                nm_regiao = regiao,
                                dt_nascimento = nascimento,
-                               ic_mei = mei,
                                id_placa = placa,
                                id_renavam = renavam,
                                nm_modelo = modelo,
@@ -97,7 +95,6 @@ create procedure `adminEditarMotofretista` (
     IN genero varchar(9),
     in regiao set ('Bertioga', 'Cubatão', 'Guarujá', 'Itanhaém', 'Mongaguá', 'Peruíbe', 'Praia Grande', 'Santos', 'São Vicente'),
     IN nascimento DATE,
-    IN mei enum ('Sim', 'Não'),
     IN placa char(7),
     IN renavam char(11),
     IN modelo varchar(45),
@@ -117,7 +114,6 @@ BEGIN
                                ic_genero = genero,
                                nm_regiao = regiao,
                                dt_nascimento = nascimento,
-                               ic_mei = mei,
                                id_placa = placa,
                                id_renavam = renavam,
                                nm_modelo = modelo,
@@ -187,10 +183,3 @@ begin
 
 end $$
 DELIMITER ;
-
-
-
-
-
-
-

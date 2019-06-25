@@ -25,7 +25,6 @@ if (isset($_POST['salvar'])) {
     }
     $cpf = $_POST ['cpf'];
     $cnpj = $_POST ['cnpj'];
-    $mei = $_POST ['mei'];
     $cnh = $_POST ['cnh'];
     $email = $_POST ['email'];
     $marca = $_POST ['marca'];
@@ -36,7 +35,7 @@ if (isset($_POST['salvar'])) {
 
     if (empty($erro)) {
         try {
-            $comando = $conexao->prepare("CALL adminEditarMotofretista(:id, :nome, :celular, :celularAlternativo, :email, :cpf, :cnpj, :cnh, :genero, :regiao, :data, :mei, :placa, :renavam, :modelo, :cor, :marca)");
+            $comando = $conexao->prepare("CALL adminEditarMotofretista(:id, :nome, :celular, :celularAlternativo, :email, :cpf, :cnpj, :cnh, :genero, :regiao, :data, :placa, :renavam, :modelo, :cor, :marca)");
             $comando->bindParam(':id', $_GET['id']);
             $comando->bindParam(':nome', $nome);
             $comando->bindParam(':data', $data);
@@ -46,7 +45,6 @@ if (isset($_POST['salvar'])) {
             $comando->bindValue(':regiao', $regiao);
             $comando->bindParam(':cpf', $cpf);
             $comando->bindParam(':cnpj', $cnpj);
-            $comando->bindParam(':mei', $mei);
             $comando->bindParam(':cnh', $cnh);
             $comando->bindParam(':email', $email);
             $comando->bindParam(':marca', $marca);
@@ -86,6 +84,13 @@ try {
     echo "Erro ao exibir perfil";
 } ?>
 
+<style>
+    #img-upload {
+        width: 18em;
+        height: 12em;
+    }
+</style>
+
 <div class="container text-center mb-5">
     <h1 class="font-weight-light"> PERFIL </h1>
 
@@ -108,7 +113,30 @@ try {
 
                 <div class="card-body">
 
-                    <h3 class="card-title mb-4">SEUS DADOS PESSOAIS</h3>
+                    <h3 class="card-title mb-4">IMAGENS</h3>
+                    <div class="row mb-2">
+                        <div class="col text-center">
+                            <img alt="Foto de perfil" id='img-upload'
+                                 src="../../image/motofretistas/<?= $resultado['urlFoto'] ?>"
+                                 class="rounded"/>
+                            <label>Foto do motofretista</label>
+                        </div>
+
+                        <div class="col text-center">
+                            <img alt="Foto de perfil" id='img-upload'
+                                 src="../../image/mei/<?= $resultado['urlMei'] ?>"
+                                 class="rounded"/>
+                            <label>Comprovante de MEI</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <hr style="width: 100%; color: black; height: 1px; background-color:black;"/>
+
+                <div class="card-body">
+
+                    <h3 class="card-title mb-4">DADOS PESSOAIS</h3>
 
                     <div class="row">
                         <div class="col">
@@ -168,50 +196,28 @@ try {
 
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="mei">Possui MEI? </label>
-                                        <select class="form-control" id="mei" name="mei" required>
-                                            <option value="Sim" <?= $resultado['ic_mei'] == "Sim" ? "selected" : "" ?>>
-                                                Sim
-                                            </option>
-                                            <option value="Não" <?= $resultado['ic_mei'] == "Não" ? "selected" : "" ?>>
-                                                Não
-                                            </option>
-                                        </select>
+                                        <label for="cpf">CPF: </label>
+                                        <input type="text" class="form-control" id="cpf" name="cpf" required
+                                               value="<?= $resultado['id_cpf'] ?>">
                                         <div class="invalid-feedback">
-                                            <span id="feedbackMei"> </span>
+                                            <span id="feedbackCpf"> </span>
                                         </div>
                                     </div>
+                                </div>
 
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="cnh">CNH: </label>
+                                        <input type=text class="form-control" id="cnh" name="cnh" required
+                                               value="<?= $resultado['id_cnh'] ?>">
+                                        <div class="invalid-feedback">
+                                            <span id="feedbackCnh"> </span>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
 
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="cpf">CPF: </label>
-                                <input type="text" class="form-control" id="cpf" name="cpf" required
-                                       value="<?= $resultado['id_cpf'] ?>">
-                                <div class="invalid-feedback">
-                                    <span id="feedbackCpf"> </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="cnh">CNH: </label>
-                                <input type=text class="form-control" id="cnh" name="cnh" required
-                                       value="<?= $resultado['id_cnh'] ?>">
-                                <div class="invalid-feedback">
-                                    <span id="feedbackCnh"> </span>
-                                </div>
-                            </div>
                         </div>
 
                     </div>
@@ -232,7 +238,7 @@ try {
 
                     <div class="row">
                         <div class="col">
-                            <label>Selecione sua região de atuação:</label>
+                            <label>Região de atuação:</label>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -320,7 +326,7 @@ try {
                 <hr style="width: 100%; color: black; height: 1px; background-color:black;"/>
 
                 <div class="card-body">
-                    <h3 class="card-title mb-4">SEUS DADOS PARA CONTATO </h3>
+                    <h3 class="card-title mb-4">DADOS PARA CONTATO</h3>
 
                     <div class="row">
 
@@ -330,7 +336,7 @@ try {
                                 <input type="tel" class="form-control" id="celular" name="celular" required
                                        value="<?= $resultado['id_celular'] ?>">
                                 <div class="invalid-feedback">
-                                    <span id="feedbackMei"> </span>
+                                    <span id="feedbackCelular"> </span>
                                 </div>
                             </div>
                         </div>
@@ -367,7 +373,7 @@ try {
                 <hr style="width: 100%; color: black; height: 1px; background-color:black;"/>
 
                 <div class="card-body">
-                    <h3 class="card-title mb-4">DADOS DO SEU VEÍCULO</h3>
+                    <h3 class="card-title mb-4">DADOS DO VEÍCULO</h3>
 
                     <div class="row">
 
@@ -420,11 +426,19 @@ try {
 
                     </div>
 
-                    <div class="row text-right m-3">
+                    <div class="row mt-5">
+
+                        <!-- Botão voltar-->
                         <div class="col">
-                            <a class="btn btn-outline-danger" href="../">Cancelar</a>
-                            <input type="submit" class="btn btn-outline-success" name="salvar" value="Salvar"/>
+                            <a href="index.php" class="btn btn-outline-warning float-left mx-5"><i
+                                        class="fas fa-chevron-left"></i> Voltar</a> <!--Botão voltar-->
                         </div>
+
+                        <!-- Botão de excluir cadastro-->
+                        <div class="col">
+                            <input type="submit" class="btn btn-outline-success float-right mx-5" name="salvar" value="Salvar"/>
+                        </div>
+
                     </div>
 
             </form>

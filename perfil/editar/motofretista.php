@@ -13,7 +13,7 @@ if (isset($_POST['salvar'])) {
         }
     }
 
-        $nome = $_POST ['nome'];
+    $nome = $_POST ['nome'];
     $data = $_POST ['data'];
     $genero = $_POST ['genero'];
     $celular = $_POST ['celular'];
@@ -25,7 +25,6 @@ if (isset($_POST['salvar'])) {
     }
     $cpf = $_POST ['cpf'];
     $cnpj = $_POST ['cnpj'];
-    $mei = $_POST ['mei'];
     $cnh = $_POST ['cnh'];
     $email = $_POST ['email'];
     $marca = $_POST ['marca'];
@@ -36,7 +35,7 @@ if (isset($_POST['salvar'])) {
 
     if (empty($erro)) {
         try {
-            $comando = $conexao->prepare("CALL editarMotofretista(:id, :nome, :celular, :celularAlternativo, :email, :cpf, :cnpj, :cnh, :genero, :regiao, :data, :mei, :placa, :renavam, :modelo, :cor, :marca)");
+            $comando = $conexao->prepare("CALL editarMotofretista(:id, :nome, :celular, :celularAlternativo, :email, :cpf, :cnpj, :cnh, :genero, :regiao, :data, :placa, :renavam, :modelo, :cor, :marca)");
             $comando->bindParam(':id', $_SESSION['id']);
             $comando->bindParam(':nome', $nome);
             $comando->bindParam(':data', $data);
@@ -46,7 +45,6 @@ if (isset($_POST['salvar'])) {
             $comando->bindValue(':regiao', $regiao);
             $comando->bindParam(':cpf', $cpf);
             $comando->bindParam(':cnpj', $cnpj);
-            $comando->bindParam(':mei', $mei);
             $comando->bindParam(':cnh', $cnh);
             $comando->bindParam(':email', $email);
             $comando->bindParam(':marca', $marca);
@@ -100,44 +98,13 @@ try {
         $erro = "Não foi possível exibir seu perfil no momento";
     }
 } catch (PDOException $excecao) {
-    echo "Erro ao exibir perfil";
+    $erro = "Erro ao exibir perfil";
 } ?>
-
-<!-- Imagem -->
-<style>
-    .btn-foto {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .btn-foto input[type=file] {
-        position: absolute;
-        top: 0;
-        right: 0;
-        min-width: 100%;
-        min-height: 100%;
-        font-size: 100px;
-        text-align: right;
-        filter: alpha(opacity=0);
-        opacity: 0;
-        outline: none;
-        background: white;
-        cursor: inherit;
-        display: block;
-    }
-
-    #img-uploaded {
-        width: 18em;
-        height: 12em;
-    }
-</style>
 
 <div class="container text-center mb-5">
     <h1 class="font-weight-light"> PERFIL </h1>
 
     <div class="card m-auto text-left" style="width: 54rem;">
-
-
 
             <form id="form" method="post" class="needs-validation" novalidate>
 
@@ -219,50 +186,27 @@ try {
 
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="mei">Possui MEI? </label>
-                                        <select class="form-control" id="mei" name="mei" required>
-                                            <option value="Sim" <?= $resultado['ic_mei'] == "Sim" ? "selected" : "" ?>>
-                                                Sim
-                                            </option>
-                                            <option value="Não" <?= $resultado['ic_mei'] == "Não" ? "selected" : "" ?>>
-                                                Não
-                                            </option>
-                                        </select>
+                                        <label for="cpf">CPF: </label>
+                                        <input type="text" class="form-control" id="cpf" name="cpf" required
+                                               value="<?= $resultado['id_cpf'] ?>">
                                         <div class="invalid-feedback">
-                                            <span id="feedbackMei"> </span>
+                                            <span id="feedbackCpf"> </span>
                                         </div>
                                     </div>
-
                                 </div>
 
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="cpf">CPF: </label>
-                                <input type="text" class="form-control" id="cpf" name="cpf" required
-                                       value="<?= $resultado['id_cpf'] ?>">
-                                <div class="invalid-feedback">
-                                    <span id="feedbackCpf"> </span>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="cnh">CNH: </label>
+                                        <input type=text class="form-control" id="cnh" name="cnh" required
+                                               value="<?= $resultado['id_cnh'] ?>">
+                                        <div class="invalid-feedback">
+                                            <span id="feedbackCnh"> </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="cnh">CNH: </label>
-                                <input type=text class="form-control" id="cnh" name="cnh" required
-                                       value="<?= $resultado['id_cnh'] ?>">
-                                <div class="invalid-feedback">
-                                    <span id="feedbackCnh"> </span>
-                                </div>
-                            </div>
                         </div>
 
                     </div>
@@ -382,7 +326,7 @@ try {
                                 <input type="tel" class="form-control" id="celular" name="celular" required
                                        value="<?= $resultado['id_celular'] ?>">
                                 <div class="invalid-feedback">
-                                    <span id="feedbackMei"> </span>
+                                    <span id="feedbackCelular"> </span>
                                 </div>
                             </div>
                         </div>

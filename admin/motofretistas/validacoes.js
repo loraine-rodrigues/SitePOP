@@ -27,9 +27,6 @@ $(document).ready( () => {
     var cnpj = $("#cnpj");
     var feedbackCnpj = $("#feedbackCnpj");
 
-    var mei = $("#mei");
-    var feedbackMei = $("#feedbackMei");
-
     var cnh = $("#cnh");
     var feedbackCnh = $("#feedbackCnh");
 
@@ -118,22 +115,6 @@ $(document).ready( () => {
             feedbackCnh.text("Campo obrigatório");
         }
 
-    });
-
-    mei.on('change', () => {
-        if (mei.val().length > 0) {
-            if (mei.val() == "Sim") {
-                mei.get(0).setCustomValidity('');
-                feedbackMei.text("")
-            } else {
-                $('#modalMei').modal('show');
-                mei.get(0).setCustomValidity('Inválido');
-                feedbackMei.text("É necessário possuir MEI para efetuar cadastro")
-            }
-        } else {
-            mei.get(0).setCustomValidity('Inválido');
-            feedbackMei.text("Campo obrigatório")
-        }
     });
 
     celular.keyup(() => {
@@ -280,7 +261,6 @@ $(document).ready( () => {
         var cpfValido = validarCPF(cpf.val());
         cnpj = $("#cnpj");
         var cnpjValido = validarCNPJ(cnpj.val());
-        mei = $("#mei");
         cnh = $("#cnh");
         var cnhValida = validarCNH(cnh.val());
         email = $("#email");
@@ -349,19 +329,6 @@ $(document).ready( () => {
         } else {
             cnh.get(0).setCustomValidity('Inválido');
             feedbackCnh.text("Campo obrigatório");
-        }
-
-        if (mei.val().length > 0) {
-            if (mei.val() == "Sim") {
-                mei.get(0).setCustomValidity('');
-                feedbackMei.text("")
-            } else {
-                mei.get(0).setCustomValidity('Inválido');
-                feedbackMei.text("É necessário possuir MEI para efetuar cadastro")
-            }
-        } else {
-            mei.get(0).setCustomValidity('Inválido');
-            feedbackMei.text("Campo obrigatório")
         }
 
         feedbackCelular = $("#feedbackCelular");

@@ -1,5 +1,5 @@
 $(document).ready( () => {
-    //teste de script para pegar imagem
+    // previnindo campos tipo input file de serem alterados
     var somenteLeitura = $(".somenteLeitura");
 
     somenteLeitura.keydown(function(e){
@@ -10,6 +10,7 @@ $(document).ready( () => {
         e.preventDefault();
     });
 
+    // pegar imagem
     $("#img-input").change(() => {
         var input = $('#img-input')[0];
 
@@ -20,7 +21,6 @@ $(document).ready( () => {
                 var url = input.files[0].name.toLowerCase();
                 console.log(url);
                 if (url.endsWith("jpg") || url.endsWith("jpeg") || url.endsWith("png")) {
-                    console.log(input.files[0].name);
                     $('#img-uploaded').attr('src', e.target.result);
                     $('#img-text').val(input.files[0].name);
                     $("#img-input").get(0).setCustomValidity('');
@@ -31,7 +31,32 @@ $(document).ready( () => {
 
             reader.readAsDataURL(input.files[0]);
         }
-    });   //fim do script de pegar imagem
+    });   //fim do pegar imagem
+
+    // pegar mei
+    $("#mei-input").change(() => {
+        var input = $('#mei-input')[0];
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = (e) => {
+                var url = input.files[0].name.toLowerCase();
+                console.log(url);
+                if (url.endsWith("jpg") || url.endsWith("jpeg") || url.endsWith("png")) {
+                    console.log(input.files[0].name);
+                    $('#mei-uploaded').attr('src', e.target.result);
+                    $('#mei-text').val(input.files[0].name);
+                    $("#mei-input").get(0).setCustomValidity('');
+                } else {
+                    $("#mei-input").get(0).setCustomValidity('Inválido');
+                }
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    });   //fim do pegar mei
+
 
     var form = $("#form");
 
@@ -61,9 +86,6 @@ $(document).ready( () => {
 
     var cnpj = $("#cnpj");
     var feedbackCnpj = $("#feedbackCnpj");
-
-    var mei = $("#mei");
-    var feedbackMei = $("#feedbackMei");
 
     var cnh = $("#cnh");
     var feedbackCnh = $("#feedbackCnh");
@@ -162,22 +184,6 @@ $(document).ready( () => {
             feedbackCnh.text("Campo obrigatório");
         }
 
-    });
-
-    mei.on('change', () => {
-        if (mei.val().length > 0) {
-            if (mei.val() == "Sim") {
-                mei.get(0).setCustomValidity('');
-                feedbackMei.text("")
-            } else {
-                $('#modalMei').modal('show');
-                mei.get(0).setCustomValidity('Inválido');
-                feedbackMei.text("É necessário possuir MEI para efetuar cadastro")
-            }
-        } else {
-            mei.get(0).setCustomValidity('Inválido');
-            feedbackMei.text("Campo obrigatório")
-        }
     });
 
     celular.keyup(() => {
@@ -361,7 +367,6 @@ $(document).ready( () => {
         var cpfValido = validarCPF(cpf.val());
         cnpj = $("#cnpj");
         var cnpjValido = validarCNPJ(cnpj.val());
-        mei = $("#mei");
         cnh = $("#cnh");
         var cnhValida = validarCNH(cnh.val());
         email = $("#email");
@@ -432,19 +437,6 @@ $(document).ready( () => {
         } else {
             cnh.get(0).setCustomValidity('Inválido');
             feedbackCnh.text("Campo obrigatório");
-        }
-
-        if (mei.val().length > 0) {
-            if (mei.val() == "Sim") {
-                mei.get(0).setCustomValidity('');
-                feedbackMei.text("")
-            } else {
-                mei.get(0).setCustomValidity('Inválido');
-                feedbackMei.text("É necessário possuir MEI para efetuar cadastro")
-            }
-        } else {
-            mei.get(0).setCustomValidity('Inválido');
-            feedbackMei.text("Campo obrigatório")
         }
 
         if (celular.val().length > 0) {

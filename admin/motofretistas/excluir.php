@@ -75,6 +75,29 @@ include "../../header.php";
 
                     <div class="card-body">
 
+                        <h3 class="card-title mb-4">IMAGENS</h3>
+                        <div class="row mb-2">
+                            <div class="col text-center">
+                                <img alt="Foto de perfil" id='img-upload'
+                                     src="../../image/motofretistas/<?= $resultado['urlFoto'] ?>"
+                                     class="rounded"/>
+                                <label>Foto do motofretista</label>
+                            </div>
+
+                            <div class="col text-center">
+                                <img alt="Foto de perfil" id='img-upload'
+                                     src="../../image/mei/<?= $resultado['urlMei'] ?>"
+                                     class="rounded"/>
+                                <label>Comprovante de MEI</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr style="width: 100%; color: black; height: 1px; background-color:black;"/>
+
+                    <div class="card-body">
+
                         <h3 class="card-title mb-4">DADOS PESSOAIS</h3>
                         <div class="row">
                             <div class="col">
@@ -102,14 +125,6 @@ include "../../header.php";
 
                             </div>
 
-                            <!--Adicionar foto-->
-                            <div class="col text-center">
-                                <div class="form-group">
-                                    <img alt="Foto de perfil" id='img-upload'
-                                         src="../../image/motofretistas/<?= $resultado['urlFoto'] ?>"
-                                         class="rounded mb-2"/>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="row">
@@ -186,15 +201,6 @@ include "../../header.php";
                                     <label for="cnpj">CNPJ: </label>
                                     <input type="text" class="form-control" name="cnpj" id="cnpj"
                                            value="<?= $resultado['id_cnpj'] ?>" readonly>
-                                </div>
-                            </div>
-
-                            <!--Opção de sexo, usado um select para aparecer as duas opções-->
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="mei">Possui MEI? </label>
-                                    <input type="text" class="form-control" name="mei" id="mei"
-                                           value="<?= $resultado['ic_mei'] ?>" readonly>
                                 </div>
                             </div>
 
