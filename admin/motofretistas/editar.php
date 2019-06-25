@@ -106,8 +106,17 @@ try {
                     <a href="index.php" class="btn btn-outline-primary mx-5"><i class="fas fa-chevron-left"></i> Voltar</a> <!--Botão voltar-->
                 </div>
             </div>
+        
+        <?php } else if (isset($mensagem)) { ?>
 
-        <?php } if ($resultado = $comando->fetch()) { ?>
+                    <div class="alert alert-success">
+                        <?= $mensagem ?>
+                    </div>
+                    <div class="col text-center">
+                        <a href="index.php" class="btn btn-outline-primary mx-5"><i class="fas fa-chevron-left"></i> Voltar</a> <!--Botão voltar-->
+                    </div>
+
+        <?php } else if ($resultado = $comando->fetch()) { ?>
 
             <form id="form" method="post" class="needs-validation" novalidate>
 
