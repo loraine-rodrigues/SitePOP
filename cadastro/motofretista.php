@@ -150,6 +150,7 @@ if (isset($_POST['salvar'])) {
         -moz-border-radius: 4px;
         border-radius: 4px;
     }
+    
     input[type=text]::placeholder, input[type=text]:placeholder-shown,
     input[type=password]::placeholder, input[type=password]:placeholder-shown,
     input[type=tel]::placeholder, input[type=tel]:placeholder-shown {
