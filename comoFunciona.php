@@ -24,7 +24,7 @@ include 'header.php';
 
             <hr style="width: 80%;" class="my-4" />
 
-            <div class="row">
+            <div class="row mx-3">
 
                 <div class="col">
                     <img alt="Imagem cliente" class="img-fluid rounded" src="image/clienteComoFunciona.png"/>
@@ -48,7 +48,7 @@ include 'header.php';
                     <div class="row">
 
                         <div class="col-2 text-right">
-                            <i class="fa fa-user-circle fa-2x"></i>
+                            <i class="far fa-hand-pointer fa-2x"></i>
                         </div>
 
                         <div class="col-10 text-left">
@@ -61,7 +61,7 @@ include 'header.php';
                     <div class="row">
 
                         <div class="col-2 text-right">
-                            <i class="fa fa-check fa-2x"></i>
+                            <i class="fas fa-mobile-alt fa-2x"></i>
                         </div>
 
                         <div class="col-10 text-left">
@@ -86,7 +86,7 @@ include 'header.php';
 
             <hr style="width: 80%;" class="my-4" />
 
-            <div class="row">
+            <div class="row mx-3">
 
                 <div class="col">
 
@@ -119,7 +119,7 @@ include 'header.php';
                     <div class="row">
 
                         <div class="col-2 text-right">
-                            <i class="far fa-grin fa-2x"></i>
+                            <i class="far fa-comment-dots fa-2x"></i>
                         </div>
 
                         <div class="col-10 text-left">
@@ -144,3 +144,4 @@ include 'header.php';
 <?php
 include 'footer.php';
 ?>
+  
