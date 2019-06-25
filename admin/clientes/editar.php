@@ -28,8 +28,6 @@ if (isset($_POST['editar'])) {
             if ($comando->execute()) {
                 $mensagem = "Alteração realizada com sucesso";
             }
-
-            $mensagem = "Cliente editado com sucesso";
         } catch (PDOException $excecao) {
             $erro = "Erro ao editar cliente" . $excecao->getMessage();
         }
