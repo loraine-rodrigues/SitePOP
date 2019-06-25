@@ -55,6 +55,53 @@ if (isset($_POST['confirmarCadastro'])) {
     }
 }
 ?>
+<style>
+
+    .checkboxes input[type=checkbox] {
+    display: none; /* Esconde os inputs */
+    }
+
+    .checkboxes label {
+    cursor: pointer;
+    }
+
+    .checkboxes input[type="checkbox"] + label:before {
+    border: 1px solid orange;
+    content: "\00a0";
+    display: inline-block;
+    height: 20px;
+    margin: 0 .25em 0 0;
+    padding: 0;
+    vertical-align: top;
+    width: 20px;
+    border-radius: 2px;
+    }
+
+    .checkboxes input[type="checkbox"]:checked + label:before {
+    background: #c69500;
+    color: #FFF;
+    content: "\2716";
+    text-align: center;
+    }
+
+    .checkboxes input[type="checkbox"]:checked + label:after {
+    font-weight: bold;
+    }
+
+    input:not([type=submit]), input:not([type=submit]):focus, input:not([type=submit]):active, input:not([type=submit]):hover, .custom-select, .custom-select:focus {
+    border: 1px solid orange;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    }
+
+    input[type=text]::placeholder, input[type=text]:placeholder-shown,
+    input[type=password]::placeholder, input[type=password]:placeholder-shown,
+    input[type=tel]::placeholder, input[type=tel]:placeholder-shown {
+    color: #bbb;
+    }
+
+</style>
 
 <div class="container text-center">
     <h1 class=" ml-5">CADASTRO CLIENTE</h1>
@@ -171,7 +218,7 @@ if (isset($_POST['confirmarCadastro'])) {
                 <div class="form-row mt-5">
 
                     <!-- Termos de uso -->
-                    <div class="col">
+                    <div class="col checkboxes">
                         <div class="form-group form-check">
                             <input type="checkbox" class="form-check-input" id="termos" name="termos">
                             <label for="termos">Eu li e aceito os </label>
