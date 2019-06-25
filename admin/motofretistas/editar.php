@@ -55,11 +55,6 @@ if (isset($_POST['salvar'])) {
 
             if ($comando->execute()) {
                 $mensagem = "Alteração realizada com sucesso";
-                ?>
-                <script>
-                    $("#nome_sessao").text("<?= $nome ?>")
-                </script>
-                <?php
             } else {
                 $erro = "Não foi possível realizar alteração";
             }
