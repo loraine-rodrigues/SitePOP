@@ -48,7 +48,7 @@ if (isset($_POST['salvar'])) {
             $mei = carregarMei(uniqid());
 
             if ($foto != 'erro' && $mei != 'erro') {
-                $comando = $conexao->prepare("CALL cadastrarMotofretista(:nome, :celular, :celularAlternativo, :email, :cpf, :cnpj, :cnh, :genero, :regiao, :data, :placa, :renavam, :modelo, :cor, :marca, :senha, :foto, :mei,)");
+                $comando = $conexao->prepare("CALL cadastrarMotofretista(:nome, :celular, :celularAlternativo, :email, :cpf, :cnpj, :cnh, :genero, :regiao, :data, :placa, :renavam, :modelo, :cor, :marca, :senha, :foto, :mei)");
                 $comando->bindParam(':nome', $nome);
                 $comando->bindParam(':data', $data);
                 $comando->bindParam(':genero', $genero);
