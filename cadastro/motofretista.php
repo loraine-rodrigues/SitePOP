@@ -255,7 +255,7 @@ if (isset($_POST['salvar'])) {
 
                     <!--Adicionar foto-->
                     <div class="col text-center">
-                        <div class="row">
+                        <div class="row justify-content-center">
                             <div class="form-group">
                                 <img alt="Foto de perfil" id='img-uploaded' src="../image/avatar.svg"
                                      class="rounded mb-2"/>
@@ -358,7 +358,7 @@ if (isset($_POST['salvar'])) {
                         </div>
                     </div>
                     <div class="col text-center">
-                        <div class="row">
+                        <div class="row justify-content-center">
                             <div class="form-group">
                                 <img alt="Comprovante MEI" id='mei-uploaded' src="../image/mei.png"
                                      class="rounded m-2"/>
