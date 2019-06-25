@@ -65,5 +65,3 @@ CREATE TABLE `tb_motofretista`
     PRIMARY KEY (`id_motofretista`)
 ) ENGINE = INNODB
   DEFAULT CHARSET = UTF8;
-
-call buscarMotofretistas();
